@@ -4,19 +4,33 @@
 
 产物是零依赖单文件：双击就能打开，不需要起服务器、不需要联网。
 改了 data/ 下任意 json 后重跑一次即可：python3 src/build.py
+
+也支持换一套数据 / 模板 / 输出位置（看板项目复用它生成自己的日历页）：
+    python3 src/build.py --data /path/to/data --template tpl.html --out out.html
 """
 
+import argparse
 import datetime
 import json
 import pathlib
 
 BASE = pathlib.Path(__file__).resolve().parent.parent
-DATA = BASE / "data"
-OUT = BASE / "index.html"
+
+FILES = {
+    "events": ("events.json", []),
+    "earnings": ("earnings.json", {"updated": "", "items": []}),
+    "finance": ("finance.json", {"updated": "", "items": []}),
+    "companies": ("companies.json", {"companies": {}}),
+    "macro": ("macro.json", {"templates": []}),
+    "schedule": ("schedule.json", {"updated": "", "sources": [], "items": []}),
+    "actuals": ("actuals.json", {"updated": "", "items": {}}),
+    "quotes": ("quotes.json", {"updated": "", "items": {}}),
+    "releases": ("releases.json", {"updated": "", "items": {}}),
+}
 
 
-def load(name, default):
-    p = DATA / name
+def load(data_dir, name, default):
+    p = data_dir / name
     if not p.is_file():
         if default is None:
             raise SystemExit(f"缺少数据文件: {p}")
@@ -29,19 +43,19 @@ def load(name, default):
 
 
 def main():
-    payload = {
-        "events": load("events.json", []),
-        "earnings": load("earnings.json", {"updated": "", "items": []}),
-        "finance": load("finance.json", {"updated": "", "items": []}),
-        "companies": load("companies.json", {"companies": {}}),
-        "macro": load("macro.json", {"templates": []}),
-        "schedule": load("schedule.json", {"updated": "", "sources": [], "items": []}),
-        "actuals": load("actuals.json", {"updated": "", "items": {}}),
-        "quotes": load("quotes.json", {"updated": "", "items": {}}),
-        "releases": load("releases.json", {"updated": "", "items": {}}),
-    }
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", default=str(BASE / "data"), help="数据目录（默认 data/）")
+    ap.add_argument("--template", default=str(BASE / "src" / "template.html"))
+    ap.add_argument("--out", default=str(BASE / "index.html"))
+    args = ap.parse_args()
 
-    tpl = (BASE / "src" / "template.html").read_text(encoding="utf-8")
+    data_dir = pathlib.Path(args.data).resolve()
+    if not data_dir.is_dir():
+        raise SystemExit(f"数据目录不存在: {data_dir}")
+
+    payload = {k: load(data_dir, name, default) for k, (name, default) in FILES.items()}
+
+    tpl = pathlib.Path(args.template).read_text(encoding="utf-8")
     for token in ("__DATA__", "__TODAY__"):
         if token not in tpl:
             raise SystemExit(f"模板缺少占位符 {token}")
@@ -51,20 +65,17 @@ def main():
            .replace("__TODAY__", datetime.date.today().isoformat())
     )
 
-    OUT.write_text(html, encoding="utf-8")
+    out = pathlib.Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html, encoding="utf-8")
 
-    n_ev = len(payload["events"])
-    n_e = len(payload["earnings"].get("items", []))
-    n_f = len(payload["finance"].get("items", []))
-    n_c = len(payload["companies"].get("companies", {}))
-    n_m = len(payload["macro"].get("templates", []))
-    n_s = len(payload["schedule"].get("items", []))
-    n_a = len(payload["actuals"].get("items", {}))
-    n_q = len(payload["quotes"].get("items", {}))
-    n_r = len(payload["releases"].get("items", {}))
-    print(f"OK  {OUT}  ({len(html):,} 字节)")
-    print(f"    普通事件 {n_ev} · 财经事件 {n_f} · 财报 {n_e} · 公司 {n_c} · 宏观模板 {n_m}"
-          f" · 官方日程 {n_s} · 公布结果 {n_r} · 实际业绩 {n_a} · 行情 {n_q}")
+    cnt = lambda k, f: len(payload[k].get(f, []))
+    print(f"OK  {out}  ({len(html):,} 字节)")
+    print(f"    普通事件 {len(payload['events'])} · 财经事件 {cnt('finance','items')}"
+          f" · 财报 {cnt('earnings','items')} · 公司 {len(payload['companies'].get('companies', {}))}"
+          f" · 宏观模板 {cnt('macro','templates')} · 官方日程 {cnt('schedule','items')}"
+          f" · 公布结果 {cnt('releases','items')} · 实际业绩 {cnt('actuals','items')}"
+          f" · 行情 {cnt('quotes','items')}")
 
 
 if __name__ == "__main__":

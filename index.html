@@ -251,7 +251,7 @@ button{font-family:inherit}
 .pill.fin{background:#FFF3B0;color:#2E2A1E}
 
 /* ── 刷新按钮 / 数据状态 / 导入面板 ── */
-.nav .rfbtn{border:1px solid #d8d8dd;background:#fff;border-radius:999px;font-family:inherit;font-size:12px;color:#3c3c43;padding:4px 12px;cursor:pointer;margin:0 7px 0 3px;line-height:1.4;white-space:nowrap}
+.nav .rfbtn{border:1px solid #d8d8dd;background:#fff;border-radius:999px;font-family:inherit;font-size:12px;color:#3c3c43;padding:4px 12px;cursor:pointer;margin:0 9px 0 0;line-height:1.4;white-space:nowrap}
 .nav .rfbtn:hover{border-color:#b8b8bf;background:#fafafb;color:#1d1d1f}
 .nav .rfbtn.spin{color:#8e8e93;animation:rpulse 1s ease-in-out infinite}
 @keyframes rpulse{50%{opacity:.45}}
@@ -329,7 +329,7 @@ button{font-family:inherit}
   .hdr .sub{font-size:9.5px;margin-left:6px;max-width:32vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}
   .nav{gap:0;flex:0 0 auto}
   .nav button{padding:4px 6px;font-size:12px}
-  .nav .rfbtn{padding:3px 9px;font-size:11px;margin:0 4px 0 0}
+  .nav .rfbtn{padding:3px 9px;font-size:11px;margin:0 6px 0 0}
   .search input{width:60px}
   .toolbar{gap:6px;padding:0 10px}
   .seg{margin:0 auto}
@@ -376,8 +376,8 @@ button{font-family:inherit}
   <div class="hdr">
     <div style="display:flex;align-items:baseline"><h1 id="title">2026年11月</h1><span class="sub" id="earnSub"></span></div>
     <div class="nav">
-      <button id="prev" title="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
       <button class="rfbtn" id="btnRefresh" title="刷新全部内容：官方日程 / 公布结果 / 股价行情">刷新</button>
+      <button id="prev" title="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
       <button id="today">今天</button>
       <button id="next" title="下一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
@@ -2318,8 +2318,9 @@ function openForm(e, dayKey){
   document.getElementById("drSub").textContent = d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
 
   let opts = "";
-  const cats = (base.c==="finance") ? ["finance","work","holiday","personal","other"]
-                                    : ["work","holiday","personal","other"];
+  /* 六个分类都列出来：自建事件也能归到「财经事件 / 财报日历」，
+     只是不会带官方日程那套只读详情，点开仍是这个编辑表单 */
+  const cats = CALORDER.slice();
   cats.forEach(k=>{
     opts += '<option value="'+k+'"'+(base.c===k?" selected":"")+'>'+CALS[k].n+'</option>';
   });
