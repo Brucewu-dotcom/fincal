@@ -1,0 +1,804 @@
+{
+ "updated": "2026-11-17",
+ "note": "财报日为人工核对后写入。status=confirmed 表示官方或公司 IR 已公布；estimated 表示按历史规律/数据商预测推算，官方尚未确认。时间口径为北京时间。",
+ "items": [
+  {
+   "d": "2026-11-17",
+   "ticker": "JD",
+   "company": "京东",
+   "title": "京东 Q3 财报",
+   "status": "confirmed",
+   "note": "美股盘前，北京时间约 17:00；电话会 19:00",
+   "src": "公司公告",
+   "actual": null,
+   "expect": {
+    "val": {
+     "target": 38.96,
+     "cur": 27.91,
+     "unit": "美元",
+     "n": 40,
+     "buy": 88,
+     "hold": 10,
+     "sell": 2,
+     "nTarget": 34,
+     "upside": 39.6,
+     "asof": "2026-11-17"
+    },
+    "est": {
+     "period": "2026Q3",
+     "periodKind": "fcst",
+     "basis": "人民币口径：NeoData 一致预期（港股 09618.HK，28 家），按 1 港币≈0.86 元折算；同比以 2025Q3 实际值（2,982 亿元）重算。",
+     "items": [
+      {
+       "k": "营业收入",
+       "v": "3,115",
+       "u": "亿元",
+       "yoy": 4.5,
+       "n": 28
+      },
+      {
+       "k": "归母净利润",
+       "v": "80.7",
+       "u": "亿元",
+       "yoy": 39.6,
+       "n": 26
+      },
+      {
+       "k": "每股收益",
+       "v": "2.97",
+       "u": "元",
+       "yoy": 58.8,
+       "n": 18
+      }
+     ]
+    }
+   }
+  },
+  {
+   "d": "2026-11-17",
+   "ticker": "TME",
+   "company": "腾讯音乐",
+   "title": "TME Q3 财报",
+   "status": "confirmed",
+   "note": "美股盘前，北京时间约 17:00；电话会 20:00",
+   "src": "公司公告",
+   "actual": null,
+   "expect": {
+    "val": {
+     "target": 12.1,
+     "cur": 9.05,
+     "unit": "美元",
+     "n": 36,
+     "buy": 64,
+     "hold": 36,
+     "sell": 0,
+     "nTarget": 28,
+     "upside": 33.7,
+     "asof": "2026-11-17"
+    },
+    "est": {
+     "period": "2026Q3",
+     "periodKind": "fcst",
+     "basis": "人民币口径：NeoData 一致预期（港股 01698.HK，12 家）；同比以 2025Q3 实际值（84.2 亿元）重算。",
+     "items": [
+      {
+       "k": "营业收入",
+       "v": "91.5",
+       "u": "亿元",
+       "yoy": 8.7,
+       "n": 12
+      },
+      {
+       "k": "归母净利润",
+       "v": "22.1",
+       "u": "亿元",
+       "yoy": 3.1,
+       "n": 9
+      }
+     ]
+    }
+   }
+  },
+  {
+   "d": "2026-11-18",
+   "ticker": "NVDA",
+   "company": "英伟达",
+   "title": "英伟达 FY27Q3 财报",
+   "status": "confirmed",
+   "note": "美东 11/17 盘后，北京时间 11/18 约 05:20 发布，06:00 电话会",
+   "src": "NVIDIA IR 2026-10-28 新闻稿",
+   "actual": null,
+   "expect": {
+    "val": {
+     "target": 279.48,
+     "cur": 162.85,
+     "unit": "美元",
+     "n": 72,
+     "buy": 78,
+     "hold": 21,
+     "sell": 1,
+     "nTarget": 58,
+     "upside": 71.6,
+     "asof": "2026-11-17"
+    },
+    "est": {
+     "period": "FY2027Q3",
+     "periodKind": "fcst",
+     "basis": "公司指引取自 FY27Q2 财报（2026-08-27）；一致预期为披露时点市场预期；净利润为上一季实际（非本期预测）。",
+     "items": [
+      {
+       "k": "营业收入 · 指引",
+       "v": "1,080",
+       "u": "亿美元",
+       "yoy": 89.4,
+       "s": "指引 ±2%"
+      },
+      {
+       "k": "营业收入 · 一致预期",
+       "v": "1,045.7",
+       "u": "亿美元",
+       "yoy": 83.4,
+       "s": "8月时点"
+      },
+      {
+       "k": "Non-GAAP 毛利率",
+       "v": "74.0",
+       "u": "%",
+       "s": "指引 ±0.5%"
+      },
+      {
+       "k": "净利润 · 上季实际",
+       "v": "596.9",
+       "u": "亿美元",
+       "yoy": 125.9,
+       "s": "上季"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "d": "2026-11-18",
+   "ticker": "0700.HK",
+   "company": "腾讯",
+   "title": "腾讯 Q3 财报",
+   "status": "confirmed",
+   "note": "港股盘后，北京时间约 16:15 公布；电话会 20:00",
+   "src": "港交所公告",
+   "actual": null,
+   "expect": {
+    "val": {
+     "target": 647.07,
+     "cur": 376.0,
+     "unit": "港元",
+     "n": 58,
+     "buy": 93,
+     "hold": 5,
+     "sell": 2,
+     "nTarget": 47,
+     "upside": 72.1,
+     "asof": "2026-11-17"
+    },
+    "est": {
+     "period": "2026Q3",
+     "periodKind": "fcst",
+     "basis": "中信证券 2026-10-17 三季报前瞻（人民币口径）；利润为 Non-IFRS 口径。",
+     "items": [
+      {
+       "k": "营业收入",
+       "v": "2,088",
+       "u": "亿元",
+       "yoy": 8.2,
+       "s": "中信"
+      },
+      {
+       "k": "Non-IFRS 经营利润",
+       "v": "702",
+       "u": "亿元",
+       "yoy": -3.3,
+       "s": "中信"
+      },
+      {
+       "k": "Non-IFRS 净利润",
+       "v": "665",
+       "u": "亿元",
+       "yoy": -5.7,
+       "s": "中信"
+      },
+      {
+       "k": "毛利率",
+       "v": "56.4",
+       "u": "%",
+       "s": "持平"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "d": "2026-11-19",
+   "ticker": "BABA",
+   "company": "阿里巴巴",
+   "title": "阿里 FY27Q2 财报",
+   "status": "confirmed",
+   "note": "美股盘前，北京时间约 17:00；电话会 19:30",
+   "src": "公司公告",
+   "actual": null,
+   "expect": {
+    "val": {
+     "target": 179.12,
+     "cur": 85.45,
+     "unit": "港元",
+     "n": 29,
+     "buy": 93,
+     "hold": 3,
+     "sell": 4,
+     "nTarget": 21,
+     "upside": 109.6,
+     "asof": "2026-11-17"
+    },
+    "est": {
+     "period": "FY2027Q2（3Q26）",
+     "periodKind": "fcst",
+     "basis": "中金公司 2026-10-09 前瞻：收入同增 9.8% 至 2,721 亿元，调整 EBITA 303 亿元、Non-GAAP 归母净利 272 亿元；卖方预览亦为 +9%，人民币口径。",
+     "items": [
+      {
+       "k": "营业收入",
+       "v": "2,721",
+       "u": "亿元",
+       "yoy": 9.8,
+       "s": "中金"
+      },
+      {
+       "k": "调整 EBITA",
+       "v": "303",
+       "u": "亿元",
+       "s": "中金"
+      },
+      {
+       "k": "Non-GAAP 归母净利",
+       "v": "272",
+       "u": "亿元",
+       "s": "中金"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "d": "2026-11-19",
+   "ticker": "PDD",
+   "company": "拼多多",
+   "title": "拼多多 Q3 财报",
+   "status": "confirmed",
+   "note": "美股盘前，北京时间约 18:00；电话会 19:30",
+   "src": "公司公告",
+   "actual": null,
+   "expect": {
+    "val": {
+     "target": 113.04,
+     "cur": 78.97,
+     "unit": "美元",
+     "n": 35,
+     "buy": 64,
+     "hold": 31,
+     "sell": 5,
+     "nTarget": 35,
+     "upside": 43.1,
+     "asof": "2026-11-17"
+    },
+    "est": {
+     "period": "上季基数",
+     "basis": "美股无中国卖方一致预期口径，此处为最近一期已披露实际（作本期参照），非预测。",
+     "items": [
+      {
+       "k": "营业收入",
+       "v": "165.06",
+       "u": "亿美元",
+       "yoy": 14.8,
+       "s": "上季"
+      },
+      {
+       "k": "净利润",
+       "v": "39.93",
+       "u": "亿美元",
+       "yoy": -6.1,
+       "s": "上季"
+      }
+     ],
+     "periodKind": "ref"
+    }
+   }
+  },
+  {
+   "d": "2026-11-19",
+   "ticker": "1024.HK",
+   "company": "快手",
+   "title": "快手 Q3 财报",
+   "status": "confirmed",
+   "note": "港股盘后，北京时间约 16:15 公布；电话会 20:00",
+   "src": "港交所公告",
+   "actual": null,
+   "expect": {
+    "val": {
+     "target": 44.54,
+     "cur": 24.24,
+     "unit": "港元",
+     "n": 39,
+     "buy": 64,
+     "hold": 28,
+     "sell": 8,
+     "nTarget": 30,
+     "upside": 83.7,
+     "asof": "2026-11-17"
+    },
+    "est": {
+     "period": "2026Q3",
+     "periodKind": "fcst",
+     "basis": "人民币口径：NeoData 一致预期（港股 01024.HK，14 家）；同比以 2025Q3 实际值（356 亿元）重算。",
+     "items": [
+      {
+       "k": "营业收入",
+       "v": "328.6",
+       "u": "亿元",
+       "yoy": -7.8,
+       "n": 14
+      },
+      {
+       "k": "归母净利润",
+       "v": "4.8",
+       "u": "亿元",
+       "yoy": -89.3,
+       "n": 11
+      }
+     ]
+    }
+   }
+  },
+  {
+   "d": "2026-11-27",
+   "ticker": "3690.HK",
+   "company": "美团",
+   "title": "美团 Q3 财报",
+   "status": "confirmed",
+   "note": "港交所董事会会议通告：11 月 27 日（周五）审议并披露 2026 年第三季度未经审核业绩；港股盘后",
+   "src": "港交所公告 2026-11-17",
+   "actual": null,
+   "expect": {
+    "val": {
+     "target": 109.72,
+     "cur": 70.5,
+     "unit": "港元",
+     "n": 44,
+     "buy": 82,
+     "hold": 14,
+     "sell": 4,
+     "nTarget": 35,
+     "upside": 55.6,
+     "asof": "2026-11-17"
+    },
+    "est": {
+     "period": "2026Q3",
+     "periodKind": "fcst",
+     "basis": "人民币口径，主来源不需要任何汇率换算：Yahoo 财经 3690.HK 一致预期（18 家，货币标 CNY）本季营收 1,130.8 亿元、上年同期 954.9 亿元、同比 +18.42%；市场共识另有 1,133 亿元（雪球引述）、花旗 1,142 亿元（+20%）、高盛 +19%（目标价 123 港元）。本值取 1,130.4 亿元，与 Yahoo 相差 0.04%。基期 954.9 亿元即 income_statement 2025Q3 人民币原值 95,488,113,000 元，未经折算。附注：NeoData 的 ratings 字段按挂牌货币展示（其 revenue_currency 标港币，2026 年度固定按 1.15 折算），1,299.9 ÷ 1.15 ＝ 1,130.4 仅用于交叉校验，不是主口径；公司财报与卖方预测本身都是人民币。",
+     "items": [
+      {
+       "k": "营业收入",
+       "v": "1,130.4",
+       "u": "亿元",
+       "yoy": 18.4,
+       "n": 19
+      },
+      {
+       "k": "净利润",
+       "v": "3.5",
+       "u": "亿元",
+       "n": 10,
+       "s": "IFRS；上年同期 -186.3 亿元"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "d": "2027-01-14",
+   "ticker": "TSM",
+   "company": "台积电",
+   "title": "台积电 Q4 财报",
+   "status": "estimated",
+   "note": "台北盘前，通常为周四；历次均在 1 月中",
+   "src": "Wall Street Horizon",
+   "expect": {
+    "val": {
+     "target": 554.22,
+     "cur": 398.73,
+     "unit": "美元",
+     "n": 21,
+     "buy": 95,
+     "hold": 5,
+     "sell": 0,
+     "nTarget": 18,
+     "upside": 39.0,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-01-27",
+   "ticker": "MSFT",
+   "company": "微软",
+   "title": "微软 FY27Q2 财报",
+   "status": "estimated",
+   "note": "美东盘后，北京时间次日 05:00；部分数据商标注 1/26",
+   "src": "TipRanks / Wall Street Horizon",
+   "expect": {
+    "val": {
+     "target": 639.16,
+     "cur": 523.88,
+     "unit": "美元",
+     "n": 59,
+     "buy": 93,
+     "hold": 7,
+     "sell": 0,
+     "nTarget": 51,
+     "upside": 22.0,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-01-27",
+   "ticker": "TSLA",
+   "company": "特斯拉",
+   "title": "特斯拉 Q4 财报",
+   "status": "estimated",
+   "note": "美东盘后，北京时间次日 05:00",
+   "src": "财报日历聚合",
+   "expect": {
+    "val": {
+     "target": 423.7,
+     "cur": 390.22,
+     "unit": "美元",
+     "n": 49,
+     "buy": 47,
+     "hold": 47,
+     "sell": 6,
+     "nTarget": 37,
+     "upside": 8.6,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-02-03",
+   "ticker": "GOOGL",
+   "company": "谷歌",
+   "title": "Alphabet Q4 财报",
+   "status": "estimated",
+   "note": "美东盘后，北京时间次日 05:00；Alphabet 通常 1 月第二周确认日期",
+   "src": "MEXC / 财报日历聚合",
+   "expect": {
+    "val": {
+     "target": 392.08,
+     "cur": 295.77,
+     "unit": "美元",
+     "n": 72,
+     "buy": 89,
+     "hold": 11,
+     "sell": 0,
+     "nTarget": 61,
+     "upside": 32.6,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-02-04",
+   "ticker": "AMZN",
+   "company": "亚马逊",
+   "title": "亚马逊 Q4 财报",
+   "status": "estimated",
+   "note": "美东盘后，北京时间次日 05:00",
+   "src": "Wall Street Horizon（UNCONFIRMED）",
+   "expect": {
+    "val": {
+     "target": 327.54,
+     "cur": 266.66,
+     "unit": "美元",
+     "n": 69,
+     "buy": 94,
+     "hold": 6,
+     "sell": 0,
+     "nTarget": 63,
+     "upside": 22.8,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-02-09",
+   "ticker": "SPCX",
+   "company": "SpaceX",
+   "title": "SpaceX Q4 财报",
+   "status": "estimated",
+   "note": "上市后首个完整季度；仅单一数据源列出，可信度低，需以公司 IR 为准",
+   "src": "财报日历聚合（待核实）"
+  },
+  {
+   "d": "2027-04-15",
+   "ticker": "TSM",
+   "company": "台积电",
+   "title": "台积电 Q1 财报",
+   "status": "estimated",
+   "note": "按历次 4 月中规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 554.22,
+     "cur": 398.73,
+     "unit": "美元",
+     "n": 21,
+     "buy": 95,
+     "hold": 5,
+     "sell": 0,
+     "nTarget": 18,
+     "upside": 39.0,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-04-28",
+   "ticker": "MSFT",
+   "company": "微软",
+   "title": "微软 FY27Q3 财报",
+   "status": "estimated",
+   "note": "按历次 4 月底规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 639.16,
+     "cur": 523.88,
+     "unit": "美元",
+     "n": 59,
+     "buy": 93,
+     "hold": 7,
+     "sell": 0,
+     "nTarget": 51,
+     "upside": 22.0,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-04-28",
+   "ticker": "GOOGL",
+   "company": "谷歌",
+   "title": "Alphabet Q1 财报",
+   "status": "estimated",
+   "note": "按历次 4 月底规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 392.08,
+     "cur": 295.77,
+     "unit": "美元",
+     "n": 72,
+     "buy": 89,
+     "hold": 11,
+     "sell": 0,
+     "nTarget": 61,
+     "upside": 32.6,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-04-29",
+   "ticker": "AMZN",
+   "company": "亚马逊",
+   "title": "亚马逊 Q1 财报",
+   "status": "estimated",
+   "note": "按历次 4 月底规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 327.54,
+     "cur": 266.66,
+     "unit": "美元",
+     "n": 69,
+     "buy": 94,
+     "hold": 6,
+     "sell": 0,
+     "nTarget": 63,
+     "upside": 22.8,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-04-21",
+   "ticker": "TSLA",
+   "company": "特斯拉",
+   "title": "特斯拉 Q1 财报",
+   "status": "estimated",
+   "note": "按历次 4 月下旬规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 423.7,
+     "cur": 390.22,
+     "unit": "美元",
+     "n": 49,
+     "buy": 47,
+     "hold": 47,
+     "sell": 6,
+     "nTarget": 37,
+     "upside": 8.6,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-05-26",
+   "ticker": "NVDA",
+   "company": "英伟达",
+   "title": "英伟达 FY28Q1 财报",
+   "status": "estimated",
+   "note": "按历次 5 月下旬规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 279.48,
+     "cur": 162.85,
+     "unit": "美元",
+     "n": 72,
+     "buy": 78,
+     "hold": 21,
+     "sell": 1,
+     "nTarget": 58,
+     "upside": 71.6,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-03-04",
+   "ticker": "JD",
+   "company": "京东",
+   "title": "京东 Q4 财报",
+   "status": "estimated",
+   "note": "按历次 3 月上旬规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 38.96,
+     "cur": 27.91,
+     "unit": "美元",
+     "n": 40,
+     "buy": 88,
+     "hold": 10,
+     "sell": 2,
+     "nTarget": 34,
+     "upside": 39.6,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-03-11",
+   "ticker": "BABA",
+   "company": "阿里巴巴",
+   "title": "阿里 FY27Q3 财报",
+   "status": "estimated",
+   "note": "按历次 2 月中下旬规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 179.12,
+     "cur": 85.45,
+     "unit": "港元",
+     "n": 29,
+     "buy": 93,
+     "hold": 3,
+     "sell": 4,
+     "nTarget": 21,
+     "upside": 109.6,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-03-18",
+   "ticker": "0700.HK",
+   "company": "腾讯",
+   "title": "腾讯 Q4 财报",
+   "status": "estimated",
+   "note": "按历次 3 月中下旬规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 647.07,
+     "cur": 376.0,
+     "unit": "港元",
+     "n": 58,
+     "buy": 93,
+     "hold": 5,
+     "sell": 2,
+     "nTarget": 47,
+     "upside": 72.1,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-03-18",
+   "ticker": "PDD",
+   "company": "拼多多",
+   "title": "拼多多 Q4 财报",
+   "status": "estimated",
+   "note": "按历次 3 月中规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 113.04,
+     "cur": 78.97,
+     "unit": "美元",
+     "n": 35,
+     "buy": 64,
+     "hold": 31,
+     "sell": 5,
+     "nTarget": 35,
+     "upside": 43.1,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-03-25",
+   "ticker": "1024.HK",
+   "company": "快手",
+   "title": "快手 Q4 财报",
+   "status": "estimated",
+   "note": "按历次 3 月下旬规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 44.54,
+     "cur": 24.24,
+     "unit": "港元",
+     "n": 39,
+     "buy": 64,
+     "hold": 28,
+     "sell": 8,
+     "nTarget": 30,
+     "upside": 83.7,
+     "asof": "2026-11-17"
+    }
+   }
+  },
+  {
+   "d": "2027-03-26",
+   "ticker": "3690.HK",
+   "company": "美团",
+   "title": "美团 Q4 财报",
+   "status": "estimated",
+   "note": "按历次 3 月底规律推算",
+   "src": "规律推算",
+   "expect": {
+    "val": {
+     "target": 109.72,
+     "cur": 70.5,
+     "unit": "港元",
+     "n": 44,
+     "buy": 82,
+     "hold": 14,
+     "sell": 4,
+     "nTarget": 35,
+     "upside": 55.6,
+     "asof": "2026-11-17"
+    }
+   }
+  }
+ ]
+}

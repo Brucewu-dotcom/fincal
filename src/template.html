@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>财经日历 · 开源版</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sb:#ececed;--line:#e2e2e4;--ink:#1d1d1f;--ink2:#86868b;--ink3:#b0b0b5;
+  --blue:#0a84ff;--purple:#af52de;--green:#34c759;--orange:#ff9500;--cyan:#5ac8fa;
+  --red:#ff3b30;--hover:#f4f4f6;
+}
+html,body{height:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC","Hiragino Sans GB",sans-serif;
+  -webkit-font-smoothing:antialiased;color:var(--ink);background:#fff;
+  display:flex;overflow:hidden;font-size:13px;
+}
+button{font-family:inherit}
+
+/* ── 侧栏 ───────────────────────────── */
+.sidebar{width:200px;flex:0 0 200px;background:var(--sb);display:flex;flex-direction:column;border-right:1px solid #dadade}
+.sb-top{height:52px;display:flex;align-items:center;gap:9px;padding:0 14px;flex:0 0 52px}
+.lights{display:flex;gap:6px}
+.lights i{width:12px;height:12px;border-radius:50%;display:block}
+.lights i:nth-child(1){background:#ff5f57}
+.lights i:nth-child(2){background:#febc2e}
+.lights i:nth-child(3){background:#28c840}
+.sb-icons{display:flex;gap:10px;margin-left:4px;color:#6e6e73}
+.sb-icons svg{width:15px;height:15px;display:block}
+.sb-body{flex:1;overflow-y:auto;padding:2px 10px 6px}
+.sb-body::-webkit-scrollbar{width:0}
+.grp{font-size:11px;color:#86868b;font-weight:600;padding:12px 6px 4px;letter-spacing:.2px}
+.calrow{display:flex;align-items:center;gap:9px;height:29px;padding:0 6px;border-radius:5px;cursor:pointer;user-select:none}
+.calrow:hover{background:rgba(0,0,0,.055)}
+.cdot{width:10px;height:10px;border-radius:50%;flex:0 0 10px;transition:opacity .15s}
+.calrow.off .cdot{opacity:.28}
+.calrow.off .nm{color:#b0b0b5}
+.calrow .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.calrow .cnt{color:#a1a1a6;font-size:10.5px;font-variant-numeric:tabular-nums}
+.watchbtn{display:flex;align-items:center;gap:6px;margin:1px 0 0 15px;padding:4px 7px;border-radius:5px;font-size:11.5px;color:#8e8e93;cursor:pointer;user-select:none}
+.watchbtn:hover{background:rgba(0,0,0,.055);color:#3c3c43}
+.watchbtn b{color:#C0550F;font-weight:600}
+.watchbtn .aw{margin-left:auto;color:#c0c0c5}
+
+/* 迷你月历 */
+.mini{padding:6px 14px 12px;user-select:none}
+.mini-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;font-size:11px;color:#6e6e73}
+.mini-h b{font-weight:600;font-size:11.5px;color:#48484a}
+.mini-h span{cursor:pointer;padding:0 3px;color:#86868b}
+.mini-g{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:11px;color:#3c3c43;gap:1px 0;font-variant-numeric:tabular-nums}
+.mini-g div{height:17px;line-height:17px}
+.mini-g .wd{color:#a8a8ad}
+.mini-g .out{color:#c2c3c7}
+.mini-g .now{background:var(--red);color:#fff;border-radius:50%;width:17px;height:17px;line-height:17px;margin:0 auto;font-weight:600}
+.mini-foot{margin-top:8px;display:flex;gap:6px}
+.mini-foot button{flex:1;border:1px solid #d6d6da;background:#fff;border-radius:5px;font-size:10.5px;color:#48484a;padding:4px 0;cursor:pointer}
+.mini-foot button:hover{background:#f7f7f9}
+.mini-note{margin-top:6px;font-size:9.5px;color:#b0b0b6;text-align:center;letter-spacing:.2px}
+
+/* ── 主区 ───────────────────────────── */
+.main{flex:1;min-width:0;display:flex;flex-direction:column;background:#fff}
+.toolbar{height:52px;flex:0 0 52px;display:flex;align-items:center;gap:10px;padding:0 18px}
+.addbtn{width:27px;height:27px;border-radius:6px;border:1px solid #d8d8dc;background:#fff;color:#48484a;font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding-bottom:1px}
+.addbtn:hover{background:#f4f4f6}
+.mobtn{display:none;border:1px solid #d8d8dc;background:#fff;border-radius:6px;height:27px;padding:0 9px;font-size:12px;color:#48484a;cursor:pointer;font-family:inherit;white-space:nowrap}
+.mobtn:hover{background:#f4f4f6}
+.seg{margin:0 auto;display:flex;background:#eaeaec;border-radius:7px;padding:2px;gap:2px}
+.seg button{border:0;background:transparent;font-size:12.5px;color:#3c3c43;padding:4px 15px;border-radius:5px;cursor:pointer}
+.seg button.on{background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.13),0 0 0 .5px rgba(0,0,0,.05);font-weight:500}
+.search{position:relative}
+.search input{width:190px;height:27px;border-radius:6px;border:1px solid #dcdce0;background:#fafafa;padding:0 9px 0 27px;font-size:12.5px;font-family:inherit;outline:none}
+.search input:focus{background:#fff;border-color:#b9b9c0}
+.search svg{position:absolute;left:8px;top:7px;width:13px;height:13px;color:#8e8e93}
+.sres{position:absolute;top:32px;right:0;width:280px;background:#fff;border-radius:8px;box-shadow:0 8px 26px rgba(0,0,0,.16);max-height:300px;overflow:auto;z-index:40;display:none}
+.sres.on{display:block}
+.sres .it{padding:7px 11px;font-size:12px;cursor:pointer;border-bottom:1px solid #f2f2f4}
+.sres .it:hover{background:#f4f4f7}
+.sres .it span{color:#8e8e93;font-size:11px;margin-left:6px}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:0 20px 8px}
+.hdr h1{font-size:31px;font-weight:700;letter-spacing:-.6px}
+.hdr .sub{font-size:11px;color:#a1a1a6;margin-left:10px;font-weight:400;letter-spacing:0;cursor:pointer;padding:2px 6px;border-radius:5px}
+.hdr .sub:hover{background:#f4f4f6;color:#6e6e73}
+.nav{display:flex;align-items:center;gap:1px}
+.nav button{border:0;background:transparent;color:var(--blue);font-size:13px;padding:5px 9px;border-radius:6px;cursor:pointer}
+.nav button:hover{background:#f0f0f3}
+.nav svg{width:11px;height:11px}
+
+.wk{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--line)}
+.wk div{text-align:center;font-size:12px;color:#48484a;padding:7px 0 8px;font-weight:600}
+
+.grid{flex:1;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(6,minmax(0,1fr));border-left:1px solid var(--line);min-height:0;overflow:hidden}
+.cell{border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;padding:24px 4px 3px;overflow:hidden;cursor:pointer;min-height:0;display:flex;flex-direction:column;gap:1.5px}
+.cell:hover{background:#fafafb}
+.cell.we{background:#fbfbfc}
+.cell.out{background:#f9f9fa}
+.cell.sel{background:#f0f0f5}
+.cell .ln{position:absolute;top:3px;left:6px;font-size:10.5px;color:#a8a8ad;letter-spacing:.1px;white-space:nowrap}
+.cell .ln.red{color:var(--red)}
+.cell .dn{position:absolute;top:1px;right:6px;font-size:14.5px;color:#1d1d1f;font-weight:500;letter-spacing:-.2px;font-variant-numeric:tabular-nums}
+.cell.out .dn{color:#bfc0c4;font-weight:400}
+.cell.today .dn{background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-weight:600;font-size:13px;right:4px;top:1px}
+.ev{height:15px;line-height:15px;border-radius:3.5px;font-size:10.5px;padding:0 4px 0 4.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#1d1d1f;flex:0 0 15px;font-weight:400}
+.ev.more{color:#96969b;font-size:10px;height:13px;line-height:13px;padding-left:5px;background:none!important}
+
+/* 周 / 日 / 年 视图 */
+.listview{flex:1;overflow:auto;padding:10px 20px 24px;min-height:0}
+.weekwrap{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;min-height:100%}
+.wcol{background:#fff;padding:8px 7px;min-height:160px}
+.wcol h4{font-size:13px;color:#1d1d1f;font-weight:600;margin-bottom:6px;display:flex;justify-content:space-between}
+.wcol h4 b{color:var(--red)}
+.dcell{font-size:11px;padding:3px 5px 3px 5px;border-radius:4px;margin-bottom:3px;color:#1d1d1f;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.daylist .it{display:flex;gap:10px;padding:9px 12px;border-radius:7px;cursor:pointer;align-items:flex-start}
+.daylist .it:hover{background:#f6f6f8}
+.daylist .tm{width:52px;color:#8e8e93;font-size:11.5px;padding-top:1px}
+.daylist .bar{width:3px;border-radius:2px;align-self:stretch;min-height:16px}
+.daylist .tx b{font-size:13px;font-weight:500;display:block}
+.daylist .tx span{font-size:11px;color:#8e8e93}
+.yearwrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ym{font-size:10px}
+.ym h4{font-size:11.5px;font-weight:600;color:#3c3c43;margin-bottom:5px}
+.ym .g{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;text-align:center;color:#6e6e73}
+.ym .g div{height:16px;line-height:16px;font-size:9.5px;border-radius:3px;cursor:pointer}
+.ym .g .od{color:#c6c6ca}
+.ym .g .has{background:#e6f0ff;color:#0a6cd6;font-weight:600}
+.ym .g .now{background:var(--red);color:#fff}
+
+/* ── 抽屉 ───────────────────────────── */
+.veil{position:fixed;inset:0;background:rgba(0,0,0,.14);opacity:0;pointer-events:none;transition:opacity .2s;z-index:45}
+.veil.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:348px;background:#fff;box-shadow:-6px 0 30px rgba(0,0,0,.13);transform:translateX(102%);transition:transform .24s cubic-bezier(.32,.72,0,1);display:flex;flex-direction:column;z-index:50}
+.drawer.open{transform:none}
+.dr-h{padding:16px 18px 10px;border-bottom:1px solid #efeff1;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.dr-h .dt{font-size:19px;font-weight:700;letter-spacing:-.3px}
+.dr-h .dd{font-size:11.5px;color:#8e8e93;margin-top:3px}
+.dr-h .x{border:0;background:#f2f2f4;width:24px;height:24px;border-radius:50%;color:#6e6e73;font-size:14px;cursor:pointer;line-height:1;flex:0 0 24px}
+.dr-h .x:hover{background:#e8e8ea}
+.dr-b{flex:1;overflow-y:auto;padding:12px 18px 20px}
+.evrow{display:flex;gap:9px;padding:9px 8px;border-radius:7px;cursor:pointer;align-items:flex-start;margin:0 -8px}
+.evrow:hover{background:#f6f6f8}
+.evrow .dot{width:9px;height:9px;border-radius:50%;margin-top:4px;flex:0 0 9px}
+.evrow .bd{flex:1;min-width:0}
+.evrow .bd b{font-size:13px;font-weight:500;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.evrow .bd span{font-size:11px;color:#8e8e93}
+.tag{display:inline-block;font-size:9.5px;padding:1px 5px;border-radius:3px;background:#f2f2f4;color:#6e6e73;margin-left:5px;vertical-align:1px}
+.tag.est{background:#fff3e0;color:#b26a00}
+.tag.cf{background:#e6f6ea;color:#1d8a3c}
+.add2{width:100%;margin-top:12px;border:1px dashed #d2d2d8;background:#fafafb;border-radius:7px;padding:9px;font-size:12.5px;color:#5a5a60;cursor:pointer}
+.add2:hover{background:#f4f4f7;border-color:#bdbdc5}
+.empty{color:#a1a1a6;font-size:12.5px;padding:18px 0;text-align:center}
+
+/* ── 关注公司面板 ─────────────────── */
+.wlist{border:1px solid #eeeef1;border-radius:8px;overflow:hidden;margin-bottom:16px}
+.wrow{display:flex;align-items:center;gap:9px;padding:8px 10px;border-top:1px solid #f2f2f4;font-size:12.5px}
+.wrow:first-child{border-top:0}
+.wrow.off{background:#fbfbfc}
+.wrow i{width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+.wrow .wn{flex:1;min-width:0}
+.wrow .wn b{font-weight:500;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wrow.off .wn b{color:#c2c2c7;font-weight:400}
+.wrow .wn span{font-size:10.5px;color:#a1a1a6}
+.wrow .wd{font-size:10.5px;color:#8e8e93;font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+.wrow.off .wd{color:#d0d0d5}
+.wrow .x2{border:0;background:#f2f2f4;color:#8e8e93;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:11px;line-height:1;flex:0 0 20px}
+.wrow .x2:hover{background:#ffe9e6;color:#ff3b30}
+.wrow .x2.plus:hover{background:#fff1e7;color:#C0550F}
+.wadd{display:flex;gap:6px}
+.wadd input{border:1px solid #dcdce0;border-radius:6px;padding:7px 9px;font-size:12.5px;font-family:inherit;outline:none;background:#fff;color:var(--ink);min-width:0;flex:1}
+.wadd input:focus{border-color:#FF9A62;box-shadow:0 0 0 3px rgba(255,154,98,.18)}
+.wadd input[type=date]{flex:0 0 132px}
+
+.fld{margin-bottom:12px}
+.fld label{display:block;font-size:11px;color:#8e8e93;margin-bottom:4px;font-weight:500}
+.fld input[type=text],.fld input[type=date],.fld input[type=time],.fld select,.fld textarea{
+  width:100%;border:1px solid #dcdce0;border-radius:6px;padding:7px 9px;font-size:13px;font-family:inherit;outline:none;background:#fff;color:var(--ink)}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:#0a84ff;box-shadow:0 0 0 3px rgba(10,132,255,.13)}
+.fld textarea{resize:vertical;min-height:52px;line-height:1.45}
+.row2{display:flex;gap:8px}
+.row2>div{flex:1}
+.sw{display:flex;align-items:center;gap:7px;font-size:12.5px;color:#3c3c43;cursor:pointer}
+.sw input{width:15px;height:15px;accent-color:#0a84ff}
+.acts{display:flex;gap:8px;margin-top:18px}
+.acts button{flex:1;border-radius:7px;padding:9px;font-size:13px;cursor:pointer;border:1px solid transparent}
+.primary{background:#0a84ff;color:#fff;font-weight:500}
+.primary:hover{background:#0874e0}
+.ghost{background:#f2f2f4;color:#3c3c43}
+.ghost:hover{background:#e9e9ec}
+.danger{background:#fff;color:var(--red);border-color:#ffd0cd!important}
+.danger:hover{background:#fff5f4}
+.ro{background:#fff8e8;border:1px solid #ffe2b0;color:#8a5a00;font-size:11.5px;padding:8px 10px;border-radius:6px;margin-bottom:12px;line-height:1.5}
+.hint{font-size:11px;color:#a1a1a6;line-height:1.5;margin-top:-4px}
+
+/* ── 财报详情三段 ───────────────── */
+.sec{margin-top:16px}
+.sec:first-of-type{margin-top:12px}
+.sec-h{display:flex;align-items:center;gap:8px;font-size:11px;color:#8e8e93;font-weight:600;letter-spacing:.3px;margin-bottom:8px;white-space:nowrap}
+.sec-h i{font-style:normal;font-size:9.5px;color:#b0b0b5;font-weight:400}
+.sec-h::after{content:"";flex:1;height:1px;background:#f0f0f3;min-width:12px}
+/* ── 市场预期：三块子结构 ── */
+.sub{margin-bottom:15px}
+.sub:last-child{margin-bottom:2px}
+.sub-h{display:flex;align-items:center;gap:6px;font-size:10.5px;color:#3c3c43;font-weight:600;margin:0 0 6px;letter-spacing:.2px}
+.sub-h b{font-size:9px;font-weight:700;color:#B4690E;background:#FFF1E6;border-radius:4px;padding:1.5px 4px;letter-spacing:.3px}
+.sub-h i{font-style:normal;font-weight:400;font-size:9.5px;color:#a1a1a6;margin-left:auto}
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;min-width:0}
+.vcell{background:#fafafb;border:1px solid #f0f0f3;border-radius:8px;padding:7px 9px;min-width:0}
+.vcell .mk{display:block;font-size:9.5px;color:#8e8e93;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vcell .mv{display:block;font-size:14.5px;font-weight:600;letter-spacing:-.3px;color:#1d1d1f;font-variant-numeric:tabular-nums;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vcell .mv em{font-style:normal;font-size:9px;font-weight:400;color:#8e8e93;margin-left:2px}
+.vcell .mv.up{color:#0B7A56}
+.vcell .mv.down{color:#C0392B}
+.vcell .ms{display:block;font-size:9px;color:#a1a1a6;margin-top:3px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rbar{display:flex;height:5px;border-radius:3px;overflow:hidden;margin-top:8px;background:#f0f0f3}
+.rbar i{display:block;height:100%}
+.rleg{display:flex;gap:10px;font-size:9px;color:#8e8e93;margin-top:5px}
+.rleg span{display:flex;align-items:center;gap:3px}
+.rleg i{width:5px;height:5px;border-radius:50%}
+.etab{min-width:0}
+.erow{display:grid;grid-template-columns:minmax(0,1fr) auto 54px 52px;gap:6px;align-items:baseline;padding:6px 0;border-top:1px solid #f2f2f4;font-size:11.5px}
+.erow.eh{border-top:0;padding:0 0 4px;font-size:9px;color:#a1a1a6}
+.erow .ek{color:#3c3c43;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.erow .ev{font-weight:600;color:#1d1d1f;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.erow .ev em{font-style:normal;font-size:9px;font-weight:400;color:#8e8e93;margin-left:2px}
+.erow .ey{font-size:10.5px;text-align:right;color:#0B7A56;font-variant-numeric:tabular-nums;white-space:nowrap}
+.erow .ey.neg{color:#C0392B}
+.erow .en{font-size:8.5px;color:#a1a1a6;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.erow.eh span{text-align:right}
+.erow.eh span:first-child{text-align:left}
+.mgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;min-width:0}
+.mcell.wide{grid-column:1/-1}
+.mcell{background:#fafafb;border:1px solid #f0f0f3;border-radius:8px;padding:7px 9px;min-width:0}
+.mcell .mk{display:block;font-size:9.5px;color:#8e8e93;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mcell .mv{display:block;font-size:14.5px;font-weight:600;letter-spacing:-.3px;color:#1d1d1f;font-variant-numeric:tabular-nums;line-height:1.2}
+.mcell .mv em{font-style:normal;font-size:9.5px;font-weight:400;color:#8e8e93;margin-left:2px;letter-spacing:0}
+.mcell .ms{display:block;font-size:9.5px;color:#a1a1a6;margin-top:3px;line-height:1.35}
+.basis{font-size:9.5px;color:#b0b0b5;margin-top:7px;line-height:1.5}
+.flist{list-style:none}
+.flist li{position:relative;padding-left:12px;font-size:12px;line-height:1.6;color:#3c3c43;margin-bottom:5px}
+.flist li::before{content:"";position:absolute;left:1px;top:6px;width:4px;height:4px;border-radius:50%;background:#FF9A62}
+.ph{background:#fafafb;border:1px dashed #e4e4e8;border-radius:8px;padding:10px 12px;font-size:12px;color:#8e8e93;line-height:1.5}
+.ph span{display:block;font-size:10px;color:#b0b0b5;margin-top:4px;line-height:1.5}
+.pill{display:inline-block;font-size:9.5px;padding:2.5px 7px;border-radius:999px;background:#f2f2f4;color:#6e6e73;letter-spacing:.2px}
+/* 财报结果沿用 A 股口径：超预期红、不及预期绿 */
+.pill.ok{background:#FFEBE9;color:#D70015}
+.pill.est{background:#fff3e0;color:#b26a00}
+.pill.me{background:#f2f2f4;color:#6e6e73}
+.pill.bad{background:#E8F8EC;color:#0E8A46}
+.pill.fin{background:#FFF3B0;color:#2E2A1E}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:rgba(30,30,32,.94);color:#fff;font-size:12.5px;padding:9px 15px;border-radius:20px;opacity:0;transition:.24s;pointer-events:none;z-index:90;max-width:80vw}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ── 加号 / 模板 chips / 公司编辑 ───── */
+.plusbtn{margin-left:4px;border:0;background:transparent;width:18px;height:18px;border-radius:4px;color:#a8a8ad;font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 18px;padding:0;opacity:.45;transition:opacity .12s,background .12s}
+.calrow:hover .plusbtn{opacity:1}
+.plusbtn:hover{background:rgba(0,0,0,.1);color:#3c3c43}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:4px}
+.chip{border:1px solid #dcdce0;background:#fff;border-radius:999px;font-size:11.5px;color:#3c3c43;padding:4px 10px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.chip:hover{border-color:#F5C518;color:#8a6a00}
+.chip.on{background:#FFF3B0;border-color:#F5C518;color:#6b5300;font-weight:500}
+.gcard{border:1px solid #eeeef1;border-radius:8px;padding:9px 10px;margin-bottom:7px}
+.gcard .gh{display:flex;align-items:center;gap:7px;font-size:12.5px}
+.gcard .gh b{font-weight:500;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gcard .gd{font-size:10.5px;color:#a1a1a6;margin-top:4px;line-height:1.5}
+.mini-act{display:flex;gap:6px;margin-top:7px}
+.mini-act button{flex:1;border:1px solid #e4e4e8;background:#fff;border-radius:5px;font-size:10.5px;color:#6e6e73;padding:4px 0;cursor:pointer;font-family:inherit}
+.mini-act button:hover{background:#f7f7f9}
+.mini-act button.dl:hover{background:#fff5f4;border-color:#ffd0cd;color:#ff3b30}
+.sec-hint{font-size:11px;color:#a1a1a6;line-height:1.55;margin:-2px 0 10px}
+
+@media(max-width:880px){
+  .sidebar{display:none}
+  .mobtn{display:block}
+  .hdr h1{font-size:23px}
+  .hdr .sub{font-size:9.5px;margin-left:6px;max-width:40vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .search input{width:60px}
+  .toolbar{gap:6px;padding:0 10px}
+  .seg{margin:0 auto}
+  .drawer{width:100%}
+  .seg button{padding:4px 7px;font-size:11px}
+  .ev{font-size:9.5px;height:14px;line-height:14px}
+  .cell{padding-top:19px}
+  .yearwrap{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sb-top">
+    <div class="lights"><i></i><i></i><i></i></div>
+    <div class="sb-icons">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+    </div>
+  </div>
+  <div class="sb-body" id="calList"></div>
+  <div class="mini">
+    <div class="mini-h"><span id="mnPrev">‹</span><b id="mnTitle">2026年11月</b><span id="mnNext">›</span></div>
+    <div class="mini-g" id="miniGrid"></div>
+    <div class="mini-foot"><button id="btnToday2">今天</button><button id="btnExp">导出</button><button id="btnImp">导入</button><button id="btnRst">重置</button></div>
+    <div class="mini-note">改动仅存本机浏览器，互不影响</div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="toolbar">
+    <button class="addbtn" id="btnAdd" title="新建事件">+</button>
+    <div class="seg" id="seg">
+      <button data-v="day">日</button><button data-v="week">周</button><button data-v="month" class="on">月</button><button data-v="year">年</button>
+    </div>
+    <button class="mobtn" id="btnMacroMob" title="关注财经事件">财经</button>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="q" placeholder="搜索" autocomplete="off">
+      <div class="sres" id="sres"></div>
+    </div>
+  </div>
+
+  <div class="hdr">
+    <div style="display:flex;align-items:baseline"><h1 id="title">2026年11月</h1><span class="sub" id="earnSub"></span></div>
+    <div class="nav">
+      <button id="prev" title="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button id="today">今天</button>
+      <button id="next" title="下一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <div id="viewHost" style="display:flex;flex-direction:column;flex:1;min-height:0"></div>
+</main>
+
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="drawer">
+  <div class="dr-h">
+    <div><div class="dt" id="drTitle">—</div><div class="dd" id="drSub"></div></div>
+    <button class="x" id="drClose">✕</button>
+  </div>
+  <div class="dr-b" id="drBody"></div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── 内置数据（构建时内联，替换 data/ 下四个 json） ── */
+const DATA = __DATA__;
+const SEED = DATA.events || [];
+const EARN = DATA.earnings || {items:[]};
+const FIN  = DATA.finance  || {items:[]};
+const COMP = DATA.companies || {companies:{}};
+const MACRO = (DATA.macro && DATA.macro.templates) || [];
+
+const TODAY = "__TODAY__";
+const EARN_UPD = (DATA.earnings && DATA.earnings.updated) || "";
+const KEY = "fincal.v1";
+
+const CALS = {
+  work:    {n:"工作",     c:"#007AFF", bg:"#E3EFFF"},
+  holiday: {n:"节假日",   c:"#34C759", bg:"#E8F8EC"},
+  personal:{n:"个人事项", c:"#5AC8FA", bg:"#E2F5FE"},
+  other:   {n:"提醒事项", c:"#FF3B30", bg:"#FFE6E4"},
+  finance: {n:"财经事件", c:"#F5C518", ro:true, bg:"#FFF3B0"},
+  earnings:{n:"财报日历", c:"#FF9A62", ro:true, bg:"#FFEBDD"}
+};
+const CALORDER = ["work","holiday","personal","other","finance","earnings"];
+/* 事件条统一浅底 + 左侧主色细条 + 近黑字；财报已披露的按超预期红 / 低于预期绿（A股红涨绿跌） */
+function chipStyle(c, e){
+  let fg = "#1d1d1f";
+  if(e && e.c==="earnings"){
+    if(e.verdict==="beat") fg = "#D70015";
+    else if(e.verdict==="miss") fg = "#0E8A46";
+  }
+  return "background:"+(c.bg||"#F2F2F5")+";color:"+fg+";border-left:2.5px solid "+c.c+";";
+}
+
+const pad = n => String(n).padStart(2,"0");
+const fmt = d => d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const parseD = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
+const WD = ["周日","周一","周二","周三","周四","周五","周六"];
+
+/* ── 农历 ───────────────────────────── */
+const DN = ["初一","初二","初三","初四","初五","初六","初七","初八","初九","初十",
+            "十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
+            "廿一","廿二","廿三","廿四","廿五","廿六","廿七","廿八","廿九","三十"];
+let lunarF = null;
+try { lunarF = new Intl.DateTimeFormat("zh-CN-u-ca-chinese",{month:"long",day:"numeric"}); } catch(e){}
+function lunarLabel(d){
+  if(!lunarF) return "";
+  try{
+    const p = lunarF.formatToParts(d);
+    const mon = (p.find(x=>x.type==="month")||{}).value||"";
+    const raw = (p.find(x=>x.type==="day")||{}).value||"";
+    let n = parseInt(String(raw).replace(/[^\d]/g,""),10);
+    if(!n){
+      // 少数实现返回中文日名
+      const i = DN.indexOf(String(raw).trim());
+      if(i>=0) n = i+1;
+    }
+    if(!n) return mon;
+    if(n===1) return mon+"初一";
+    return DN[n-1] || "";
+  }catch(e){ return ""; }
+}
+
+/* ── 状态 ───────────────────────────── */
+const state = {
+  view: new Date(),
+  mode: "month",
+  sel: TODAY,
+  hidden: new Set(),
+  events: [],
+  fired: [],
+  co: {},          // 公司覆盖表：{名称: {deleted} | {custom, ticker, market, biz, focus[], earnings[]}}
+  editing: null
+};
+
+/* ── 公司库：内置 JSON + 用户覆盖 ───────── */
+function baseCo(n){ return (COMP.companies||{})[n] || null; }
+
+function guessMarket(tk){
+  tk = String(tk||"").toUpperCase();
+  if(!tk) return "";
+  if(/\.HK$/.test(tk)) return "港股";
+  if(/\.(SS|SZ|SH)$/.test(tk) || /^\d{6}$/.test(tk)) return "A股";
+  return "美股";
+}
+
+/* 从内置财报数据反查代码 */
+function tickerOf(n){
+  const it = (EARN.items||[]).find(x=>x.company===n && x.ticker);
+  return it ? it.ticker : "";
+}
+
+/* 合并后的公司元信息 */
+function coMeta(n){
+  const b = baseCo(n) || {};
+  const ov = state.co[n] || {};
+  const tk = ov.ticker || tickerOf(n) || "";
+  return {
+    name: n,
+    ticker: tk,
+    market: ov.market || guessMarket(tk),
+    biz: ov.biz !== undefined ? ov.biz : (b.biz || ""),
+    focus: ov.focus || b.focus || [],
+    extraDates: ov.earnings || [],
+    custom: !b
+  };
+}
+
+/* 当前有效公司：内置（未删）+ 用户新增 */
+function companyNames(){
+  const out = [];
+  const base = COMP.companies || {};
+  Object.keys(base).forEach(n=>{ if(!(state.co[n]||{}).deleted) out.push(n); });
+  Object.keys(state.co).forEach(n=>{
+    const ov = state.co[n]||{};
+    if(ov.deleted || !ov.custom) return;
+    if(base[n] || out.indexOf(n)>=0) return;
+    out.push(n);
+  });
+  return out;
+}
+function watchedCount(){ return companyNames().length; }
+
+function earnEvents(){
+  const out = [];
+  const alive = new Set(companyNames());
+  (EARN.items||[]).forEach((it,i)=>{
+    if(!alive.has(it.company)) return;
+    out.push({id:"e"+i, d:it.d, s:"", e:"", t:it.title, c:"earnings", a:true,
+      n:(it.note||"")+(it.ticker?"　·　"+it.ticker:"")+(it.src?"　·　来源："+it.src:""),
+      ro:true, status:it.status, co:it.company, raw:it,
+      verdict:(it.actual&&it.actual.verdict)||""});
+  });
+  /* 用户给公司补充的财报日（内置公司也能补） */
+  companyNames().forEach(n=>{
+    coMeta(n).extraDates.forEach((x,i)=>{
+      if(!x.d) return;
+      out.push({id:"x"+n+"#"+i, d:x.d, s:"", e:"",
+        t:x.title || (n+" 财报"), c:"earnings", a:true,
+        n:(x.note || "手动添加的财报日"), ro:true,
+        status:x.status || "estimated", co:n, customDate:true, ci:i});
+    });
+  });
+  return out;
+}
+
+/* 财经事件：IPO / 央行议息 / 宏观数据等，数据来自 data/finance.json，页面内只读 */
+function financeEvents(){
+  const out = [];
+  (FIN.items||[]).forEach((it,i)=>{
+    out.push({id:"f"+i, d:it.d, s:it.s||"", e:it.e||"", t:it.t, c:"finance", a:!it.s,
+      n:(it.note||"")+(it.company?"　·　"+it.company:"")+(it.src?"　·　来源："+it.src:""),
+      ro:true, co:it.company||"", kind:it.kind||"", raw:it});
+  });
+  return out;
+}
+
+function loadStore(){
+  let raw=null;
+  try{ raw = localStorage.getItem(KEY); }catch(e){}
+  if(raw){
+    try{
+      const o = JSON.parse(raw);
+      state.events = (o.events || []).map(migrate);
+      state.fired = o.fired || [];
+      state.hidden = new Set(o.hidden || []);
+      state.co = o.co || {};
+      return;
+    }catch(e){}
+  }
+  state.events = SEED.map(e=>migrate({...e, remind:0})).map((e,i)=>({id:"s"+i, ...e}));
+  save();
+}
+
+// 旧的 Home 分类并入「个人事项」
+function migrate(e){
+  if(e.c==="home") e.c = "personal";
+  return e;
+}
+
+function save(){
+  try{
+    localStorage.setItem(KEY, JSON.stringify({
+      events: state.events, fired: state.fired,
+      hidden:[...state.hidden], co: state.co
+    }));
+  }catch(e){}
+}
+
+/* ── 事件取用 ───────────────────────── */
+function allEvents(){
+  return state.events.concat(financeEvents(), earnEvents());
+}
+function eventsOf(key){
+  return allEvents().filter(e=>e.d===key && !state.hidden.has(e.c))
+    .sort((a,b)=>{
+      const fa=a.c==="finance"?0:1, fb=b.c==="finance"?0:1;
+      if(fa!==fb) return fa-fb;
+      if(a.a!==b.a) return a.a?-1:1;
+      const ta=a.s||"", tb=b.s||"";
+      if(ta!==tb) return ta.localeCompare(tb);
+      if(a.c==="earnings" && b.c==="earnings"){
+        const ca = a.co||"", cb = b.co||"";
+        if(ca!==cb) return ca.localeCompare(cb);
+      }
+      return a.t.localeCompare(b.t);
+    });
+}
+
+/* ── 侧栏 ───────────────────────────── */
+function renderSidebar(){
+  const counts = {};
+  allEvents().forEach(e=>counts[e.c]=(counts[e.c]||0)+1);
+  let h = "";
+  CALORDER.forEach(id=>{
+    const c = CALS[id];
+    const on = !state.hidden.has(id);
+    const plus = (id==="finance"||id==="earnings")
+      ? '<button class="plusbtn" data-plus="'+id+'" title="'+(id==="finance"?"关注新的财经事件":"添加关注公司")+'">+</button>'
+      : '';
+    h += '<div class="calrow'+(on?"":" off")+'" data-cal="'+id+'" title="'+(on?"点击隐藏":"点击显示")+'">'
+       +   '<span class="cdot" style="background:'+c.c+'"></span>'
+       +   '<span class="nm">'+c.n+'</span>'
+       +   '<span class="cnt">'+(counts[id]||0)+'</span>'
+       +   plus
+       + '</div>';
+    if(id==="earnings"){
+      h += '<div class="watchbtn" id="btnWatch" title="查看已关注公司与财报日">'
+         +   '关注公司 <b>'+watchedCount()+'</b> 家<span class="aw">›</span>'
+         + '</div>';
+    }
+  });
+  document.getElementById("calList").innerHTML = h;
+  document.querySelectorAll(".calrow").forEach(el=>{
+    el.onclick = ()=>{
+      const id = el.dataset.cal;
+      if(state.hidden.has(id)) state.hidden.delete(id); else state.hidden.add(id);
+      save(); renderSidebar(); render();
+    };
+  });
+  document.querySelectorAll(".plusbtn").forEach(b=>{
+    b.onclick = ev=>{
+      ev.stopPropagation();
+      if(b.dataset.plus==="finance") openMacro();
+      else openWatch();
+    };
+  });
+  const bw = document.getElementById("btnWatch");
+  if(bw) bw.onclick = openWatch;
+}
+
+/* 迷你月历 */
+function renderMini(){
+  const y = state.view.getFullYear(), m = state.view.getMonth();
+  document.getElementById("mnTitle").textContent = y+"年"+(m+1)+"月";
+  let first = new Date(y,m,1);
+  let lead = (first.getDay()+6)%7;
+  let start = new Date(y,m,1-lead);
+  let h = ["一","二","三","四","五","六","日"].map(x=>'<div class="wd">'+x+'</div>').join("");
+  for(let i=0;i<42;i++){
+    const d = new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);
+    const k = fmt(d);
+    let cls = d.getMonth()!==m ? "out" : "";
+    if(k===TODAY) cls = "now";
+    h += '<div class="'+cls+'" data-d="'+k+'">'+d.getDate()+'</div>';
+  }
+  const g = document.getElementById("miniGrid");
+  g.innerHTML = h;
+  g.querySelectorAll("[data-d]").forEach(el=>{
+    el.onclick = ()=>{ selectDay(el.dataset.d); };
+  });
+}
+
+/* ── 月视图 ─────────────────────────── */
+function matrix(y,m){
+  const first = new Date(y,m,1);
+  const lead = (first.getDay()+6)%7;
+  const start = new Date(y,m,1-lead);
+  const out=[];
+  for(let i=0;i<42;i++) out.push(new Date(start.getFullYear(),start.getMonth(),start.getDate()+i));
+  return out;
+}
+
+function renderMonth(){
+  const y = state.view.getFullYear(), m = state.view.getMonth();
+  const cells = matrix(y,m);
+  let h = '<div class="wk">'+["周一","周二","周三","周四","周五","周六","周日"].map(x=>'<div>'+x+'</div>').join("")+'</div>';
+  h += '<div class="grid">';
+  cells.forEach(d=>{
+    const k = fmt(d);
+    const out = d.getMonth()!==m;
+    const evs = eventsOf(k);
+    const show = evs.slice(0,4);
+    const cls = ["cell"];
+    if(out) cls.push("out");
+    if(d.getDay()===0 || d.getDay()===6) cls.push("we");
+    if(k===TODAY) cls.push("today");
+    if(k===state.sel) cls.push("sel");
+    const ll = lunarLabel(d);
+    const isL1 = /初一$/.test(ll);
+    let inner = '<div class="ln'+(isL1?" red":"")+'">'+ll+'</div><div class="dn">'+d.getDate()+'</div>';
+    show.forEach(e=>{
+      const c = CALS[e.c]||CALS.other;
+      inner += '<div class="ev" style="'+chipStyle(c,e)+'" data-id="'+e.id+'">'+esc(e.t)+'</div>';
+    });
+    if(evs.length>4) inner += '<div class="ev more">+'+(evs.length-4)+'</div>';
+    h += '<div class="'+cls.join(" ")+'" data-d="'+k+'">'+inner+'</div>';
+  });
+  h += '</div>';
+  document.getElementById("viewHost").innerHTML = h;
+
+  document.querySelectorAll(".cell").forEach(el=>{
+    el.onclick = ev=>{
+      const id = ev.target.dataset && ev.target.dataset.id;
+      if(id){ ev.stopPropagation(); openEvent(id, el.dataset.d); return; }
+      selectDay(el.dataset.d);
+    };
+    el.ondblclick = ev=>{
+      if(ev.target.dataset && ev.target.dataset.id) return;
+      openForm(null, el.dataset.d);
+    };
+  });
+}
+
+/* ── 周视图 ─────────────────────────── */
+function renderWeek(){
+  const base = state.view;
+  const lead = (base.getDay()+6)%7;
+  const start = new Date(base.getFullYear(),base.getMonth(),base.getDate()-lead);
+  let h = '<div class="listview"><div class="weekwrap">';
+  for(let i=0;i<7;i++){
+    const d = new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);
+    const k = fmt(d);
+    const evs = eventsOf(k);
+    h += '<div class="wcol" data-d="'+k+'"><h4><span>'+WD[d.getDay()]+'</span><b'+(k===TODAY?' style="color:#ff3b30"':'')+'>'+(d.getMonth()+1)+'/'+d.getDate()+'</b></h4>';
+    if(!evs.length) h += '<div style="color:#c6c6ca;font-size:10.5px">—</div>';
+    evs.forEach(e=>{
+      const c = CALS[e.c]||CALS.other;
+      h += '<div class="dcell" data-id="'+e.id+'" style="'+chipStyle(c,e)+'">'+(e.a?"":esc(e.s)+" ")+esc(e.t)+'</div>';
+    });
+    h += '</div>';
+  }
+  h += '</div></div>';
+  document.getElementById("viewHost").innerHTML = h;
+  document.querySelectorAll(".wcol").forEach(el=>{
+    el.onclick = ev=>{
+      const id = ev.target.dataset && ev.target.dataset.id;
+      if(id){ ev.stopPropagation(); openEvent(id, el.dataset.d); return; }
+      selectDay(el.dataset.d);
+    };
+  });
+}
+
+/* ── 日视图 ─────────────────────────── */
+function renderDay(){
+  const k = state.sel;
+  const d = parseD(k);
+  const evs = eventsOf(k);
+  let h = '<div class="listview"><div class="weekwrap" style="grid-template-columns:1fr;border-radius:8px"><div class="wcol" style="min-height:auto">';
+  h += '<h4 style="font-size:13px;margin-bottom:10px"><span>'+k+'　'+WD[d.getDay()]+'</span><b>'+evs.length+' 个事件</b></h4>';
+  if(!evs.length) h += '<div class="empty">这一天还没有安排</div>';
+  h += '</div></div><div class="daylist" style="margin-top:14px">';
+  evs.forEach(e=>{
+    const c = CALS[e.c]||CALS.other;
+    h += '<div class="it" data-id="'+e.id+'"><div class="tm">'+(e.a?"全天":(e.s||"—"))+'</div><div class="bar" style="background:'+c.c+'"></div>'
+       + '<div class="tx"><b>'+esc(e.t)+'</b><span>'+c.n+(e.n?' · '+esc(e.n):'')+'</span></div></div>';
+  });
+  h += '</div></div>';
+  document.getElementById("viewHost").innerHTML = h;
+  document.querySelectorAll(".daylist .it").forEach(el=>{
+    el.onclick = ()=>openEvent(el.dataset.id, k);
+  });
+}
+
+/* ── 年视图 ─────────────────────────── */
+function renderYear(){
+  const y = state.view.getFullYear();
+  const has = new Set(allEvents().map(e=>e.d));
+  let h = '<div class="listview"><div class="yearwrap">';
+  for(let m=0;m<12;m++){
+    h += '<div class="ym"><h4>'+(m+1)+'月</h4><div class="g">';
+    ["一","二","三","四","五","六","日"].forEach(w=>h+='<div style="color:#b8b8bd;font-size:9px">'+w+'</div>');
+    const cells = matrix(y,m);
+    cells.forEach(d=>{
+      const k = fmt(d);
+      let cls = d.getMonth()!==m ? "od" : "";
+      if(has.has(k)) cls += " has";
+      if(k===TODAY) cls = "now";
+      h += '<div class="'+cls+'" data-d="'+k+'">'+d.getDate()+'</div>';
+    });
+    h += '</div></div>';
+  }
+  h += '</div></div>';
+  document.getElementById("viewHost").innerHTML = h;
+  document.querySelectorAll(".ym .g [data-d]").forEach(el=>{
+    el.onclick = ()=>{ state.view = parseD(el.dataset.d); state.mode="month";
+      document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on", b.dataset.v==="month"));
+      render(); };
+  });
+}
+
+/* ── 主渲染 ─────────────────────────── */
+function render(){
+  const y = state.view.getFullYear(), m = state.view.getMonth();
+  let t = "";
+  if(state.mode==="month") t = y+"年"+(m+1)+"月";
+  else if(state.mode==="year") t = y+"年";
+  else if(state.mode==="week"){
+    const lead = (state.view.getDay()+6)%7;
+    const s = new Date(y,m,state.view.getDate()-lead);
+    const e2 = new Date(s.getFullYear(),s.getMonth(),s.getDate()+6);
+    t = (s.getMonth()+1)+"月"+s.getDate()+"日 – "+(e2.getMonth()+1)+"月"+e2.getDate()+"日";
+  } else {
+    const d = parseD(state.sel);
+    t = (d.getMonth()+1)+"月"+d.getDate()+"日";
+  }
+  document.getElementById("title").textContent = t;
+  const es = document.getElementById("earnSub");
+  es.textContent = "财报日历 · 关注 "+watchedCount()+" 家 · 更新于 "+EARN_UPD;
+  es.onclick = openWatch;
+  es.title = "查看已关注公司";
+
+  if(state.mode==="month") renderMonth();
+  else if(state.mode==="week") renderWeek();
+  else if(state.mode==="day") renderDay();
+  else renderYear();
+
+  renderMini();
+}
+function esc(s){ return String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* ── 抽屉：当日详情 ─────────────────── */
+function selectDay(k){
+  state.sel = k;
+  const d = parseD(k);
+  document.getElementById("drTitle").textContent = (d.getMonth()+1)+"月"+d.getDate()+"日";
+  document.getElementById("drSub").textContent = WD[d.getDay()]+"　"+(lunarLabel(d)||"");
+  const evs = eventsOf(k);
+  let h = "";
+  if(!evs.length) h += '<div class="empty">这一天还没有安排</div>';
+  evs.forEach(e=>{
+    const c = CALS[e.c]||CALS.other;
+    let tag = "";
+    if(e.c==="earnings") tag = e.status==="confirmed" ? '<span class="tag cf">已确认</span>' : '<span class="tag est">预计</span>';
+    h += '<div class="evrow" data-id="'+e.id+'"><div class="dot" style="background:'+c.c+'"></div><div class="bd">'
+       + '<b>'+esc(e.t)+tag+'</b><span>'+(e.a?"全天":((e.s||"")+" – "+(e.e||"")))+'　'+c.n+'</span>'
+       + (e.n?'<div style="font-size:11px;color:#a1a1a6;margin-top:3px;line-height:1.45">'+esc(e.n)+'</div>':'')
+       + '</div></div>';
+  });
+  h += '<button class="add2" id="btnAdd2">+ 添加事件</button>';
+  h += '<div class="hint" style="margin-top:14px">提醒仅在浏览器开着时弹出。需要 WorkBuddy 到点推微信，可点下面按钮生成清单。</div>';
+  h += '<button class="add2" id="btnExport" style="margin-top:6px">生成提醒清单（给 WorkBuddy）</button>';
+  const body = document.getElementById("drBody");
+  body.innerHTML = h;
+  body.querySelectorAll(".evrow").forEach(el=>el.onclick=()=>openEvent(el.dataset.id, k));
+  document.getElementById("btnAdd2").onclick = ()=>openForm(null, k);
+  document.getElementById("btnExport").onclick = exportReminders;
+  openDrawer();
+  if(state.mode==="month"||state.mode==="day") render();
+}
+
+/* ── 抽屉：编辑表单 ─────────────────── */
+function openEvent(id, dayKey){
+  const all = allEvents();
+  const e = all.find(x=>x.id===id);
+  if(!e) return;
+  if(e.ro){ if(e.c==="finance"){ showFinance(e, dayKey); return; } showReadonly(e, dayKey); return; }
+  openForm(e, dayKey);
+  if(state.mode==="month"||state.mode==="day") render();
+}
+
+/* ── 抽屉：关注公司 ─────────────────── */
+function watchRows(){
+  return companyNames().map(n=>{
+    const m = coMeta(n);
+    const ds = (EARN.items||[]).filter(x=>x.company===n).map(x=>x.d)
+      .concat(m.extraDates.map(x=>x.d).filter(Boolean));
+    return {name:n, ticker:m.ticker, market:m.market, ds, custom:m.custom};
+  });
+}
+function nextOf(ds){
+  const up = ds.filter(d=>d>=TODAY).sort();
+  if(up.length) return up[0];
+  const past = ds.slice().sort();
+  return past.length ? past[past.length-1] : "";
+}
+
+/* 按代码反查内置公司名 */
+function findByCode(tk){
+  const t = String(tk||"").trim().toUpperCase();
+  if(!t) return null;
+  const it = (EARN.items||[]).find(x=>(x.ticker||"").toUpperCase()===t);
+  return it ? it.company : null;
+}
+
+/* 打开某公司最近一次财报详情；没有日程就进资料表单 */
+function openCoLatest(name){
+  const evs = earnEvents().filter(e=>e.co===name).sort((a,b)=>a.d.localeCompare(b.d));
+  const up = evs.filter(e=>e.d>=TODAY)[0] || evs[evs.length-1];
+  if(up) showReadonly(up, up.d);
+  else openCoForm(name);
+}
+
+function openWatch(){
+  document.getElementById("drTitle").textContent = "财报日历 · 公司";
+  document.getElementById("drSub").textContent = "已关注 "+watchedCount()+" 家 · 增删后日历与详情页同步";
+  const rows = watchRows();
+
+  let h = '<div class="fld" style="margin-bottom:14px"><label>添加公司</label>'
+        +   '<div class="wadd"><input id="wCo" placeholder="公司名或代码，如 英伟达 / NVDA" maxlength="24"></div>'
+        +   '<div class="wadd" style="margin-top:6px"><input id="wTk" placeholder="代码（可选，自动识别市场）" maxlength="16">'
+        +   '<input id="wD" type="date" title="下次财报日（可选）"></div>'
+        +   '<button class="add2" id="wAdd" style="margin-top:8px">+ 添加并生成详情页</button>'
+        +   '<div class="sec-hint" style="margin-top:6px">内置资料库命中会带出业务结构与关注点；没命中就生成空白模板，加完点铅笔补全。</div>'
+        + '</div>';
+
+  h += '<div class="wlist">';
+  if(!rows.length) h += '<div class="empty">还没有关注任何公司</div>';
+  rows.forEach((r,i)=>{
+    h += '<div class="wrow" data-i="'+i+'">'
+       +   '<i style="background:#FF9A62"></i>'
+       +   '<div class="wn"><b>'+esc(r.name)+'</b>'
+       +     '<span>'+esc(r.ticker||"—")+(r.market?" · "+r.market:"")+(r.custom?"　自定义":"")+'</span></div>'
+       +   '<div class="wd">'+(nextOf(r.ds)||"—")+'</div>'
+       +   '<button class="x2 plus" data-edit="'+esc(r.name)+'" title="编辑公司资料">✎</button>'
+       +   '<button class="x2" data-del="'+esc(r.name)+'" title="删除公司">✕</button>'
+       + '</div>';
+  });
+  h += '</div>';
+  h += '<div class="sec-hint">点铅笔改代码、业务结构与关注点，保存后详情页立即生效。删除只是移出你的日历，不改内置数据，重新添加即可恢复。</div>';
+
+  const body = document.getElementById("drBody");
+  body.innerHTML = h;
+  openDrawer();
+
+  body.querySelectorAll("[data-edit]").forEach(b=>{
+    b.onclick = ev=>{ ev.stopPropagation(); openCoForm(b.dataset.edit); };
+  });
+  body.querySelectorAll("[data-del]").forEach(b=>{
+    b.onclick = ev=>{
+      ev.stopPropagation();
+      const n = b.dataset.del;
+      if(!confirm("从日历中移除「"+n+"」？\n它的财报事件会一起隐藏，重新添加可恢复。")) return;
+      if(baseCo(n)) state.co[n] = Object.assign({}, state.co[n]||{}, {deleted:true, custom:false});
+      else delete state.co[n];
+      save(); renderSidebar(); render(); openWatch();
+      toast("已移除 "+n);
+    };
+  });
+
+  document.getElementById("wAdd").onclick = ()=>{
+    const raw = document.getElementById("wCo").value.trim();
+    const tkRaw = document.getElementById("wTk").value.trim();
+    const dd = document.getElementById("wD").value;
+    if(!raw && !tkRaw){ toast("请填公司名或代码"); return; }
+
+    /* 名称 / 代码 → 统一成公司名 */
+    let name = raw || "";
+    if(!name || (findByCode(raw))) name = findByCode(raw) || name;
+    if(!name && tkRaw) name = findByCode(tkRaw) || tkRaw.toUpperCase();
+    if(!name){ toast("请填公司名"); return; }
+
+    if(companyNames().indexOf(name)>=0){
+      toast(name+" 已在名单里，直接编辑即可");
+      openCoForm(name); return;
+    }
+
+    const tk = tkRaw || (/^[A-Za-z0-9.\-]{1,10}$/.test(name)? name.toUpperCase() : "");
+    if(baseCo(name)){
+      /* 内置公司：解除删除标记 */
+      state.co[name] = Object.assign({}, state.co[name]||{}, {deleted:false, custom:false});
+    } else {
+      state.co[name] = {custom:true, ticker:tk, market:guessMarket(tk)};
+    }
+    if(dd){
+      const cur = state.co[name].earnings || [];
+      if(!cur.some(x=>x.d===dd)) state.co[name].earnings = cur.concat([{d:dd, status:"estimated"}]);
+    }
+    save(); renderSidebar(); render();
+    toast(baseCo(name) ? "已添加 "+name : "已添加 "+name+"，详情页已生成");
+    openCoForm(name);
+  };
+}
+
+/* ── 抽屉：公司资料编辑 ─────────────── */
+function openCoForm(name){
+  const m = coMeta(name);
+  const locked = !m.custom;
+  document.getElementById("drTitle").textContent = name;
+  document.getElementById("drSub").textContent = (locked?"内置公司":"自定义公司")+" · 详情页内容在此维护";
+
+  let h = '<div class="fld"><label>公司名</label><input type="text" id="cName" value="'+esc(name)+'"'+(locked?" readonly style=background:#f7f7f9;color:#86868b":"")+'></div>'
+        + '<div class="row2">'
+        +   '<div class="fld"><label>代码</label><input type="text" id="cTk" value="'+esc(m.ticker)+'" placeholder="NVDA / 3690.HK / 600519"></div>'
+        +   '<div class="fld"><label>市场</label><select id="cMk">'
+        +     ['','美股','港股','A股','其他'].map(x=>'<option'+(m.market===x?' selected':'')+'>'+(x||'—')+'</option>').join('')
+        +   '</select></div>'
+        + '</div>'
+        + '<div class="fld"><label>业务结构</label><input type="text" id="cBiz" value="'+esc(m.biz)+'" placeholder="例：电商 / 云计算 / 本地生活"></div>'
+        + '<div class="fld"><label>核心关注点（每行一条）</label>'
+        +   '<textarea id="cFocus" rows="6" placeholder="例：云收入增速能否维持 50%&#10;资本开支对自由现金流的压力">'+esc(m.focus.join("\n"))+'</textarea>'
+        +   '<div class="sec-hint" style="margin-top:5px">显示在财报详情页「核心业务关注点」，写具体数字和观察指标更有用。</div>'
+        + '</div>'
+        + '<div class="fld"><label>补充财报日（每行 YYYY-MM-DD，可带备注）</label>'
+        +   '<textarea id="cDates" rows="3" placeholder="2026-12-10 盘前">'+esc(m.extraDates.map(x=>x.d+(x.note?" "+x.note:"")).join("\n"))+'</textarea>'
+        +   '<div class="sec-hint" style="margin-top:5px">内置公司的官方日程在 data/earnings.json；这里只补额外日期。</div>'
+        + '</div>'
+        + '<div class="acts"><button class="primary" id="cSave">保存</button><button class="ghost" id="cCancel">取消</button></div>'
+        + '<div class="acts"><button class="ghost" id="cView" style="flex:1;color:#B4690E">查看财报详情</button></div>';
+
+  const body = document.getElementById("drBody");
+  body.innerHTML = h;
+  openDrawer();
+
+  document.getElementById("cCancel").onclick = ()=>openWatch();
+  document.getElementById("cView").onclick = ()=>openCoLatest(name);
+
+  document.getElementById("cSave").onclick = ()=>{
+    const nm = document.getElementById("cName").value.trim() || name;
+    const tk = document.getElementById("cTk").value.trim();
+    const mk = document.getElementById("cMk").value.trim();
+    const biz = document.getElementById("cBiz").value.trim();
+    const focus = document.getElementById("cFocus").value.split("\n").map(s=>s.trim()).filter(Boolean);
+    const dates = document.getElementById("cDates").value.split("\n").map(s=>s.trim()).filter(Boolean)
+      .map(line=>{
+        const p = line.split(/\s+/);
+        const d = p.shift();
+        return /^\d{4}-\d{2}-\d{2}$/.test(d) ? {d, note:p.join(" "), status:"estimated"} : null;
+      }).filter(Boolean);
+
+    let key = name;
+    if(nm!==name){
+      if(locked){ toast("内置公司名不能改"); return; }
+      state.co[nm] = Object.assign({}, state.co[name]||{}, {custom:true});
+      delete state.co[name];
+      key = nm;
+    }
+    const ov = state.co[key] || {};
+    state.co[key] = Object.assign({}, ov, {
+      custom: !!baseCo(key) ? false : (ov.custom || true),
+      ticker: tk, market: mk || guessMarket(tk),
+      biz, focus, earnings: dates
+    });
+    save(); renderSidebar(); render();
+    toast("已保存，详情页已更新");
+    openCoLatest(key);
+  };
+}
+
+/* ── 抽屉：关注财经事件（左侧「财经事件」+ 号） ── */
+const FREQ = {month:"每月", quarter:"每季", week:"每周", year:"每年", once:"单次"};
+
+/* 加 k 个月，自动收口到月末，避免 1/31 + 1 月跳到 3/3 */
+function addMonths(d, k){
+  const y = d.getFullYear(), m = d.getMonth()+k, day = d.getDate();
+  const last = new Date(y, m+1, 0).getDate();
+  return new Date(y, m, Math.min(day, last));
+}
+function addPeriods(first, freq, n){
+  const base = parseD(first);
+  if(!base || isNaN(base.getTime())) return [];
+  const out = [];
+  for(let i=0;i<n;i++){
+    let x;
+    if(freq==="week")         x = new Date(base.getFullYear(), base.getMonth(), base.getDate()+7*i);
+    else if(freq==="month")   x = addMonths(base, i);
+    else if(freq==="quarter") x = addMonths(base, 3*i);
+    else if(freq==="year")    x = addMonths(base, 12*i);
+    else                      x = base;
+    out.push(fmt(x));
+    if(freq==="once") break;
+  }
+  return out;
+}
+
+/* 已添加的事件组：按 gid 聚合 */
+function macroGroups(){
+  const g = {};
+  state.events.forEach(e=>{
+    if(e.c!=="finance" || !e.gid) return;
+    if(!g[e.gid]) g[e.gid] = {gid:e.gid, name:e.gt || e.t, dates:[]};
+    g[e.gid].dates.push(e.d);
+  });
+  return Object.keys(g).map(k=>{
+    const x = g[k];
+    x.dates.sort();
+    return x;
+  }).sort((a,b)=> (a.dates[0]||"").localeCompare(b.dates[0]||""));
+}
+
+function openMacro(){
+  document.getElementById("drTitle").textContent = "财经事件";
+  document.getElementById("drSub").textContent = "关注宏观数据与政策节点，按频次铺进日历";
+  const groups = macroGroups();
+
+  let h = '<div class="fld"><label>常用事件</label><div class="chips" id="mChips">'
+        +   MACRO.map((t,i)=>'<button class="chip" data-i="'+i+'">'+esc(t.name)+'</button>').join('')
+        + '</div>'
+        +   '<div class="sec-hint" id="mTip" style="margin-top:6px">点一个带出名称与说明，也可以直接在下面自己填。</div></div>'
+        + '<div class="fld"><label>事件名称</label><input type="text" id="mName" placeholder="例：美国 CPI 同比"></div>'
+        + '<div class="row2">'
+        +   '<div class="fld"><label>首次日期</label><input type="date" id="mDate" value="'+TODAY+'"></div>'
+        +   '<div class="fld"><label>重复</label><select id="mFreq">'
+        +     ['month','quarter','week','year','once'].map(k=>'<option value="'+k+'">'+FREQ[k]+'</option>').join('')
+        +   '</select></div>'
+        + '</div>'
+        + '<div class="fld"><label>生成期数</label><input type="number" id="mN" value="12" min="1" max="60"></div>'
+        + '<div class="fld"><label>备注</label><textarea id="mNote" rows="2" placeholder="可选，会显示在每条事件里"></textarea></div>'
+        + '<button class="add2" id="mAdd" style="margin-bottom:18px">+ 添加到日历</button>';
+
+  if(groups.length){
+    h += '<div class="sec-h"><span>已关注</span><i>'+groups.length+' 组</i></div>';
+    groups.forEach(g=>{
+      const first = g.dates[0]||"", last = g.dates[g.dates.length-1]||"";
+      h += '<div class="gcard"><div class="gh"><b>'+esc(g.name)+'</b>'
+         +   '<span style="font-size:10.5px;color:#a1a1a6">'+g.dates.length+' 期</span></div>'
+         +   '<div class="gd">'+first+(last!==first?" → "+last:"")+'</div>'
+         +   '<div class="mini-act"><button data-go="'+esc(g.gid)+'">看第一期</button>'
+         +   '<button class="dl" data-del="'+esc(g.gid)+'">整组删除</button></div></div>';
+    });
+  } else {
+    h += '<div class="sec-hint">还没有自定义财经事件。上面选一个，按每月铺 12 期，全年就不用再管了。</div>';
+  }
+
+  const body = document.getElementById("drBody");
+  body.innerHTML = h;
+  openDrawer();
+
+  body.querySelectorAll(".chip").forEach(c=>{
+    c.onclick = ()=>{
+      const t = MACRO[Number(c.dataset.i)];
+      body.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on", x===c));
+      document.getElementById("mName").value = t.name;
+      document.getElementById("mFreq").value = t.freq || "month";
+      document.getElementById("mN").value = t.freq==="week" ? 13 : (t.freq==="year" ? 3 : 12);
+      document.getElementById("mTip").textContent = (t.country? "["+t.country+"] ":"") + (t.note||"");
+    };
+  });
+
+  document.getElementById("mAdd").onclick = ()=>{
+    const name = document.getElementById("mName").value.trim();
+    const first = document.getElementById("mDate").value;
+    const freq = document.getElementById("mFreq").value;
+    const n = Math.min(60, Math.max(1, Number(document.getElementById("mN").value)||1));
+    const note = document.getElementById("mNote").value.trim();
+    if(!name){ toast("请填事件名称"); return; }
+    if(!first){ toast("请选首次日期"); return; }
+
+    const dates = addPeriods(first, freq, n);
+    if(!dates.length){ toast("日期不对"); return; }
+    const gid = "g"+Date.now();
+    const stamp = Date.now();
+    dates.forEach((d,i)=>{
+      state.events.push({
+        id:"m"+stamp+"_"+i, gid, gt:name, d, s:"", e:"", t:name,
+        c:"finance", a:true,
+        n: (note || "由「财经事件 +」添加") + "　·　" + FREQ[freq] +
+           (freq!=="once" ? "　·　日期为预计，官方日程公布后可点开改" : "")
+      });
+    });
+    save(); renderSidebar(); render();
+    toast("已添加 "+dates.length+" 期「"+name+"」");
+    openMacro();
+  };
+
+  body.querySelectorAll("[data-go]").forEach(b=>{
+    b.onclick = ()=>{
+      const gid = b.dataset.go;
+      const first = state.events.filter(e=>e.gid===gid).sort((a,b2)=>a.d.localeCompare(b2.d))[0];
+      if(!first) return;
+      state.view = parseD(first.d); state.sel = first.d; render();
+      openEvent(first.id, first.d);
+    };
+  });
+  body.querySelectorAll("[data-del]").forEach(b=>{
+    b.onclick = ()=>{
+      const gid = b.dataset.del;
+      const cnt = state.events.filter(e=>e.gid===gid).length;
+      if(!confirm("删除这一组的 "+cnt+" 期事件？")) return;
+      state.events = state.events.filter(e=>e.gid!==gid);
+      save(); renderSidebar(); render(); openMacro();
+      toast("已删除整组");
+    };
+  });
+}
+
+/* ── 抽屉：财报详情（预期 / 关注点 / 实际） ── */
+function secHTML(title, inner, extra){
+  return '<div class="sec"><div class="sec-h">'+title+(extra?'<i>'+extra+'</i>':'')+'</div>'+inner+'</div>';
+}
+
+function metricGrid(items){
+  let g = '<div class="mgrid">';
+  const odd = items.length % 2 === 1;
+  items.forEach((m,i)=>{
+    const wide = odd && i === items.length-1 ? ' wide' : '';
+    g += '<div class="mcell'+wide+'"><span class="mk">'+esc(m.k)+'</span>'
+       + '<span class="mv">'+esc(m.v)+(m.u?'<em>'+esc(m.u)+'</em>':'')+'</span>'
+       + (m.s?'<span class="ms">'+esc(m.s)+'</span>':'')
+       + '</div>';
+  });
+  return g+'</div>';
+}
+
+function subHTML(no, title, extra, inner){
+  return '<div class="sub"><div class="sub-h"><b>'+esc(no)+'</b>'+esc(title)
+       + (extra?'<i>'+esc(extra)+'</i>':'')+'</div>'+inner+'</div>';
+}
+
+function yoyHTML(y, plain){
+  if(y===null || y===undefined || y==="") return '<span class="ey"></span>';
+  const n = Number(y);
+  const s = (n>0?'+':'') + n.toFixed(1) + '%';
+  if(plain) return '<span class="ey">'+s+'</span>';
+  return '<span class="ey'+(n<0?' neg':'')+'">'+s+'</span>';
+}
+
+/* ① 目标价 / 潜在空间 / 评级分布 */
+function valHTML(raw){
+  const v = raw && raw.expect && raw.expect.val;
+  if(!v){
+    return '<div class="ph">暂无卖方覆盖<span>港股、美股均有目标价与评级；SpaceX 未上市，无一致预期。</span></div>';
+  }
+  const up = Number(v.upside);
+  const arrow = up>=0 ? '+' : '';
+  let h = '<div class="vgrid">'
+    + '<div class="vcell"><span class="mk">目标价</span><span class="mv">'+(+v.target).toFixed(2)+'<em>'+esc(v.unit)+'</em></span>'
+    +   '<span class="ms">现价 '+(+v.cur).toFixed(2)+' · '+v.nTarget+' 家</span></div>'
+    + '<div class="vcell"><span class="mk">潜在空间</span><span class="mv'+(up>=0?' up':' down')+'">'+arrow+up.toFixed(1)+'<em>%</em></span>'
+    +   '<span class="ms">较一致目标价</span></div>'
+    + '<div class="vcell"><span class="mk">评级分布</span><span class="mv">'+v.buy+'<em>%买入</em></span>'
+    +   '<span class="ms">'+v.n+' 家覆盖</span></div>'
+    + '</div>';
+  h += '<div class="rbar">'
+    +  '<i style="width:'+v.buy+'%;background:#1D9E75"></i>'
+    +  '<i style="width:'+v.hold+'%;background:#c9c9cf"></i>'
+    +  '<i style="width:'+v.sell+'%;background:#E8927C"></i></div>'
+    + '<div class="rleg"><span><i style="background:#1D9E75"></i>买入 '+v.buy+'%</span>'
+    +  '<span><i style="background:#c9c9cf"></i>持有 '+v.hold+'%</span>'
+    +  '<span><i style="background:#E8927C"></i>卖出 '+v.sell+'%</span></div>';
+  h += '<div class="basis">口径：NeoData 卖方目标价与评级汇总（'+(v.asof||"")+'）</div>';
+  return h;
+}
+
+/* ② 业绩预期：收入绝对值+增速、利润+增速 */
+function estHTML(raw){
+  const e = raw && raw.expect && raw.expect.est;
+  if(!e || !e.items || !e.items.length){
+    return '<div class="ph">本季一致预期尚未形成<span>距披露越远，卖方覆盖越少；港股口径来自 NeoData，美股无中国卖方一致预期，改用最近已披露实际作参照。</span></div>';
+  }
+  const hasN = e.items.some(m=>m.n);
+  let h = '<div class="etab">';
+  h += '<div class="erow eh"><span>指标</span><span>预期值</span><span>同比</span><span>'+(hasN?'覆盖':'口径')+'</span></div>';
+  e.items.forEach(m=>{
+    h += '<div class="erow"><span class="ek">'+esc(m.k)+'</span>'
+       +   '<span class="ev">'+esc(m.v)+(m.u?'<em>'+esc(m.u)+'</em>':'')+'</span>'
+       +   yoyHTML(m.yoy)
+       +   '<span class="en">'+(m.n?m.n+' 家':esc(m.s||""))+'</span></div>';
+  });
+  h += '</div>';
+  if(e.basis) h += '<div class="basis">口径：'+esc(e.basis)+'</div>';
+  return h;
+}
+
+function focusHTML(e){
+  const m = coMeta(e.co);
+  const list = m.focus || [];
+  if(!list.length){
+    return '<div class="ph">这家还没有关注点<span>点下面按钮填一段，保存后立刻显示在这里。</span></div>'
+         + '<button class="add2" data-coform="'+esc(e.co)+'" style="margin-top:8px">补全公司资料</button>';
+  }
+  let h = '<ul class="flist">';
+  list.forEach(x=>{ h += '<li>'+esc(x)+'</li>'; });
+  h += '</ul>';
+  if(m.biz) h += '<div class="basis">业务结构：'+esc(m.biz)+'</div>';
+  h += '<button class="add2" data-coform="'+esc(e.co)+'" style="margin-top:8px">编辑公司资料</button>';
+  return h;
+}
+
+function actualHTML(raw){
+  const act = raw && raw.actual;
+  if(!act || !act.items || !act.items.length){
+    return '<div class="ph">待披露<span>财报发布后回填实际数字，并标出与上面一致预期的偏离（超预期 / 不及预期）。</span></div>';
+  }
+  const vmap = {beat:["超预期","ok"], inline:["符合预期","me"], miss:["不及预期","bad"]};
+  const vt = vmap[act.verdict] || ["已披露",""];
+  let h = '<div style="margin-bottom:8px"><span class="pill '+vt[1]+'">'+vt[0]+'</span>'
+        + (act.time?'<span class="pill" style="margin-left:5px">'+esc(act.time)+' 发布</span>':'')+'</div>';
+  h += metricGrid(act.items);
+  if(act.note) h += '<div class="basis">'+esc(act.note)+'</div>';
+  return h;
+}
+
+function showFinance(e, dayKey){
+  state.sel = dayKey || e.d;
+  const d = parseD(e.d);
+  const KIND = {ipo:"IPO / 上市", macro:"宏观数据", cb:"央行 / 货币政策", mna:"并购", other:"财经事件"};
+  document.getElementById("drTitle").textContent = e.t;
+  document.getElementById("drSub").textContent = d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"
+    + " " + WD[d.getDay()] + (e.s ? "　"+e.s+(e.e?"–"+e.e:"") : "");
+  const passed = e.d < TODAY;
+  let h = '<div style="margin-bottom:2px">'
+        + '<span class="pill fin">'+(KIND[e.kind]||"财经事件")+'</span>'
+        + '<span class="pill" style="margin-left:5px">'+(passed?"已发生":"待发生")+'</span></div>';
+  if(e.co) h += '<div class="fld"><label>主体</label><div style="font-size:12.5px;line-height:1.6">'+esc(e.co)+'</div></div>';
+  h += '<div class="fld"><label>时间</label><div style="font-size:12.5px;line-height:1.6">'
+     + (e.a ? "全天" : esc(e.s||"—")+(e.e?" – "+esc(e.e):"")) + '（本地时区）</div></div>';
+  if(e.raw && e.raw.note) h += secHTML("说明", '<div style="font-size:12px;line-height:1.7;color:#3c3c43">'+esc(e.raw.note)+'</div>');
+  if(e.raw && e.raw.src) h += '<div class="hint" style="margin-top:2px">来源：'+esc(e.raw.src)+'（内置数据，改 data/finance.json 生效）</div>';
+  h += '<div class="acts"><button class="ghost" id="roClose">关闭</button><button class="ghost" id="roAdd">在当天加备注</button></div>';
+  h += '<div class="acts"><button class="ghost" id="roMacro" style="flex:1;color:#8a6a00">关注其他财经事件</button></div>';
+  const body = document.getElementById("drBody");
+  body.innerHTML = h;
+  document.getElementById("roClose").onclick = closeDrawer;
+  document.getElementById("roAdd").onclick = ()=>openForm(null, e.d);
+  document.getElementById("roMacro").onclick = openMacro;
+  openDrawer();
+}
+
+function showReadonly(e, dayKey){
+  state.sel = dayKey || e.d;
+  const d = parseD(e.d);
+  const done = !!(e.raw && e.raw.actual);
+  document.getElementById("drTitle").textContent = e.t;
+  document.getElementById("drSub").textContent = d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"
+    + (e.co ? "　"+(e.raw&&e.raw.ticker?e.raw.ticker+"　":"")+e.co : "");
+
+  const m = coMeta(e.co);
+  const st = e.status==="confirmed" ? ["公司公告 / IR 已确认","ok"]
+           : e.status==="manual"    ? ["手动添加","me"]
+           : ["按历史规律推算，官方未确认","est"];
+  let h = '<div style="margin-bottom:2px"><span class="pill '+st[1]+'">'+st[0]+'</span>'
+        + '<span class="pill" style="margin-left:5px">'+(done?"已披露":"未披露")+'</span>'
+        + (m.market?'<span class="pill" style="margin-left:5px">'+esc(m.market)+'</span>':'')
+        + '</div>';
+
+  const ex = e.raw && e.raw.expect;
+  const period = ex && ex.est && ex.est.period ? ex.est.period : "";
+  let exIn = subHTML("01","估值与评级","", valHTML(e.raw))
+           + subHTML("02","业绩预期", period, estHTML(e.raw))
+           + subHTML("03","核心业务关注点","", focusHTML(e));
+  h += secHTML("市场预期", exIn);
+  h += secHTML("实际业绩", actualHTML(e.raw), done?"":"发布后更新");
+
+  if(e.n) h += '<div class="fld" style="margin-top:14px"><label>日程口径</label><div style="font-size:11.5px;color:#6e6e73;line-height:1.6">'+esc(e.n)+'</div></div>';
+  h += '<div class="acts"><button class="ghost" id="roClose">关闭</button><button class="ghost" id="roAdd">在当天加备注</button></div>';
+  h += '<div class="acts"><button class="ghost" id="roWatch" style="flex:1;color:#B4690E">管理关注公司</button>'
+     + '<button class="ghost" id="roEditCo" style="flex:1">编辑公司资料</button></div>';
+  if(e.customDate) h += '<div class="acts"><button class="danger" id="roDelDate" style="flex:1">删除这条财报日</button></div>';
+  const body = document.getElementById("drBody");
+  body.innerHTML = h;
+  body.querySelectorAll("[data-coform]").forEach(b=>{
+    b.onclick = ()=>openCoForm(b.dataset.coform);
+  });
+  document.getElementById("roClose").onclick = closeDrawer;
+  document.getElementById("roAdd").onclick = ()=>openForm(null, e.d);
+  document.getElementById("roWatch").onclick = openWatch;
+  document.getElementById("roEditCo").onclick = ()=>openCoForm(e.co);
+  const dd = document.getElementById("roDelDate");
+  if(dd) dd.onclick = ()=>{
+    const ov = state.co[e.co] || {};
+    const left = (ov.earnings||[]).filter((x,i)=>i!==e.ci);
+    state.co[e.co] = Object.assign({}, ov, {earnings:left});
+    save(); renderSidebar(); render(); closeDrawer();
+    toast("已删除这条财报日");
+  };
+  openDrawer();
+}
+
+function openForm(e, dayKey){
+  const isNew = !e;
+  const base = e || {d:dayKey, s:"09:00", e:"10:00", t:"", c:"personal", a:false, n:"", remind:0};
+  state.editing = isNew ? null : e.id;
+  const d = parseD(base.d);
+  document.getElementById("drTitle").textContent = isNew ? "新建事件" : "编辑事件";
+  document.getElementById("drSub").textContent = d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
+
+  let opts = "";
+  const cats = (base.c==="finance") ? ["finance","work","holiday","personal","other"]
+                                    : ["work","holiday","personal","other"];
+  cats.forEach(k=>{
+    opts += '<option value="'+k+'"'+(base.c===k?" selected":"")+'>'+CALS[k].n+'</option>';
+  });
+  const remOpts = [[0,"不提醒"],[0,"准时"],[5,"提前 5 分钟"],[15,"提前 15 分钟"],[30,"提前 30 分钟"],[60,"提前 1 小时"],[1440,"提前 1 天"]];
+  let rsel = "";
+  [[0,"不提醒"],[5,"提前 5 分钟"],[15,"提前 15 分钟"],[30,"提前 30 分钟"],[60,"提前 1 小时"],[1440,"提前 1 天"]].forEach(([v,l])=>{
+    rsel += '<option value="'+v+'"'+((base.remind||0)===v?" selected":"")+'>'+l+'</option>';
+  });
+
+  let h = '<div class="fld"><label>标题</label><input type="text" id="fTitle" value="'+esc(base.t)+'" placeholder="例如：腾讯财报电话会"></div>'
+        + '<div class="fld"><label>日期</label><input type="date" id="fDate" value="'+base.d+'"></div>'
+        + '<div class="fld"><label class="sw"><input type="checkbox" id="fAll"'+(base.a?" checked":"")+'>全天</label></div>'
+        + '<div class="row2" id="fTimes"><div class="fld"><label>开始</label><input type="time" id="fStart" value="'+(base.s||"09:00")+'"></div>'
+        + '<div class="fld"><label>结束</label><input type="time" id="fEnd" value="'+(base.e||"10:00")+'"></div></div>'
+        + '<div class="fld"><label>日历</label><select id="fCal">'+opts+'</select></div>'
+        + '<div class="fld"><label>提醒</label><select id="fRemind">'+rsel+'</select>'
+        + '<div class="hint" style="margin-top:5px">需要允许通知权限；页面关闭后不生效。</div></div>'
+        + '<div class="fld"><label>备注</label><textarea id="fNote" placeholder="可选">'+esc(base.n)+'</textarea></div>'
+        + '<div class="acts"><button class="primary" id="fSave">保存</button><button class="ghost" id="fCancel">取消</button></div>';
+  if(!isNew) h += '<div class="acts"><button class="danger" id="fDel">删除事件</button></div>';
+
+  const body = document.getElementById("drBody");
+  body.innerHTML = h;
+  openDrawer();
+  setTimeout(()=>document.getElementById("fTitle").focus(), 60);
+
+  const allBox = document.getElementById("fAll"), times = document.getElementById("fTimes");
+  const sync = ()=>{ times.style.display = allBox.checked ? "none" : "flex"; };
+  allBox.onchange = sync; sync();
+
+  document.getElementById("fCancel").onclick = ()=>{ isNew ? closeDrawer() : selectDay(base.d); };
+  if(!isNew) document.getElementById("fDel").onclick = ()=>{
+    state.events = state.events.filter(x=>x.id!==e.id);
+    save(); render(); selectDay(base.d); toast("已删除");
+  };
+  document.getElementById("fSave").onclick = ()=>{
+    const t = document.getElementById("fTitle").value.trim();
+    if(!t){ toast("请填写标题"); return; }
+    const a = allBox.checked;
+    const obj = {
+      id: isNew ? "u"+Date.now() : e.id,
+      d: document.getElementById("fDate").value,
+      s: a ? "" : document.getElementById("fStart").value,
+      e: a ? "" : document.getElementById("fEnd").value,
+      t, a,
+      c: document.getElementById("fCal").value,
+      n: document.getElementById("fNote").value.trim(),
+      remind: Number(document.getElementById("fRemind").value)||0
+    };
+    if(e && e.gid) obj.gid = e.gid;
+    if(!a && obj.s && obj.e && obj.e < obj.s){ toast("结束时间早于开始时间"); return; }
+    if(isNew) state.events.push(obj);
+    else state.events = state.events.map(x=>x.id===e.id?obj:x);
+    save();
+    if(obj.remind>0) askPermission();
+    render();
+    if(state.mode==="month"||state.mode==="day"){ state.sel = obj.d; selectDay(obj.d); } else { toast("已保存"); closeDrawer(); }
+    toast("已保存");
+  };
+}
+
+function openDrawer(){
+  document.getElementById("drawer").classList.add("open");
+  document.getElementById("veil").classList.add("on");
+}
+function closeDrawer(){
+  document.getElementById("drawer").classList.remove("open");
+  document.getElementById("veil").classList.remove("on");
+  state.editing = null;
+}
+
+/* ── 提醒 ───────────────────────────── */
+function askPermission(){
+  if(!("Notification" in window)) return;
+  if(Notification.permission==="default") Notification.requestPermission();
+}
+function checkReminders(){
+  const now = Date.now();
+  state.events.forEach(e=>{
+    if(!e.remind || e.a || !e.s) return;
+    const start = new Date(e.d+"T"+e.s+":00").getTime();
+    if(isNaN(start)) return;
+    const at = start - e.remind*60000;
+    const sig = e.id+"@"+e.d;
+    if(now>=at && now<start && state.fired.indexOf(sig)<0){
+      state.fired.push(sig); save();
+      const msg = e.t+(e.remind? "（"+e.remind+" 分钟后开始）" : " 现在开始");
+      toast("提醒："+msg);
+      try{
+        if(window.Notification && Notification.permission==="granted"){
+          new Notification("日历提醒", {body: msg});
+        }
+      }catch(err){}
+    }
+  });
+}
+setInterval(checkReminders, 20000);
+setTimeout(checkReminders, 1200);
+
+function exportReminders(){
+  const now = Date.now();
+  const rows = state.events.map(e=>{
+    if(e.a||!e.s) return null;
+    const ts = new Date(e.d+"T"+e.s+":00").getTime();
+    if(isNaN(ts)||ts<now) return null;
+    return {e, ts};
+  }).filter(Boolean).sort((a,b)=>a.ts-b.ts);
+
+  if(!rows.length){ toast("没有未来带时间的事件"); return; }
+  let txt = "【日历提醒清单】\n";
+  rows.forEach(({e,ts})=>{
+    const d = new Date(ts);
+    txt += d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+" "+pad(d.getHours())+":"+pad(d.getMinutes())
+         + "  "+e.t + (e.remind? "（提前 "+e.remind+" 分钟）":"") + "\n";
+  });
+  txt += "—— 共 "+rows.length+" 条";
+  navigator.clipboard.writeText(txt).then(()=>toast("已复制，发给 WorkBuddy 即可建提醒"),()=>{
+    const w = window.open("", "_blank");
+    if(w){ w.document.write("<pre style='font:13px/1.6 -apple-system;padding:20px'>"+esc(txt)+"</pre>"); }
+  });
+}
+
+let toastTimer=null;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg; el.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove("on"), 2400);
+}
+
+/* ── 导航与交互 ─────────────────────── */
+function shift(dir){
+  const v = state.view;
+  if(state.mode==="month") state.view = new Date(v.getFullYear(), v.getMonth()+dir, 1);
+  else if(state.mode==="year") state.view = new Date(v.getFullYear()+dir, v.getMonth(), 1);
+  else if(state.mode==="week") state.view = new Date(v.getFullYear(), v.getMonth(), v.getDate()+7*dir);
+  else {
+    const d = parseD(state.sel);
+    const nd = new Date(d.getFullYear(), d.getMonth(), d.getDate()+dir);
+    state.sel = fmt(nd); state.view = nd;
+  }
+  render();
+}
+document.getElementById("prev").onclick = ()=>shift(-1);
+document.getElementById("next").onclick = ()=>shift(1);
+function gotoToday(){
+  const t = parseD(TODAY);
+  state.view = t; state.sel = TODAY; render();
+}
+document.getElementById("today").onclick = gotoToday;
+document.getElementById("btnToday2").onclick = gotoToday;
+document.getElementById("mnPrev").onclick = ()=>{ state.view = new Date(state.view.getFullYear(), state.view.getMonth()-1, 1); render(); };
+document.getElementById("mnNext").onclick = ()=>{ state.view = new Date(state.view.getFullYear(), state.view.getMonth()+1, 1); render(); };
+document.getElementById("drClose").onclick = closeDrawer;
+document.getElementById("veil").onclick = closeDrawer;
+document.getElementById("btnAdd").onclick = ()=>openForm(null, state.sel);
+document.getElementById("btnMacroMob").onclick = ()=>openMacro();
+
+document.getElementById("btnExp").onclick = ()=>{
+  const data = JSON.stringify({
+    v:3, exportedAt:new Date().toISOString(), app:"财经日历",
+    events: state.events, hidden:[...state.hidden],
+    co: state.co, fired: state.fired
+  }, null, 1);
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([data], {type:"application/json"}));
+  a.download = "财经日历备份-"+TODAY+".json";
+  a.click();
+  toast("已导出（含关注公司与自定义事件）");
+};
+document.getElementById("btnImp").onclick = ()=>{
+  const inp = document.createElement("input");
+  inp.type = "file"; inp.accept = ".json,application/json";
+  inp.onchange = ()=>{
+    const f = inp.files[0]; if(!f) return;
+    const r = new FileReader();
+    r.onload = ()=>{
+      try{
+        const o = JSON.parse(r.result);
+        if(!Array.isArray(o.events)) throw new Error("no events");
+        const nco = o.co ? Object.keys(o.co).filter(k=>!o.co[k].deleted && (o.co[k].custom || o.co[k].focus || o.co[k].ticker)).length : 0;
+        if(!confirm("将用备份覆盖本机数据：\n事件 "+o.events.length+" 条"+(nco?"、自定义公司/资料 "+nco+" 家":"")+"\n\n本机现有改动会被替换，继续？")) return;
+        state.events = o.events.map(migrate);
+        state.hidden = new Set(o.hidden||[]);
+        state.co = o.co || {};
+        state.fired = o.fired||[];
+        save(); renderSidebar(); render();
+        toast("已导入 "+o.events.length+" 个事件");
+      }catch(e){ toast("文件格式不对"); }
+    };
+    r.readAsText(f);
+  };
+  inp.click();
+};
+document.getElementById("btnRst").onclick = ()=>{
+  if(!confirm("恢复出厂设置？\n本机添加/修改的事件、隐藏分类、关注公司名单都会清空，回到初始数据。\n（建议先「导出」备份）")) return;
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  state.events = SEED.map(e=>migrate({...e, remind:0})).map((e,i)=>({id:"s"+i, ...e}));
+  state.fired = []; state.hidden = new Set();
+  state.co = {};
+  save(); renderSidebar(); render();
+  toast("已重置为初始数据");
+};
+
+document.querySelectorAll("#seg button").forEach(b=>{
+  b.onclick = ()=>{
+    state.mode = b.dataset.v;
+    document.querySelectorAll("#seg button").forEach(x=>x.classList.toggle("on", x===b));
+    if(state.mode==="day") state.view = parseD(state.sel);
+    render();
+  };
+});
+
+const q = document.getElementById("q"), sres = document.getElementById("sres");
+q.oninput = ()=>{
+  const kw = q.value.trim().toLowerCase();
+  if(!kw){ sres.classList.remove("on"); return; }
+  const hits = allEvents().filter(e=>e.t.toLowerCase().includes(kw)).slice(0,20);
+  if(!hits.length){ sres.innerHTML = '<div class="it" style="color:#a1a1a6">没有匹配</div>'; sres.classList.add("on"); return; }
+  sres.innerHTML = hits.map(e=>'<div class="it" data-d="'+e.d+'">'+esc(e.t)+'<span>'+e.d+'</span></div>').join("");
+  sres.classList.add("on");
+  sres.querySelectorAll(".it").forEach(el=>{
+    el.onclick = ()=>{
+      const d = parseD(el.dataset.d);
+      state.view = d; state.sel = el.dataset.d;
+      sres.classList.remove("on"); q.value="";
+      render(); selectDay(el.dataset.d);
+    };
+  });
+};
+document.addEventListener("click", e=>{
+  if(!e.target.closest(".search")) sres.classList.remove("on");
+});
+document.addEventListener("keydown", e=>{
+  if(e.key==="Escape") closeDrawer();
+  if(e.key==="ArrowLeft" && !e.metaKey && document.activeElement.tagName!=="INPUT") shift(-1);
+  if(e.key==="ArrowRight" && !e.metaKey && document.activeElement.tagName!=="INPUT") shift(1);
+});
+
+/* ── 启动 ───────────────────────────── */
+loadStore();
+state.view = parseD(TODAY);
+state.sel = TODAY;
+renderSidebar();
+render();
+</script>
+</body>
+</html>
