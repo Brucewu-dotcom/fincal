@@ -320,10 +320,31 @@ button{font-family:inherit}
 .mini-act button.dl:hover{background:#fff5f4;border-color:#ffd0cd;color:#ff3b30}
 .sec-hint{font-size:11px;color:#a1a1a6;line-height:1.55;margin:-2px 0 10px}
 
+.scrim{display:none}
+.dots{display:none}
+#btnMenu{display:none;border:0;background:transparent;font-size:18px;line-height:1;color:#1d1d1f;padding:4px 2px;cursor:pointer}
+/* 通用弹窗 */
+.mw-wrap{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.32);padding:18px}
+.mw-wrap.on{display:flex}
+.mw{background:#fff;border-radius:12px;padding:18px;width:100%;max-width:352px;box-shadow:0 18px 60px rgba(0,0,0,.22)}
+.mw h3{font-size:15px;margin-bottom:7px;font-weight:600}
+.mw p{font-size:12.5px;color:#6e6e73;line-height:1.7;margin-bottom:12px}
+.mw input{width:100%;border:1px solid #d8d8dd;border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;letter-spacing:3px;margin-bottom:10px;outline:none}
+.mw input:focus{border-color:#0a84ff}
+.mw .btns{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.mw .btns button{border:1px solid #dcdce0;background:#fff;border-radius:8px;padding:8px 15px;font-size:13px;cursor:pointer;font-family:inherit;color:#1d1d1f}
+.mw .btns button.pri{background:#0a84ff;border-color:#0a84ff;color:#fff}
+.mw .btns button.danger{color:#ff3b30;border-color:#ffd0cd}
+.mw .st{font-size:11.5px;color:#a1a1a6;margin-top:12px;line-height:1.65}
+
 @media(max-width:880px){
-  .sidebar{display:none}
+  .sidebar{position:fixed;top:0;left:0;bottom:0;z-index:80;width:274px;transform:translateX(-104%);transition:transform .26s cubic-bezier(.32,.72,0,1);box-shadow:0 0 44px rgba(0,0,0,.2);padding-bottom:env(safe-area-inset-bottom)}
+  .sidebar.open{transform:none}
+  .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:76;opacity:0;pointer-events:none;transition:opacity .22s}
+  .scrim.on{opacity:1;pointer-events:auto}
+  #btnMenu{display:block}
   .mobtn{display:block}
-  .hdr{padding:0 12px 6px;gap:6px}
+  .hdr{padding:0 12px 6px;gap:6px;flex-wrap:wrap}
   .hdr > div:first-child{min-width:0;flex:1}
   .hdr h1{font-size:20px;white-space:nowrap}
   .hdr .sub{font-size:9.5px;margin-left:6px;max-width:32vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}
@@ -335,9 +356,30 @@ button{font-family:inherit}
   .seg{margin:0 auto}
   .drawer{width:100%}
   .seg button{padding:4px 7px;font-size:11px}
-  .ev{font-size:9.5px;height:14px;line-height:14px}
-  .cell{padding-top:19px}
-  .yearwrap{grid-template-columns:repeat(2,1fr)}
+  /* 月视图：格子只留日期 + 圆点，点开当天看详情 */
+  .cell{padding:6px 2px 4px;gap:3px}
+  .cell .ln{display:none}
+  .cell .dn{position:static;align-self:center;font-size:12.5px;line-height:18px;height:18px;min-width:18px;text-align:center;border-radius:9px}
+  .cell.today .dn{width:19px;height:19px;line-height:19px;font-size:12px;right:auto;top:auto}
+  .ev{display:none}
+  .dots{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;width:100%;margin-top:1px}
+  .dots i{width:5px;height:5px;border-radius:50%;display:block}
+  .dots i.mo{width:auto;height:auto;border-radius:0;font-size:8.5px;color:#a1a1a6;line-height:1;background:none!important}
+  .wk div{font-size:10.5px;padding:5px 0}
+  /* 周视图：竖排议程 */
+  .weekwrap{grid-template-columns:1fr;min-height:0;border-radius:10px}
+  .wcol{min-height:0;padding:9px 10px}
+  .listview{padding:8px 12px 34px}
+  .yearwrap{grid-template-columns:repeat(2,1fr);gap:12px}
+}
+@media(max-width:560px){
+  .hdr{padding:0 10px 4px}
+  .hdr > div:first-child{flex:1 1 100%}
+  .hdr h1{font-size:21px}
+  .nav{width:100%;justify-content:flex-end;gap:2px}
+  .drawer{top:auto;height:86vh;border-radius:14px 14px 0 0;box-shadow:0 -6px 30px rgba(0,0,0,.16);transform:translateY(102%)}
+  .drawer.open{transform:none}
+  .ym .g div{height:18px;line-height:18px}
 }
 </style>
 </head>
@@ -359,9 +401,11 @@ button{font-family:inherit}
     <div class="mini-note" id="buildNote" style="margin-top:2px"></div>
   </div>
 </aside>
+<div class="scrim" id="scrim"></div>
 
 <main class="main">
   <div class="toolbar">
+    <button id="btnMenu" title="分类 / 月历 / 同步">☰</button>
     <button class="addbtn" id="btnAdd" title="新建事件">+</button>
     <div class="seg" id="seg">
       <button data-v="day">日</button><button data-v="week">周</button><button data-v="month" class="on">月</button><button data-v="year">年</button>
@@ -768,6 +812,12 @@ function renderMonth(){
       inner += '<div class="ev" style="'+chipStyle(c,e)+'" data-id="'+e.id+'">'+esc(e.t)+'</div>';
     });
     if(evs.length>4) inner += '<div class="ev more">+'+(evs.length-4)+'</div>';
+    if(evs.length){
+      inner += '<div class="dots">' + evs.slice(0,3).map(e=>{
+        const c = CALS[e.c]||CALS.other;
+        return '<i style="background:'+c.c+'"></i>';
+      }).join("") + (evs.length>3 ? '<i class="mo">+'+(evs.length-3)+'</i>' : '') + '</div>';
+    }
     h += '<div class="'+cls.join(" ")+'" data-d="'+k+'">'+inner+'</div>';
   });
   h += '</div>';
@@ -2587,6 +2637,19 @@ render();
 document.getElementById("btnRefresh").onclick = ()=>refreshAll(true);
 /* 打开就先静默同步一次；离线（file://）时自动跳过 */
 setTimeout(()=>{ refreshAll(false); }, 500);
+
+/* 手机端：☰ 拉出侧栏 */
+(function(){
+  const sb = document.querySelector(".sidebar");
+  const scrim = document.getElementById("scrim");
+  const open = ()=>{ sb.classList.add("open"); scrim.classList.add("on"); };
+  const close = ()=>{ sb.classList.remove("open"); scrim.classList.remove("on"); };
+  const btn = document.getElementById("btnMenu");
+  if(btn) btn.onclick = ()=> sb.classList.contains("open") ? close() : open();
+  if(scrim) scrim.onclick = close;
+  window.__closeSide = close;
+})();
+
 </script>
 </body>
 </html>
