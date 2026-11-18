@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T10:14:58+08:00",
+ "updated": "2026-11-18T10:55:23+08:00",
  "timezone": "Asia/Shanghai",
  "note": "官方发布日程快照。日期时间已换算为北京时间；美国数据来源的原始口径写在 note 里。抓不到时不猜，沿用上次结果。",
  "sources": [
@@ -8,7 +8,7 @@
    "name": "美联储 FOMC 会议日历",
    "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
    "ok": true,
-   "count": 29,
+   "count": 54,
    "checked": "2026-11-18",
    "err": ""
   },
@@ -301,6 +301,18 @@
    "note": "工业生产者价格指数月度报告",
    "period": "",
    "url": "https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"
+  },
+  {
+   "tid": "us-fomc",
+   "name": "FOMC 利率决议",
+   "d": "2026-12-10",
+   "t": "03:00",
+   "imp": "high",
+   "c": "US",
+   "src": "fed",
+   "note": "美东 12-09 14:00 决议 + 发布会",
+   "period": "",
+   "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
   },
   {
    "tid": "us-cpi",

@@ -145,7 +145,8 @@ def fetch_fed():
             mon = MONTHS.get(month_name)
             if not mon:
                 continue
-            rng = rng.strip()
+            # 「17-18*」的星号标 SEP 会议、「22 (notation vote)」是特殊安排
+            rng = re.sub(r"\(.*?\)", "", rng).replace("*", "").strip()
             mm = re.match(r"(\d{1,2})-(\d{1,2})$", rng)
             if mm:
                 day = int(mm.group(2))          # 决议在第二天
