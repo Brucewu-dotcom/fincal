@@ -1,0 +1,5 @@
+{
+ "note": "财报次日股价反应。pre=财报前一日收盘，close=财报当日收盘，next=次日收盘；chg/next_chg 为对应涨跌幅（%）。由 scripts/fetch_quotes.py 生成。",
+ "updated": "",
+ "items": {}
+}

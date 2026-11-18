@@ -218,6 +218,7 @@ button{font-family:inherit}
 .rleg span{display:flex;align-items:center;gap:3px}
 .rleg i{width:5px;height:5px;border-radius:50%}
 .etab{min-width:0}
+.etab.act .erow{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr) 46px}
 .erow{display:grid;grid-template-columns:minmax(0,1fr) auto 54px 52px;gap:6px;align-items:baseline;padding:6px 0;border-top:1px solid #f2f2f4;font-size:11.5px}
 .erow.eh{border-top:0;padding:0 0 4px;font-size:9px;color:#a1a1a6}
 .erow .ek{color:#3c3c43;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -249,6 +250,54 @@ button{font-family:inherit}
 .pill.bad{background:#E8F8EC;color:#0E8A46}
 .pill.fin{background:#FFF3B0;color:#2E2A1E}
 
+/* ── 刷新按钮 / 数据状态 / 导入面板 ── */
+.nav .rfbtn{border:1px solid #d8d8dd;background:#fff;border-radius:999px;font-family:inherit;font-size:12px;color:#3c3c43;padding:4px 12px;cursor:pointer;margin:0 7px 0 3px;line-height:1.4;white-space:nowrap}
+.nav .rfbtn:hover{border-color:#b8b8bf;background:#fafafb;color:#1d1d1f}
+.nav .rfbtn.spin{color:#8e8e93;animation:rpulse 1s ease-in-out infinite}
+@keyframes rpulse{50%{opacity:.45}}
+.stat{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:9.5px;color:#8e8e93;background:#fafafb;border:1px solid #f0f0f3;border-radius:8px;padding:7px 9px;line-height:1.5;margin-bottom:12px}
+.stat b{font-weight:600;color:#3c3c43}
+.stat .warn{color:#b26a00}
+.stat .dot{width:5px;height:5px;border-radius:50%;background:#1D9E75;display:inline-block;margin-right:3px}
+.stat .dot.off{background:#d0d0d5}
+.tabs{display:flex;gap:4px;background:#eaeaec;border-radius:8px;padding:2px;margin-bottom:12px}
+.tabs button{flex:1;border:0;background:transparent;font-family:inherit;font-size:11.5px;color:#3c3c43;padding:5px 6px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:#fff;font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.drop{border:1px dashed #d6d6dc;border-radius:10px;padding:16px 12px;text-align:center;font-size:11.5px;color:#8e8e93;line-height:1.6;cursor:pointer;background:#fafafb;transition:.15s}
+.drop:hover,.drop.over{border-color:#1D9E75;background:#f3fbf7;color:#0F6E56}
+.drop b{display:block;font-size:12.5px;color:#3c3c43;margin-bottom:3px;font-weight:600}
+.droptip{font-size:9.5px;color:#b0b0b5;margin-top:8px;line-height:1.6}
+.filerow{display:flex;align-items:center;gap:7px;font-size:11px;color:#3c3c43;padding:5px 0;border-top:1px solid #f2f2f4}
+.filerow:first-child{border-top:0}
+.filerow .fn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.filerow .fk{font-size:9px;color:#1D9E75;background:#EBF9F2;border-radius:4px;padding:1px 5px;white-space:nowrap}
+.filerow .fx{font-size:9px;color:#b0b0b5}
+.schedrow{display:flex;align-items:center;gap:7px;padding:6px 0;border-top:1px solid #f2f2f4;font-size:11.5px}
+.schedrow:first-child{border-top:0}
+.schedrow .sd{font-variant-numeric:tabular-nums;color:#3c3c43;font-weight:500;white-space:nowrap}
+.schedrow .st{font-size:9px;color:#8e8e93;white-space:nowrap}
+.schedrow .sn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#6e6e73}
+.verdict{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:2.5px 8px;border-radius:999px;letter-spacing:.2px}
+.verdict.beat{background:#FFEBE9;color:#D70015}
+.verdict.miss{background:#E8F8EC;color:#0E8A46}
+.verdict.inline{background:#f2f2f4;color:#6e6e73}
+.ract{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:2px}
+.rcell{background:#fafafb;border:1px solid #f0f0f3;border-radius:8px;padding:7px 9px;min-width:0}
+.rcell .rk{display:block;font-size:9.5px;color:#8e8e93;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rcell .rv{display:block;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.3px;line-height:1.2;white-space:nowrap}
+.rcell .rv em{font-style:normal;font-size:9px;font-weight:400;color:#8e8e93;margin-left:1px}
+.rcell .rv.up{color:#C0392B}
+.rcell .rv.down{color:#0B7A56}
+.rcell .rs{display:block;font-size:9px;color:#a1a1a6;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rnote{font-size:9.5px;color:#b0b0b5;margin-top:6px;line-height:1.5}
+.tg{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.tg button{border:1px solid #dcdce0;background:#fff;font-family:inherit;border-radius:999px;font-size:10.5px;color:#3c3c43;padding:3.5px 9px;cursor:pointer;white-space:nowrap}
+.tg button:hover{border-color:#1D9E75;color:#0F6E56}
+.tg button.on{background:#EBF9F2;border-color:#1D9E75;color:#0F6E56;font-weight:500}
+
+.relbox{margin-top:8px}
+.relread{font-size:12px;line-height:1.72;color:#3c3c43;background:#fbfbfc;border:1px solid #f0f0f3;border-left:2.5px solid #1D9E75;border-radius:7px;padding:8px 10px}
+.relauto{font-size:10.5px;line-height:1.65;color:#8e8e93;margin-top:6px;padding-left:2px}
 /* toast */
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:rgba(30,30,32,.94);color:#fff;font-size:12.5px;padding:9px 15px;border-radius:20px;opacity:0;transition:.24s;pointer-events:none;z-index:90;max-width:80vw}
 .toast.on{opacity:1;transform:translate(-50%,0)}
@@ -274,8 +323,13 @@ button{font-family:inherit}
 @media(max-width:880px){
   .sidebar{display:none}
   .mobtn{display:block}
-  .hdr h1{font-size:23px}
-  .hdr .sub{font-size:9.5px;margin-left:6px;max-width:40vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hdr{padding:0 12px 6px;gap:6px}
+  .hdr > div:first-child{min-width:0;flex:1}
+  .hdr h1{font-size:20px;white-space:nowrap}
+  .hdr .sub{font-size:9.5px;margin-left:6px;max-width:32vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}
+  .nav{gap:0;flex:0 0 auto}
+  .nav button{padding:4px 6px;font-size:12px}
+  .nav .rfbtn{padding:3px 9px;font-size:11px;margin:0 4px 0 0}
   .search input{width:60px}
   .toolbar{gap:6px;padding:0 10px}
   .seg{margin:0 auto}
@@ -323,6 +377,7 @@ button{font-family:inherit}
     <div style="display:flex;align-items:baseline"><h1 id="title">2026年11月</h1><span class="sub" id="earnSub"></span></div>
     <div class="nav">
       <button id="prev" title="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="rfbtn" id="btnRefresh" title="刷新全部内容：官方日程 / 公布结果 / 股价行情">刷新</button>
       <button id="today">今天</button>
       <button id="next" title="下一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
@@ -351,7 +406,23 @@ const FIN  = DATA.finance  || {items:[]};
 const COMP = DATA.companies || {companies:{}};
 const MACRO = (DATA.macro && DATA.macro.templates) || [];
 
-const TODAY = "__TODAY__";
+/* 官方日程 / 实际业绩 / 行情：构建时内联一份快照，运行时可被 fetch 覆盖 */
+const SCHED0 = DATA.schedule || {items:[], sources:[], updated:""};
+let   SCHED = {items:(SCHED0.items||[]).slice(), sources:SCHED0.sources||[], updated:SCHED0.updated||""};
+let   ACTS  = Object.assign({}, (DATA.actuals && DATA.actuals.items) || {});
+let   QTS   = Object.assign({}, (DATA.quotes  && DATA.quotes.items)  || {});
+/* 用户自己在页面里录/导入的，覆盖内置快照 */
+let   MYACT = {};
+let   MYQ   = {};
+const RELS0 = (DATA.releases && DATA.releases.items) || {};
+let   RELS  = Object.assign({}, RELS0);
+let   MYREL = {};      // 页面里录/改的公布结果，key = tid@日期
+
+/* 「今天」用运行时日期：部署后页面是静态的，不能靠构建日期 */
+const TODAY = (function(){ const d = new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+})();
+const BUILT_ON = "__TODAY__";
 const EARN_UPD = (DATA.earnings && DATA.earnings.updated) || "";
 const KEY = "fincal.v1";
 
@@ -412,6 +483,7 @@ const state = {
   events: [],
   fired: [],
   co: {},          // 公司覆盖表：{名称: {deleted} | {custom, ticker, market, biz, focus[], earnings[]}}
+  subs: [],        // 订阅的宏观模板 id（日期随官方日程自动更新）
   editing: null
 };
 
@@ -486,9 +558,50 @@ function earnEvents(){
   return out;
 }
 
-/* 财经事件：IPO / 央行议息 / 宏观数据等，数据来自 data/finance.json，页面内只读 */
+/* 财经事件：① 官方日程订阅（自动，只读）② 内置 finance.json（IPO/并购等个案） */
+function tplOf(id){ return MACRO.find(t=>t.id===id) || null; }
+function schedOf(tid){
+  return SCHED.items.filter(x=>x.tid===tid)
+    .sort((a,b)=>(a.d+(a.t||"")).localeCompare(b.d+(b.t||"")));
+}
+function nextSchedOf(tid){
+  const up = schedOf(tid).filter(x=>x.d >= TODAY);
+  return up.length ? up[0] : null;
+}
+function srcName(id){
+  const s = (SCHED.sources||[]).find(x=>x.id===id);
+  return s ? s.name : id;
+}
+
+
+/* 公布结果：key = 模板id@公布日。官方抓的 + 页面录的 */
+function relKey(tid, d){ return tid + "@" + d; }
+function relOf(tid, d){
+  const k = relKey(tid, d);
+  return MYREL[k] || RELS[k] || null;
+}
+function prevRelOf(tid, d){
+  const keys = Object.keys(RELS).concat(Object.keys(MYREL))
+    .filter(k=>k.indexOf(tid+"@")===0 && k.split("@")[1] < d).sort();
+  const k = keys[keys.length-1];
+  if(!k) return null;
+  return MYREL[k] || RELS[k] || null;
+}
+function relCount(){ return Object.keys(RELS).length + Object.keys(MYREL).filter(k=>!RELS[k]).length; }
+
 function financeEvents(){
   const out = [];
+  const subs = state.subs || [];
+  SCHED.items.forEach((it,i)=>{
+    if(subs.indexOf(it.tid)<0) return;
+    const tp = tplOf(it.tid);
+    out.push({id:"g"+i, d:it.d, s:it.t||"", e:"", t:(tp && tp.name) || it.name || it.tid,
+      c:"finance", a:!it.t,
+      n:(it.note||"")+(it.period?"　·　"+it.period:"")+
+        (it.t?"　·　北京时间":"")+(it.src?"　·　"+srcName(it.src):""),
+      ro:true, official:true, sched:it, tid:it.tid,
+      url:it.url||"", imp:it.imp||(tp&&tp.imp)||"mid"});
+  });
   (FIN.items||[]).forEach((it,i)=>{
     out.push({id:"f"+i, d:it.d, s:it.s||"", e:it.e||"", t:it.t, c:"finance", a:!it.s,
       n:(it.note||"")+(it.company?"　·　"+it.company:"")+(it.src?"　·　来源："+it.src:""),
@@ -496,6 +609,8 @@ function financeEvents(){
   });
   return out;
 }
+
+const DEFAULT_SUBS = ["us-fomc","us-cpi","us-nfp","cn-cpi","cn-activity"];
 
 function loadStore(){
   let raw=null;
@@ -507,10 +622,15 @@ function loadStore(){
       state.fired = o.fired || [];
       state.hidden = new Set(o.hidden || []);
       state.co = o.co || {};
+      state.subs = Array.isArray(o.subs) ? o.subs : DEFAULT_SUBS.slice();
+      MYACT = o.myact || {};
+      MYQ = o.myq || {};
+      MYREL = o.myrel || {};
       return;
     }catch(e){}
   }
   state.events = SEED.map(e=>migrate({...e, remind:0})).map((e,i)=>({id:"s"+i, ...e}));
+  state.subs = DEFAULT_SUBS.slice();
   save();
 }
 
@@ -524,7 +644,8 @@ function save(){
   try{
     localStorage.setItem(KEY, JSON.stringify({
       events: state.events, fired: state.fired,
-      hidden:[...state.hidden], co: state.co
+      hidden:[...state.hidden], co: state.co,
+      subs: state.subs, myact: MYACT, myq: MYQ, myrel: MYREL
     }));
   }catch(e){}
 }
@@ -989,7 +1110,7 @@ function openCoForm(name){
   };
 }
 
-/* ── 抽屉：关注财经事件（左侧「财经事件」+ 号） ── */
+/* ── 抽屉：关注财经事件（官方日程订阅 + 手工铺开） ── */
 const FREQ = {month:"每月", quarter:"每季", week:"每周", year:"每年", once:"单次"};
 
 /* 加 k 个月，自动收口到月末，避免 1/31 + 1 月跳到 3/3 */
@@ -1015,7 +1136,7 @@ function addPeriods(first, freq, n){
   return out;
 }
 
-/* 已添加的事件组：按 gid 聚合 */
+/* 手工铺开的事件组：按 gid 聚合 */
 function macroGroups(){
   const g = {};
   state.events.forEach(e=>{
@@ -1030,28 +1151,84 @@ function macroGroups(){
   }).sort((a,b)=> (a.dates[0]||"").localeCompare(b.dates[0]||""));
 }
 
+function isSub(tid){ return (state.subs||[]).indexOf(tid) >= 0; }
+function toggleSub(tid){
+  if(isSub(tid)) state.subs = state.subs.filter(x=>x!==tid);
+  else state.subs = (state.subs||[]).concat([tid]);
+  save();
+}
+
+function subCount(){
+  let n = 0;
+  (state.subs||[]).forEach(tid=>{ n += schedOf(tid).length; });
+  return n;
+}
+
+/* 数据状态条：官方日程什么时候抓的、哪些源挂了 */
+function statHTML(){
+  const srcs = SCHED.sources || [];
+  const bad = srcs.filter(s=>!s.ok);
+  const upd = (SCHED.updated||"").replace("T"," ").slice(0,16);
+  let h = '<div class="stat"><span class="dot'+(bad.length?" off":"")+'"></span>'
+        + '<b>官方日程</b> '+(upd||"未抓取")+' 抓取 · '+(SCHED.items||[]).length+' 条 · '
+        + srcs.length+' 个来源';
+  if(bad.length) h += '<span class="warn">· '+bad.length+' 个来源不可用</span>';
+  h += '</div>';
+  return h;
+}
+
 function openMacro(){
   document.getElementById("drTitle").textContent = "财经事件";
-  document.getElementById("drSub").textContent = "关注宏观数据与政策节点，按频次铺进日历";
+  document.getElementById("drSub").textContent = "订阅后日期自动跟随官方公布时间";
+  const subs = state.subs || [];
   const groups = macroGroups();
+  const CN = {US:"美国", CN:"中国", EU:"欧元区", JP:"日本"};
 
-  let h = '<div class="fld"><label>常用事件</label><div class="chips" id="mChips">'
-        +   MACRO.map((t,i)=>'<button class="chip" data-i="'+i+'">'+esc(t.name)+'</button>').join('')
-        + '</div>'
-        +   '<div class="sec-hint" id="mTip" style="margin-top:6px">点一个带出名称与说明，也可以直接在下面自己填。</div></div>'
-        + '<div class="fld"><label>事件名称</label><input type="text" id="mName" placeholder="例：美国 CPI 同比"></div>'
-        + '<div class="row2">'
-        +   '<div class="fld"><label>首次日期</label><input type="date" id="mDate" value="'+TODAY+'"></div>'
-        +   '<div class="fld"><label>重复</label><select id="mFreq">'
-        +     ['month','quarter','week','year','once'].map(k=>'<option value="'+k+'">'+FREQ[k]+'</option>').join('')
-        +   '</select></div>'
-        + '</div>'
-        + '<div class="fld"><label>生成期数</label><input type="number" id="mN" value="12" min="1" max="60"></div>'
-        + '<div class="fld"><label>备注</label><textarea id="mNote" rows="2" placeholder="可选，会显示在每条事件里"></textarea></div>'
-        + '<button class="add2" id="mAdd" style="margin-bottom:18px">+ 添加到日历</button>';
+  let h = statHTML();
 
+  /* 已订阅 */
+  const subTpl = MACRO.filter(t=>isSub(t.id));
+  h += '<div class="sec-h"><span>已订阅</span><i>'+subTpl.length+' 项 · '+subCount()+' 期</i></div>';
+  if(subTpl.length){
+    subTpl.forEach(t=>{
+      const list = schedOf(t.id);
+      const nx = nextSchedOf(t.id);
+      h += '<div class="gcard"><div class="gh"><b>'+esc(t.name)+'</b>'
+         +   '<span style="font-size:10.5px;color:#a1a1a6">'
+         +   (list.length ? list.length+' 期' : '暂无官方日程') + '</span></div>'
+         +   '<div class="gd">'+(nx ? "下一期 "+nx.d.slice(5)+(nx.t?" "+nx.t:"") : "官方尚未公布")
+         +     (list.length && !nx ? "　·　今年的已过完" : "") + '</div>'
+         +   '<div class="mini-act"><button data-unsub="'+esc(t.id)+'">取消订阅</button>'
+         +     (nx ? '<button data-go2="'+esc(t.id)+'">看下一期</button>' : '') + '</div></div>';
+    });
+  } else {
+    h += '<div class="sec-hint">还没订阅。下面挑几个，日期会自动跟着官方日程走。</div>';
+  }
+
+  /* 可选模板，按地区分组 */
+  ["US","CN","EU","JP"].forEach(cc=>{
+    const list = MACRO.filter(t=>t.country===cc);
+    if(!list.length) return;
+    h += '<div class="sec-h"><span>'+(CN[cc]||cc)+'</span><i>'+list.length+' 项</i></div>';
+    list.forEach(t=>{
+      const n = schedOf(t.id).length;
+      const nx = nextSchedOf(t.id);
+      const on = isSub(t.id);
+      const st = t.auto
+        ? (n ? '官方 '+n+' 期' + (nx?' · 下期 '+nx.d.slice(5):'') : '官方日程暂缺')
+        : '无官方日程';
+      h += '<div class="schedrow">'
+         +   '<span class="sd" style="font-weight:400;font-size:11.5px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(t.name)+'</span>'
+         +   '<span class="st'+(t.auto&&!n?' warn':'')+'" style="'+(t.auto&&!n?'color:#b26a00':'')+'">'+st+'</span>'
+         +   '<button class="chip'+(on?' on':'')+'" data-sub="'+esc(t.id)+'" style="padding:2px 9px;font-size:10.5px">'
+         +   (on?'已订阅':'订阅')+'</button>'
+         + '</div>';
+    });
+  });
+
+  /* 手工铺开（没有官方日程时用） */
   if(groups.length){
-    h += '<div class="sec-h"><span>已关注</span><i>'+groups.length+' 组</i></div>';
+    h += '<div class="sec-h"><span>手工铺开的事件</span><i>'+groups.length+' 组</i></div>';
     groups.forEach(g=>{
       const first = g.dates[0]||"", last = g.dates[g.dates.length-1]||"";
       h += '<div class="gcard"><div class="gh"><b>'+esc(g.name)+'</b>'
@@ -1060,51 +1237,44 @@ function openMacro(){
          +   '<div class="mini-act"><button data-go="'+esc(g.gid)+'">看第一期</button>'
          +   '<button class="dl" data-del="'+esc(g.gid)+'">整组删除</button></div></div>';
     });
-  } else {
-    h += '<div class="sec-hint">还没有自定义财经事件。上面选一个，按每月铺 12 期，全年就不用再管了。</div>';
   }
+
+  h += '<div class="sec-h"><span>自己加一个</span><i>无官方日程的按频次铺开</i></div>'
+     + '<div class="fld"><label>事件名称</label><input type="text" id="mName" placeholder="例：美国 CPI 同比"></div>'
+     + '<div class="row2">'
+     +   '<div class="fld"><label>首次日期</label><input type="date" id="mDate" value="'+TODAY+'"></div>'
+     +   '<div class="fld"><label>重复</label><select id="mFreq">'
+     +     ['month','quarter','week','year','once'].map(k=>'<option value="'+k+'">'+FREQ[k]+'</option>').join('')
+     +   '</select></div>'
+     + '</div>'
+     + '<div class="fld"><label>生成期数</label><input type="number" id="mN" value="12" min="1" max="60"></div>'
+     + '<button class="add2" id="mAdd" style="margin-bottom:18px">+ 添加到日历</button>';
 
   const body = document.getElementById("drBody");
   body.innerHTML = h;
   openDrawer();
 
-  body.querySelectorAll(".chip").forEach(c=>{
-    c.onclick = ()=>{
-      const t = MACRO[Number(c.dataset.i)];
-      body.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on", x===c));
-      document.getElementById("mName").value = t.name;
-      document.getElementById("mFreq").value = t.freq || "month";
-      document.getElementById("mN").value = t.freq==="week" ? 13 : (t.freq==="year" ? 3 : 12);
-      document.getElementById("mTip").textContent = (t.country? "["+t.country+"] ":"") + (t.note||"");
+  body.querySelectorAll("[data-sub]").forEach(b=>{
+    b.onclick = ()=>{
+      const t = tplOf(b.dataset.sub);
+      toggleSub(b.dataset.sub);
+      renderSidebar(); render();
+      toast(isSub(b.dataset.sub) ? "已订阅「"+t.name+"」，日期自动跟官方日程" : "已取消订阅");
+      openMacro();
     };
   });
-
-  document.getElementById("mAdd").onclick = ()=>{
-    const name = document.getElementById("mName").value.trim();
-    const first = document.getElementById("mDate").value;
-    const freq = document.getElementById("mFreq").value;
-    const n = Math.min(60, Math.max(1, Number(document.getElementById("mN").value)||1));
-    const note = document.getElementById("mNote").value.trim();
-    if(!name){ toast("请填事件名称"); return; }
-    if(!first){ toast("请选首次日期"); return; }
-
-    const dates = addPeriods(first, freq, n);
-    if(!dates.length){ toast("日期不对"); return; }
-    const gid = "g"+Date.now();
-    const stamp = Date.now();
-    dates.forEach((d,i)=>{
-      state.events.push({
-        id:"m"+stamp+"_"+i, gid, gt:name, d, s:"", e:"", t:name,
-        c:"finance", a:true,
-        n: (note || "由「财经事件 +」添加") + "　·　" + FREQ[freq] +
-           (freq!=="once" ? "　·　日期为预计，官方日程公布后可点开改" : "")
-      });
-    });
-    save(); renderSidebar(); render();
-    toast("已添加 "+dates.length+" 期「"+name+"」");
-    openMacro();
-  };
-
+  body.querySelectorAll("[data-unsub]").forEach(b=>{
+    b.onclick = ()=>{ toggleSub(b.dataset.unsub); renderSidebar(); render(); openMacro(); };
+  });
+  body.querySelectorAll("[data-go2]").forEach(b=>{
+    b.onclick = ()=>{
+      const nx = nextSchedOf(b.dataset.go2);
+      if(!nx) return;
+      state.view = parseD(nx.d); state.sel = nx.d; render();
+      const ev = allEvents().find(e=>e.official && e.tid===b.dataset.go2 && e.d===nx.d);
+      if(ev) showFinance(ev, nx.d); else selectDay(nx.d);
+    };
+  });
   body.querySelectorAll("[data-go]").forEach(b=>{
     b.onclick = ()=>{
       const gid = b.dataset.go;
@@ -1124,6 +1294,619 @@ function openMacro(){
       toast("已删除整组");
     };
   });
+
+  document.getElementById("mAdd").onclick = ()=>{
+    const name = document.getElementById("mName").value.trim();
+    const first = document.getElementById("mDate").value;
+    const freq = document.getElementById("mFreq").value;
+    const n = Math.min(60, Math.max(1, Number(document.getElementById("mN").value)||1));
+    if(!name){ toast("请填事件名称"); return; }
+    if(!first){ toast("请选首次日期"); return; }
+    const dates = addPeriods(first, freq, n);
+    if(!dates.length){ toast("日期不对"); return; }
+    const gid = "g"+Date.now();
+    const stamp = Date.now();
+    dates.forEach((d,i)=>{
+      state.events.push({
+        id:"m"+stamp+"_"+i, gid, gt:name, d, s:"", e:"", t:name,
+        c:"finance", a:true,
+        n: FREQ[freq] + "　·　日期为手工铺开，非官方公布时间"
+      });
+    });
+    save(); renderSidebar(); render();
+    toast("已添加 "+dates.length+" 期「"+name+"」");
+    openMacro();
+  };
+}
+
+/* ── 详情页两种填写方式：本地文件夹 / 网上获取 ─────────────── */
+
+/* 解析器：把任意文本（json / csv / md / txt / 网页正文）解析成公司档案 */
+function parseProfile(text, fileName){
+  const out = {focus:[], earnings:[], metrics:[], quote:null, src:fileName||""};
+  const t = String(text||"").trim();
+  if(!t) return out;
+
+  /* 1) JSON */
+  if(/^[\[{]/.test(t)){
+    let o = null;
+    try{ o = JSON.parse(t); }catch(e){ return out; }
+    let rec = o;
+    if(Array.isArray(o)) rec = o[0];
+    else if(o.companies) rec = Object.values(o.companies)[0];
+    else if(o.items && !o.ticker && !o.biz) rec = Array.isArray(o.items)?o.items[0]:o.items;
+    if(rec && typeof rec === "object"){
+      if(rec.ticker) out.ticker = String(rec.ticker);
+      if(rec.name || rec.company) out.name = rec.name || rec.company;
+      if(rec.market) out.market = rec.market;
+      if(rec.biz) out.biz = rec.biz;
+      if(Array.isArray(rec.focus)) out.focus = rec.focus.filter(Boolean).map(String);
+      if(Array.isArray(rec.earnings)) out.earnings = rec.earnings.filter(x=>x&&x.d).map(x=>({d:x.d, note:x.note||""}));
+      if(rec.d && rec.title) out.earnings.push({d:rec.d, note:rec.title});
+      const act = rec.actual;
+      if(act && Array.isArray(act.items)){
+        out.metrics = act.items.map(m=>({k:m.k, a:m.v, e:m.e, u:m.u||"", yoy:m.yoy}));
+        out.period = (rec.expect && rec.expect.est && rec.expect.est.period) || act.period || "";
+      }
+      if(rec.metrics) out.metrics = rec.metrics;
+      if(rec.price) out.quote = rec.price;
+      if(rec.report_date && !out.earnings.length) out.earnings.push({d:rec.report_date, note:"财报"});
+      if(rec.period) out.period = rec.period;
+      if(rec.note) out.note = rec.note;
+      if(rec.focus || rec.biz || rec.ticker) return out;
+    }
+  }
+
+  /* 2) CSV：按表头映射 */
+  const lines = t.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  if(lines.length > 1 && lines[0].includes(",")){
+    const head = lines[0].split(",").map(s=>s.trim().toLowerCase());
+    if(head.some(h=>/ticker|代码|symbol/.test(h))){
+      const rows = lines.slice(1).map(l=>l.split(",").map(s=>s.trim()));
+      const col = re => head.findIndex(h=>re.test(h));
+      const ci = {tk:col(/ticker|代码|symbol/), nm:col(/name|名称|公司/), eps:col(/eps|每股/),
+                  rev:col(/rev|营收|收入/), eeps:col(/est.*eps|eps.*est|预期.*eps/),
+                  erev:col(/est.*rev|rev.*est|预期.*(营收|收入)/)};
+      const r = rows[0] || [];
+      if(ci.tk>=0 && r[ci.tk]) out.ticker = r[ci.tk];
+      if(ci.nm>=0 && r[ci.nm]) out.name = r[ci.nm];
+      if(ci.eps>=0 && r[ci.eps]) out.metrics.push({k:"每股收益", a:r[ci.eps], e:ci.eeps>=0?r[ci.eeps]:null, u:""});
+      if(ci.rev>=0 && r[ci.rev]) out.metrics.push({k:"营业收入", a:r[ci.rev], e:ci.erev>=0?r[ci.erev]:null, u:""});
+      return out;
+    }
+  }
+
+  /* 3) 文本 / Markdown / 网页正文 */
+  const grab = re => { const m = t.match(re); return m ? m[1].trim() : ""; };
+  const tk = grab(/(?:股票代码|证券代码|代码|ticker|symbol)\s*[:：]?\s*([A-Z0-9]{2,10}(?:\.[A-Z]{2})?)/i)
+           || grab(/\(([A-Z]{1,5})\)\s*(?:股价|股票|Nasdaq|NYSE)/);
+  if(tk) out.ticker = tk.toUpperCase();
+  const nm = grab(/^(?:公司名称|公司|企业名称)\s*[:：]\s*(.+)$/m);
+  if(nm) out.name = nm;
+  const biz = grab(/(?:业务结构|主营业务|业务构成|业务板块)\s*[:：]\s*(.+)$/m);
+  if(biz) out.biz = biz.slice(0,120);
+
+  /* 关注点：先找小标题，再取下面的列表行 */
+  let block = "";
+  const sec = t.match(/(?:核心关注点|关注点|投资要点|核心看点|关键指标)[^\n]*\n([\s\S]{0,600})/);
+  if(sec) block = sec[1];
+  (block ? block.split(/\n/) : lines).forEach(raw=>{
+    const l = raw.trim();
+    if(!/^([-*·•—]|\d+[.、)]|\(\d+\))/.test(l)) return;
+    const item = l.replace(/^([-*·•—]|\d+[.、)]|\(\d+\))\s*/,"").trim();
+    if(item.length > 3 && item.length < 120) out.focus.push(item);
+  });
+
+  /* 财报日 */
+  const dm = t.match(/(20\d{2})[-/年](\d{1,2})[-/月](\d{1,2})/g) || [];
+  dm.slice(0,8).forEach(s=>{
+    const p = s.match(/(\d{4})\D(\d{1,2})\D(\d{1,2})/);
+    if(p) out.earnings.push({d:`${p[1]}-${String(p[2]).padStart(2,"0")}-${String(p[3]).padStart(2,"0")}`, note:"来自导入文件"});
+  });
+
+  /* 实际值 */
+  const eps = grab(/(?:每股收益|EPS|摊薄EPS)[^\d\-]{0,14}(-?[\d.]+)/i);
+  const rev = grab(/(?:营业收入|营收|收入)[^\d\-]{0,14}([\d,.]+)/i);
+  if(eps) out.metrics.push({k:"每股收益", a:eps, e:null, u:""});
+  if(rev) out.metrics.push({k:"营业收入", a:rev.replace(/,/g,""), e:null, u:""});
+
+  /* 去重 */
+  const seen = {};
+  out.focus = out.focus.filter(x=>{ if(seen[x]) return false; seen[x]=1; return true; });
+  const dseen = {};
+  out.earnings = out.earnings.filter(x=>{ if(dseen[x.d]) return false; dseen[x.d]=1; return true; });
+  return out;
+}
+
+/* 把解析结果写进公司覆盖表 + 实际业绩 */
+function applyProfile(name, p, mode){
+  if(!name) return 0;
+  const ov = state.co[name] || {};
+  const patch = {custom: baseCo(name) ? false : true};
+  if(p.ticker) patch.ticker = String(p.ticker).toUpperCase();
+  if(p.market) patch.market = p.market;
+  if(p.biz) patch.biz = p.biz;
+  if(p.focus && p.focus.length) patch.focus = p.focus.slice(0,12);
+  const dates = (ov.earnings||[]).slice();
+  (p.earnings||[]).forEach(x=>{ if(!dates.some(y=>y.d===x.d)) dates.push({d:x.d, note:x.note||"", status:"imported"}); });
+  if(dates.length) patch.earnings = dates;
+  patch.src = mode==="web" ? "网上获取" : "本地文件";
+  patch.filledAt = TODAY;
+  state.co[name] = Object.assign({}, ov, patch);
+
+  if(p.metrics && p.metrics.length){
+    const tk = (patch.ticker || coMeta(name).ticker || name).toUpperCase();
+    MYACT[tk] = {
+      period: p.period || "", report_date: (p.earnings[0]||{}).d || "",
+      metrics: p.metrics.map(m=>({k:m.k, a:num(m.a), e:num(m.e), u:m.u||"", yoy:m.yoy})),
+      src: p.src, note: p.note || ""
+    };
+  }
+  if(p.quote) MYQ[(patch.ticker||"").toUpperCase()] = p.quote;
+  save(); renderSidebar(); render();
+  return (p.focus||[]).length + (p.metrics||[]).length + (p.earnings||[]).length;
+}
+
+function profHTML(p, name){
+  const rows = [];
+  rows.push(['代码', p.ticker || '—']);
+  rows.push(['市场', p.market || guessMarket(p.ticker||"") || '—']);
+  rows.push(['业务结构', p.biz || '—']);
+  rows.push(['关注点', (p.focus||[]).length ? p.focus.length+' 条' : '—']);
+  rows.push(['财报日', (p.earnings||[]).length ? p.earnings.map(x=>x.d).join("、") : '—']);
+  rows.push(['实际业绩', (p.metrics||[]).length ? p.metrics.map(m=>m.k+" "+(m.a===null||m.a===undefined?"—":m.a)).join("　") : '—']);
+  let h = '';
+  rows.forEach(([k,v])=>{
+    h += '<div class="filerow"><span class="fx" style="width:52px;flex:0 0 52px">'+k+'</span>'
+       + '<span class="fn">'+esc(v)+'</span></div>';
+  });
+  if((p.focus||[]).length){
+    h += '<ul class="flist" style="margin-top:8px">'+p.focus.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
+  }
+  return h;
+}
+
+function openImport(name, mode){
+  const tk = coMeta(name).ticker || "";
+  document.getElementById("drTitle").textContent = "填写 "+name+" 的资料";
+  document.getElementById("drSub").textContent = "两种来源，写入后都能继续改";
+
+  let h = '<div class="tabs" id="impTabs">'
+        + '<button data-m="file" class="'+(mode!=="web"?"on":"")+'">根据我的文件夹</button>'
+        + '<button data-m="web" class="'+(mode==="web"?"on":"")+'">根据网上信息</button>'
+        + '</div>'
+        + '<div id="impBody"></div>';
+  document.getElementById("drBody").innerHTML = h;
+  openDrawer();
+
+  const body = document.getElementById("impBody");
+  const draw = (m)=>{
+    document.querySelectorAll("#impTabs button").forEach(b=>b.classList.toggle("on", b.dataset.m===m));
+    if(m==="file") drawFile(); else drawWeb();
+  };
+  document.querySelectorAll("#impTabs button").forEach(b=>{ b.onclick = ()=>draw(b.dataset.m); });
+
+  /* 解析 + 预览 + 应用 */
+  const handleText = (txt, fname, m)=>{
+    const p = parseProfile(txt, fname);
+    const score = (p.focus||[]).length + (p.metrics||[]).length + (p.earnings||[]).length + (p.ticker?1:0) + (p.biz?1:0);
+    const box = document.getElementById("impPrev");
+    if(box){
+      box.innerHTML = '<div class="sec-h" style="margin-top:12px"><span>识别结果</span><i>'+esc(fname)+'</i></div>'
+        + (score ? profHTML(p, name) : '<div class="ph">没识别出可用字段<span>试试带「代码 / 业务结构 / 关注点 / 财报日 / EPS」这类标题的文本</span></div>')
+        + '<div class="acts" style="margin-top:10px"><button class="primary"'+(score?'':' disabled')+' id="impApply">'
+        + '写入 '+name+'</button><button class="ghost" id="impCancel">取消</button></div>';
+      const ap = document.getElementById("impApply");
+      if(ap) ap.onclick = ()=>{
+        const n = applyProfile(name, p, m);
+        toast(n ? "已写入 "+n+" 项「"+name+"」资料" : "没有可写入的字段");
+        openCoLatest(name);
+      };
+      document.getElementById("impCancel").onclick = ()=>openImport(name, m);
+    }
+    return score;
+  };
+
+  function drawFile(){
+    body.innerHTML =
+        '<div class="drop" id="dropZone">'
+      +   '<b>拖文件到这里，或点一下选文件</b>'
+      +   '支持 .json / .csv / .md / .txt，可多选'
+      +   '<div class="droptip">也能直接选整个文件夹，页面会遍历里面的文本文件逐个识别</div>'
+      + '</div>'
+      + '<div class="tg" style="margin-top:8px">'
+      +   '<button id="pickFiles">选文件</button><button id="pickDir">选文件夹</button>'
+      +   (location.protocol.startsWith("http") ? '<button id="pickUserdata">用项目 userdata 目录</button>' : '')
+      + '</div>'
+      + '<div id="impPrev"></div>';
+
+    const zone = document.getElementById("dropZone");
+    const readFiles = (files)=>{
+      const list = [...files].filter(f=>/\.(json|csv|md|txt|markdown)$/i.test(f.name));
+      if(!list.length){ toast("没有可识别的文本文件"); return; }
+      let best = null, bestScore = -1, done = 0;
+      list.forEach(f=>{
+        const r = new FileReader();
+        r.onload = ()=>{
+          const p = parseProfile(r.result, f.name);
+          const s = (p.focus||[]).length + (p.metrics||[]).length + (p.earnings||[]).length + (p.ticker?1:0) + (p.biz?1:0);
+          if(s > bestScore){ bestScore = s; best = {txt:r.result, name:f.name}; }
+          if(++done === list.length && best) handleText(best.txt, best.name, "file");
+        };
+        r.readAsText(f);
+      });
+    };
+    zone.onclick = ()=>{
+      const inp = document.createElement("input");
+      inp.type = "file"; inp.multiple = true;
+      inp.accept = ".json,.csv,.md,.txt,text/plain,application/json";
+      inp.onchange = ()=>readFiles(inp.files);
+      inp.click();
+    };
+    zone.ondragover = e=>{ e.preventDefault(); zone.classList.add("over"); };
+    zone.ondragleave = ()=>zone.classList.remove("over");
+    zone.ondrop = e=>{ e.preventDefault(); zone.classList.remove("over"); readFiles(e.dataTransfer.files); };
+
+    document.getElementById("pickFiles").onclick = ()=>zone.click();
+    document.getElementById("pickDir").onclick = ()=>{
+      const inp = document.createElement("input");
+      inp.type = "file"; inp.webkitdirectory = true; inp.multiple = true;
+      inp.onchange = ()=>readFiles(inp.files);
+      inp.click();
+    };
+    const pu = document.getElementById("pickUserdata");
+    if(pu) pu.onclick = async ()=>{
+      try{
+        const r = await fetch("userdata/index.json?t="+Date.now(), {cache:"no-store"});
+        if(!r.ok) throw 0;
+        const list = await r.json();
+        const arr = Array.isArray(list) ? list : (list.files||[]);
+        if(!arr.length){ toast("userdata/index.json 是空的"); return; }
+        body.querySelector("#impPrev").innerHTML =
+          '<div class="sec-h" style="margin-top:12px"><span>userdata 里的档案</span><i>'+arr.length+' 份</i></div>'
+          + arr.map(f=>'<div class="filerow"><span class="fn">'+esc(f)+'</span>'
+            + '<button class="chip" data-uf="'+esc(f)+'">读它</button></div>').join("");
+        body.querySelectorAll("[data-uf]").forEach(b=>{
+          b.onclick = async ()=>{
+            const r2 = await fetch("userdata/"+b.dataset.uf+"?t="+Date.now(), {cache:"no-store"});
+            handleText(await r2.text(), b.dataset.uf, "file");
+          };
+        });
+      }catch(e){
+        toast("读不到 userdata/index.json（需要 http 打开，且目录里有这个索引）");
+      }
+    };
+  }
+
+  function drawWeb(){
+    body.innerHTML =
+        '<div class="fld"><label>网页地址或股票代码</label>'
+      +   '<input type="text" id="wUrl" placeholder="例：https://ir.company.com/quarterly-results 或 NVDA" value="'+esc(tk)+'">'
+      + '</div>'
+      + '<div class="fld"><label>CORS 代理（可选，抓不到时填）</label>'
+      +   '<input type="text" id="wProxy" placeholder="https://your-worker.dev/?url=" value="'+esc(localStorage.getItem("fincal.proxy")||"")+'">'
+      +   '<div class="sec-hint" style="margin-top:5px">静态页面直接抓别的站点会被浏览器拦，'
+      +   '填一个自己部署的代理前缀（会拼在原地址前面）就能抓。留空则只尝试直连。</div>'
+      + '</div>'
+      + '<div class="tg"><button id="wGo">抓取</button><button id="wPaste">粘贴网页正文</button></div>'
+      + '<div id="wStat" class="droptip" style="margin-top:8px"></div>'
+      + '<div id="wPasteBox"></div>'
+      + '<div id="impPrev"></div>';
+
+    const stat = document.getElementById("wStat");
+    const tryFetch = async (url)=>{
+      const r = await fetch(url, {cache:"no-store"});
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      return await r.text();
+    };
+
+    document.getElementById("wGo").onclick = async ()=>{
+      const u = document.getElementById("wUrl").value.trim();
+      const px = document.getElementById("wProxy").value.trim();
+      try{ localStorage.setItem("fincal.proxy", px); }catch(e){}
+      if(!u){ toast("先填地址或代码"); return; }
+      stat.textContent = "抓取中…";
+      const targets = [];
+      if(/^https?:\/\//.test(u)) targets.push(u);
+      else {
+        const sym = /^\d{6}$/.test(u) ? u+".SS" : u.toUpperCase();
+        targets.push("https://query1.finance.yahoo.com/v8/finance/chart/"+encodeURIComponent(sym)+"?range=3mo&interval=1d");
+      }
+      const urls = [];
+      targets.forEach(t=>{ if(px) urls.push(px + encodeURIComponent(t)); urls.push(t); });
+      let text = "";
+      for(const v of urls){
+        try{ text = await tryFetch(v); if(text && text.length > 40){ break; } }catch(e){ text = ""; }
+      }
+      if(!text){
+        stat.innerHTML = '<span class="warn">抓不到（多半是跨域拦截）。点「粘贴网页正文」，把 IR 页内容贴进来一样能解析。</span>';
+        return;
+      }
+      if(/^\s*\{/.test(text) && text.includes("chart")){
+        /* Yahoo 行情：直接转成股价反应 */
+        try{
+          const j = JSON.parse(text);
+          const r0 = (j.chart.result||[])[0];
+          const ts = r0.timestamp||[], cl = r0.indicators.quote[0].close||[];
+          const pts = ts.map((t,i)=>[new Date(t*1000), cl[i]]).filter(x=>x[1]!=null);
+          const last = pts[pts.length-1], prev = pts[pts.length-2];
+          if(last){
+            const sym = u.toUpperCase();
+            MYQ[sym] = {report_date: "", pre: prev?prev[1]:null, close: last[1],
+              next: null, chg: prev?+(((last[1]/prev[1])-1)*100).toFixed(2):null,
+              next_chg: null, asof: last[0].toISOString().slice(0,10), src:"yahoo"};
+            save();
+            stat.textContent = "拿到最近两个交易日收盘，已记为股价反应。";
+            handleText(JSON.stringify({ticker:sym, price:MYQ[sym]}), "yahoo 行情", "web");
+            return;
+          }
+        }catch(e){}
+      }
+      stat.textContent = "抓到了 "+text.length+" 字符，正在识别…";
+      handleText(text.replace(/<script[\s\S]*?<\/script>/gi,"").replace(/<[^>]+>/g," "), u.slice(0,40), "web");
+    };
+
+    document.getElementById("wPaste").onclick = ()=>{
+      const box = document.getElementById("wPasteBox");
+      box.innerHTML = '<div class="fld" style="margin-top:10px"><label>粘贴网页正文 / 财报段落</label>'
+        + '<textarea id="wText" rows="7" placeholder="把 IR 页面或财报公告复制进来，至少包含代码、业务、关注点、财报日或 EPS 中的几项"></textarea></div>'
+        + '<div class="tg"><button id="wParse">解析这段文字</button></div>';
+      document.getElementById("wParse").onclick = ()=>{
+        const txt = document.getElementById("wText").value;
+        if(!txt.trim()){ toast("先粘贴内容"); return; }
+        handleText(txt, "粘贴的正文", "web");
+      };
+    };
+  }
+
+  draw(mode==="web" ? "web" : "file");
+}
+
+/* 从新闻稿正文里捞数字：只认「名称 + 同比/环比 + 上涨/下降 + 数值%」这种句式 */
+function parseReleaseText(t){
+  const txt = String(t||"").replace(/<[^>]+>/g," ").replace(/\s+/g," ");
+  const out = [], seen = {};
+  const re = /([\u4e00-\u9fa5]{2,12})(同比|环比)?(上涨|下降|增长|回落|持平)\s*([\d.]+)?\s*%/g;
+  let m;
+  while((m = re.exec(txt))){
+    const name = (m[1]||"").trim().replace(/^(其中|分项|从|与|比|较|而|但)/,"");
+    if(name.length < 2 || seen[name]) continue;
+    const kind = m[3];
+    const v = kind === "持平" ? 0 : Number(m[4]);
+    if(!isFinite(v)) continue;
+    seen[name] = 1;
+    out.push({k:name + (m[2]||""), v: (kind==="下降"||kind==="回落") ? -v : v, u:"%"});
+    if(out.length >= 8) break;
+  }
+  return out;
+}
+
+/* 录入 / 编辑一次公布结果（数字 + 解读） */
+function openFillRelease(tid, d, paste, name){
+  const key = relKey(tid, d);
+  const cur = relOf(tid, d) || {};
+  const vals = (cur.vals||[]).slice();
+  while(vals.length < 3) vals.push({k:"", v:"", u:"%"});
+  document.getElementById("drTitle").textContent = "公布结果";
+  document.getElementById("drSub").textContent = (name||tplOf(tid)&&tplOf(tid).name||tid) + "　" + d;
+
+  let h = '';
+  if(paste){
+    h += '<div class="fld"><label>粘贴官方新闻稿正文</label>'
+       + '<textarea id="rpText" rows="6" placeholder="例：2026年11月份居民消费价格同比上涨0.9%，环比上涨0.1%"></textarea>'
+       + '<div class="sec-hint" style="margin-top:5px">只认「名称 + 同比/环比 + 上涨/下降 + 数字%」这种句式，提取后可以逐行改。</div></div>'
+       + '<div class="tg"><button id="rpParse">提取数字</button></div>'
+       + '<div class="sec-h"><span>逐项确认</span><i>可改</i></div>';
+  }
+  h += '<div id="rpRows">';
+  vals.forEach((v,i)=>{
+    h += '<div class="row2" style="margin-bottom:7px">'
+       +   '<div class="fld"><label>'+(i===0?"指标":"　")+'</label><input data-rk="'+i+'" value="'+esc(v.k||"")+'" placeholder="CPI 同比"></div>'
+       +   '<div class="fld"><label>公布值</label><input data-rv="'+i+'" value="'+(v.v===""||v.v===undefined?"":esc(v.v))+'" placeholder="0.9"></div>'
+       + '</div>';
+  });
+  h += '</div>'
+     + '<div class="fld"><label>解读（会显示在事件详情页）</label>'
+     +   '<textarea id="rpRead" rows="4" placeholder="写一段自己的判断：这组数字意味着什么，和上期比变了什么，对哪类资产有影响">'
+     +   esc(cur.read||"")+'</textarea></div>'
+     + '<div class="acts"><button class="primary" id="rpSave">保存</button><button class="ghost" id="rpCancel">取消</button></div>';
+  document.getElementById("drBody").innerHTML = h;
+  openDrawer();
+
+  let rows = vals.slice();
+  const redraw = ()=>{
+    const box = document.getElementById("rpRows");
+    box.innerHTML = rows.map((v,i)=>
+      '<div class="row2" style="margin-bottom:7px">'
+      + '<div class="fld"><label>'+(i===0?"指标":"　")+'</label><input data-rk="'+i+'" value="'+esc(v.k||"")+'" placeholder="CPI 同比"></div>'
+      + '<div class="fld"><label>公布值</label><input data-rv="'+i+'" value="'+(v.v===""||v.v===undefined?"":esc(v.v))+'" placeholder="0.9"></div>'
+      + '</div>').join("");
+  };
+  const collect = ()=>{
+    rows = rows.map((v,i)=>({
+      k: (document.querySelector('[data-rk="'+i+'"]')||{}).value || v.k,
+      v: (document.querySelector('[data-rv="'+i+'"]')||{}).value || v.v,
+      u: v.u || "%"
+    }));
+  };
+  const pp = document.getElementById("rpParse");
+  if(pp) pp.onclick = ()=>{
+    const got = parseReleaseText(document.getElementById("rpText").value);
+    if(!got.length){ toast("没认出来，手动填更快"); return; }
+    collect();
+    rows = got;
+    redraw();
+    toast("提取到 "+got.length+" 项，确认后保存");
+  };
+  document.getElementById("rpCancel").onclick = ()=>{
+    const ev0 = allEvents().find(x=>x.official && x.tid===tid && x.d===d);
+    if(ev0) showFinance(ev0, d); else closeDrawer();
+  };
+  document.getElementById("rpSave").onclick = ()=>{
+    collect();
+    const out = rows.filter(v=>v.k && String(v.v).trim()!=="").map(v=>({
+      k: v.k.trim(), v: Number(String(v.v).replace(/[^\d.\-]/g,"")), u: v.u || "%"
+    })).filter(v=>isFinite(v.v));
+    const read = document.getElementById("rpRead").value.trim();
+    if(!out.length && !read){ toast("至少填一项数字或一段解读"); return; }
+    MYREL[key] = {
+      tid, d, vals: out, read,
+      auto: (cur.auto||""), title: cur.title || "手工录入",
+      src: "页面录入", got: TODAY
+    };
+    save(); render();
+    toast("已保存，细节页已更新");
+    const ev2 = allEvents().find(x=>x.official && x.tid===tid && x.d===d);
+    if(ev2) showFinance(ev2, d); else closeDrawer();
+  };
+}
+
+/* 手动录入实际业绩 */
+function openFillActual(name){
+  const tk = (coMeta(name).ticker || name || "").toUpperCase();
+  const rec = actOf(tk) || {};
+  const metrics = (rec.metrics || []).slice();
+  while(metrics.length < 3) metrics.push({k:"", a:"", e:"", u:""});
+  document.getElementById("drTitle").textContent = "录入实际业绩";
+  document.getElementById("drSub").textContent = name + (tk?"　"+tk:"");
+
+  let h = '<div class="fld"><label>报告期</label><input id="faPeriod" placeholder="例：2026Q3" value="'+esc(rec.period||"")+'"></div>';
+  h += '<div class="sec-h"><span>指标 · 实际 vs 预期</span><i>预期留空则用内置一致预期</i></div>';
+  metrics.forEach((m,i)=>{
+    h += '<div class="row2" style="margin-bottom:8px">'
+       +   '<div class="fld"><label>'+(i===0?"指标名":'　')+'</label><input data-mk="'+i+'" value="'+esc(m.k||"")+'" placeholder="每股收益 / 营业收入"></div>'
+       +   '<div class="fld"><label>单位</label><input data-mu="'+i+'" value="'+esc(m.u||"")+'" placeholder="元 / 亿元"></div>'
+       + '</div>'
+       + '<div class="row2" style="margin-bottom:12px">'
+       +   '<div class="fld"><label>预期</label><input data-me="'+i+'" value="'+(m.e===null||m.e===undefined?"":esc(m.e))+'" placeholder="留空用一致预期"></div>'
+       +   '<div class="fld"><label>实际</label><input data-ma="'+i+'" value="'+(m.a===null||m.a===undefined?"":esc(m.a))+'" placeholder="财报里的实际值"></div>'
+       + '</div>';
+  });
+  h += '<div class="acts"><button class="primary" id="faSave">保存</button><button class="ghost" id="faCancel">取消</button></div>';
+  document.getElementById("drBody").innerHTML = h;
+  openDrawer();
+
+  document.getElementById("faCancel").onclick = ()=>openCoLatest(name);
+  document.getElementById("faSave").onclick = ()=>{
+    const out = [];
+    for(let i=0;i<metrics.length;i++){
+      const k = (document.querySelector('[data-mk="'+i+'"]')||{}).value||"";
+      if(!k.trim()) continue;
+      out.push({k:k.trim(),
+        u:(document.querySelector('[data-mu="'+i+'"]')||{}).value||"",
+        e:num((document.querySelector('[data-me="'+i+'"]')||{}).value),
+        a:num((document.querySelector('[data-ma="'+i+'"]')||{}).value)});
+    }
+    if(!out.length){ toast("至少填一个指标"); return; }
+    MYACT[tk] = Object.assign({}, rec, {period:document.getElementById("faPeriod").value.trim(),
+      metrics:out, src:"页面录入", note:"手工录入，来源 " + TODAY});
+    save(); render(); openCoLatest(name);
+    const v = verdictFrom(out);
+    toast(v ? "已保存，" + VLABEL[v.k] : "已保存实际业绩");
+  };
+}
+
+/* 手动填股价 */
+function openFillQuote(tk){
+  const q = quoteOf(tk) || {};
+  document.getElementById("drTitle").textContent = "填股价";
+  document.getElementById("drSub").textContent = tk;
+  let h = ''
+    + '<div class="row2"><div class="fld"><label>财报前收</label><input id="qPre" value="'+(q.pre||"")+'"></div>'
+    + '<div class="fld"><label>财报当日收</label><input id="qClose" value="'+(q.close||"")+'"></div></div>'
+    + '<div class="row2"><div class="fld"><label>次日收</label><input id="qNext" value="'+(q.next||"")+'"></div>'
+    + '<div class="fld"><label>日期</label><input type="date" id="qDate" value="'+(q.report_date||TODAY)+'"></div></div>'
+    + '<div class="acts"><button class="primary" id="qSave">保存</button><button class="ghost" id="qCancel">取消</button></div>';
+  document.getElementById("drBody").innerHTML = h;
+  openDrawer();
+  document.getElementById("qCancel").onclick = closeDrawer;
+  document.getElementById("qSave").onclick = ()=>{
+    const pre = num(document.getElementById("qPre").value);
+    const close = num(document.getElementById("qClose").value);
+    const next = num(document.getElementById("qNext").value);
+    MYQ[tk] = {report_date:document.getElementById("qDate").value, pre, close, next,
+      chg: (pre&&close)? +(((close/pre)-1)*100).toFixed(2) : null,
+      next_chg: (close&&next)? +(((next/close)-1)*100).toFixed(2) : null,
+      asof: TODAY, src:"手动填写"};
+    save(); render();
+    toast("已保存股价"); closeDrawer();
+  };
+}
+
+/* 抓一家公司的行情（浏览器直连，失败就走代理） */
+async function fetchQuote(tk, cb, silent){
+  const px = (()=>{ try{ return localStorage.getItem("fincal.proxy")||""; }catch(e){ return ""; } })();
+  const sym = /^\d{6}$/.test(tk) ? tk + ".SS" : String(tk).toUpperCase();
+  const url = "https://query1.finance.yahoo.com/v8/finance/chart/"+encodeURIComponent(sym)+"?range=3mo&interval=1d";
+  if(!silent) toast("抓取 "+sym+" 行情…");
+  const tries = px ? [px + encodeURIComponent(url), url] : [url];
+  for(const u of tries){
+    try{
+      const r = await fetch(u, {cache:"no-store"});
+      if(!r.ok) continue;
+      const j = await r.json();
+      const r0 = (j.chart.result||[])[0];
+      const ts = r0.timestamp||[], cl = r0.indicators.quote[0].close||[];
+      const pts = ts.map((t,i)=>[new Date(t*1000), cl[i]]).filter(x=>x[1]!=null);
+      if(!pts.length) continue;
+      const last = pts[pts.length-1], prev = pts[pts.length-2];
+      MYQ[sym] = {report_date: "", pre: prev?prev[1]:null, close: last[1], next: null,
+        chg: prev? +(((last[1]/prev[1])-1)*100).toFixed(2) : null, next_chg: null,
+        asof: last[0].toISOString().slice(0,10), src:"yahoo"};
+      save(); render();
+      if(!silent) toast("拿到 "+sym+" 最近两个交易日收盘");
+      if(cb) cb();
+      return true;
+    }catch(e){}
+  }
+  if(!silent) toast("抓不到（跨域或网络），可以直接手填");
+  return false;
+}
+
+/* ── 刷新：重新拉取全部数据源并重绘 ───── */
+async function loadJSON(f){
+  try{
+    const r = await fetch("data/"+f+"?t="+Date.now(), {cache:"no-store"});
+    if(!r.ok) return null;
+    return await r.json();
+  }catch(e){ return null; }
+}
+
+async function refreshAll(manual){
+  const btn = document.getElementById("btnRefresh");
+  if(btn){ btn.classList.add("spin"); btn.textContent = "刷新中"; }
+  const http = /^https?:/.test(location.protocol);
+  const log = [];
+
+  if(http){
+    const sc = await loadJSON("schedule.json");
+    if(sc && Array.isArray(sc.items)){
+      SCHED = {items:sc.items, sources:sc.sources||[], updated:sc.updated||""};
+      log.push("日程 "+sc.items.length+" 条");
+    }
+    const ac = await loadJSON("actuals.json");
+    if(ac && ac.items){ ACTS = Object.assign(ACTS, ac.items); log.push("业绩 "+Object.keys(ac.items).length+" 家"); }
+    const qq = await loadJSON("quotes.json");
+    if(qq && qq.items){ QTS = Object.assign(QTS, qq.items); log.push("行情 "+Object.keys(qq.items).length+" 家"); }
+    const rl = await loadJSON("releases.json");
+    if(rl && rl.items){ RELS = Object.assign(RELS, rl.items); log.push("公布结果 "+Object.keys(rl.items).length+" 条"); }
+  }
+
+  /* 已披露但还没行情的，顺手抓最近两家 */
+  let got = 0;
+  const need = (EARN.items||[]).filter(it=>it.d<=TODAY && it.ticker && !quoteOf(it.ticker)).slice(0,2);
+  for(const it of need){
+    if(await fetchQuote(it.ticker, null, true)) got++;
+  }
+  if(got) log.push("新抓行情 "+got+" 家");
+
+  renderSidebar(); render();
+  if(btn){ btn.classList.remove("spin"); btn.textContent = "刷新"; }
+  const msg = log.length ? "已刷新：" + log.join(" · ")
+    : (http ? "已刷新，数据没有变化"
+            : "本地打开只能重绘；部署到网上（或跑 scripts/ 里的脚本）才会拉到最新");
+  if(manual) toast(msg);
+  return log;
 }
 
 /* ── 抽屉：财报详情（预期 / 关注点 / 实际） ── */
@@ -1219,17 +2002,118 @@ function focusHTML(e){
   return h;
 }
 
-function actualHTML(raw){
-  const act = raw && raw.actual;
-  if(!act || !act.items || !act.items.length){
-    return '<div class="ph">待披露<span>财报发布后回填实际数字，并标出与上面一致预期的偏离（超预期 / 不及预期）。</span></div>';
+/* ③ 实际业绩 + 预期差 + 股价反应 */
+function num(x){
+  if(x===null || x===undefined || x==="") return null;
+  const v = Number(String(x).replace(/[,，\s]/g,""));
+  return isFinite(v) ? v : null;
+}
+function actOf(ticker){ return (ticker && (MYACT[ticker] || ACTS[ticker])) || null; }
+function quoteOf(ticker){ return (ticker && (MYQ[ticker] || QTS[ticker])) || null; }
+function pct(a,e){
+  if(a===null||e===null||e===0) return null;
+  return (a-e)/Math.abs(e)*100;
+}
+function tkOf(e){
+  const m = coMeta(e.co || "");
+  return (e.raw && e.raw.ticker) || m.ticker || "";
+}
+
+/* 把三种来源（内置 actual / 页面录入 / 文件导入）统一成 [{k,a,e,u,yoy}] */
+function metricsOf(e){
+  const rec = actOf(tkOf(e));
+  if(rec && rec.metrics && rec.metrics.length){
+    return rec.metrics.map(m=>({k:m.k, a:num(m.a), e:num(m.e), u:m.u||"", yoy:(m.yoy===undefined?null:m.yoy)}));
   }
-  const vmap = {beat:["超预期","ok"], inline:["符合预期","me"], miss:["不及预期","bad"]};
-  const vt = vmap[act.verdict] || ["已披露",""];
-  let h = '<div style="margin-bottom:8px"><span class="pill '+vt[1]+'">'+vt[0]+'</span>'
-        + (act.time?'<span class="pill" style="margin-left:5px">'+esc(act.time)+' 发布</span>':'')+'</div>';
-  h += metricGrid(act.items);
-  if(act.note) h += '<div class="basis">'+esc(act.note)+'</div>';
+  const legacy = e.raw && e.raw.actual;
+  if(legacy && legacy.items && legacy.items.length){
+    return legacy.items.map(m=>({k:m.k, a:num(m.v), e:num(m.e), u:m.u||"", yoy:(m.yoy===undefined?null:m.yoy)}));
+  }
+  return [];
+}
+
+/* 结论：优先看每股收益的预期差，没有就看第一个有预期值的指标 */
+function verdictFrom(metrics){
+  const both = metrics.filter(m=>m.a!==null && m.e!==null);
+  if(!both.length) return null;
+  const eps = both.find(m=>/每股|EPS|摊薄/i.test(m.k)) || both[0];
+  const s = pct(eps.a, eps.e);
+  if(s===null) return null;
+  return {k: s>2 ? "beat" : (s<-2 ? "miss" : "inline"), s, metric:eps};
+}
+const VLABEL = {beat:"超预期", miss:"低于预期", inline:"符合预期"};
+
+function actualHTML(e){
+  const metrics = metricsOf(e);
+  if(!metrics.length){
+    return '<div class="ph">待披露<span>财报发布后录入实际值，自动与上面的一致预期比对，标出超预期 / 低于预期 / 符合预期。</span></div>'
+         + '<div class="tg"><button data-fill="'+esc(e.co||"")+'">录入实际业绩</button>'
+         +   '<button data-import="'+esc(e.co||"")+'">从文件 / 网上获取</button></div>';
+  }
+  const v = verdictFrom(metrics);
+  let h = '<div style="margin-bottom:8px">'
+        + (v ? '<span class="verdict '+v.k+'">'+VLABEL[v.k]+'</span>' : '<span class="verdict inline">已披露 · 无预期值可比</span>')
+        + (v ? '<span class="pill" style="margin-left:5px">预期差 '+(v.s>=0?"+":"")+v.s.toFixed(1)+'%</span>' : '')
+        + '</div>';
+  h += '<div class="etab act">'
+     +   '<div class="erow eh"><span>指标</span><span>预期</span><span>实际</span><span>预期差</span></div>';
+  metrics.forEach(m=>{
+    const d = pct(m.a, m.e);
+    h += '<div class="erow"><span class="ek">'+esc(m.k)+'</span>'
+       +   '<span class="ev">'+(m.e===null?"—":fmtNum(m.e))+(m.e!==null&&m.u?'<em>'+esc(m.u)+'</em>':'')+'</span>'
+       +   '<span class="ev">'+(m.a===null?"—":fmtNum(m.a))+(m.a!==null&&m.u?'<em>'+esc(m.u)+'</em>':'')+'</span>'
+       +   '<span class="ey'+(d!==null&&d<0?' neg':'')+'" style="'+(d!==null&&d<0?'color:#0B7A56':(d!==null?'color:#C0392B':''))+'">'
+       +   (d===null?"—":(d>=0?"+":"")+d.toFixed(1)+"%")+'</span></div>';
+  });
+  h += '</div>';
+  const rec = actOf(tkOf(e));
+  if(rec && rec.note) h += '<div class="basis">'+esc(rec.note)+'</div>';
+  else if(rec && rec.src) h += '<div class="basis">来源：'+esc(rec.src)+'</div>';
+  h += '<div class="tg"><button data-fill="'+esc(e.co||"")+'">改实际业绩</button>'
+     +   '<button data-import="'+esc(e.co||"")+'">从文件 / 网上获取</button></div>';
+  return h;
+}
+
+function fmtNum(v){
+  const a = Math.abs(v);
+  if(a >= 10000) return (v/10000).toFixed(2)+" 万";
+  if(a >= 100) return v.toFixed(0);
+  if(a >= 1) return v.toFixed(2);
+  return v.toFixed(3);
+}
+
+/* 股价反应：财报前收 → 当日 → 次日 */
+function reactionHTML(e){
+  const tk = tkOf(e);
+  const q = quoteOf(tk);
+  if(!q){
+    return '<div class="ph">还没有股价数据<span>'
+         + (tk ? "点下面按钮抓取（需要联网）；也可以手填或用文件导入。" : "这家没有股票代码，先补代码。")
+         + '</span></div>'
+         + (tk ? '<div class="tg"><button data-fetchq="'+esc(tk)+'">抓取股价</button>'
+               + '<button data-fillq="'+esc(tk)+'">手动填股价</button></div>' : '');
+  }
+  const cls = x => x===null||x===undefined ? "" : (x>=0?"up":"down");
+  const sgn  = x => x===null||x===undefined ? "—" : (x>=0?"+":"")+Number(x).toFixed(2)+"%";
+  const pre = Number(q.pre||0), cur = Number(q.close||0), nxt = Number(q.next||0);
+  const chg = (q.chg!==null && q.chg!==undefined) ? Number(q.chg) : (pre ? (cur/pre-1)*100 : null);
+  const nch = (q.next_chg!==null && q.next_chg!==undefined) ? Number(q.next_chg) : (nxt && cur ? (nxt/cur-1)*100 : null);
+  let h = '<div class="ract">'
+    + '<div class="rcell"><span class="rk">财报前收</span><span class="rv">'+(pre?fmtNum(pre):"—")+'</span>'
+    +   '<span class="rs">'+esc(q.report_date||e.d)+'</span></div>'
+    + '<div class="rcell"><span class="rk">当日涨跌</span><span class="rv '+cls(chg)+'">'+sgn(chg)+'</span>'
+    +   '<span class="rs">收 '+(cur?fmtNum(cur):"—")+'</span></div>'
+    + '<div class="rcell"><span class="rk">次日涨跌</span><span class="rv '+cls(nch)+'">'+sgn(nch)+'</span>'
+    +   '<span class="rs">收 '+(nxt?fmtNum(nxt):"—")+'</span></div>'
+    + '</div>';
+  const rel = (nch!==null?nch:chg);
+  if(rel!==null){
+    h += '<div class="rnote">公布后'+(nch!==null?"次日":"当日")+(rel>=0?"涨":"跌")
+       + Math.abs(rel).toFixed(2)+'%，'+(rel>=0?"红盘收":"绿盘收")+'　·　'
+       + '数据 '+esc(q.asof||"")+(q.src?"（"+esc(q.src)+"）":"")+'</div>';
+  }
+  h += '<div class="tg"><button data-fetchq="'+esc(tk)+'">重新抓取</button>'
+     + '<button data-fillq="'+esc(tk)+'">手动修正</button></div>';
   return h;
 }
 
@@ -1239,8 +2123,96 @@ function showFinance(e, dayKey){
   const KIND = {ipo:"IPO / 上市", macro:"宏观数据", cb:"央行 / 货币政策", mna:"并购", other:"财经事件"};
   document.getElementById("drTitle").textContent = e.t;
   document.getElementById("drSub").textContent = d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"
-    + " " + WD[d.getDay()] + (e.s ? "　"+e.s+(e.e?"–"+e.e:"") : "");
+    + " " + WD[d.getDay()] + (e.s ? "　"+e.s+"（北京时间）" : "");
   const passed = e.d < TODAY;
+
+  if(e.official){
+    const it = e.sched || {};
+    const IMP = {high:["重要","ok"], mid:["中等","est"], low:["一般","me"]};
+    const im = IMP[e.imp] || IMP.mid;
+    let h = '<div style="margin-bottom:2px">'
+          + '<span class="pill fin">官方日程</span>'
+          + '<span class="pill '+im[1]+'" style="margin-left:5px">'+im[0]+'</span>'
+          + '<span class="pill" style="margin-left:5px">'+(passed?"已公布":"待公布")+'</span></div>';
+
+    h += '<div class="fld"><label>公布时间</label><div style="font-size:12.5px;line-height:1.7">'
+       + e.d + (it.t ? "　"+it.t+" 北京时间" : "　（官方只给了日期）") + '</div></div>';
+    if(it.note) h += '<div class="fld"><label>官方口径</label><div style="font-size:11.5px;line-height:1.7;color:#6e6e73">'
+       + esc(it.note) + '</div></div>';
+    if(it.src) h += '<div class="fld"><label>来源</label><div style="font-size:11.5px;line-height:1.7;color:#6e6e73">'
+       + esc(srcName(it.src)) + '</div></div>'
+       + '<div class="hint">这张日程由 scripts/fetch_schedule.py 从官方页面抓取，'
+       + '官方改期后重新抓取即可更新，不需要手改日历。</div>';
+
+    /* 公布结果：数字 + 解读 */
+    const rel = relOf(e.tid, e.d);
+    if(rel || passed){
+      h += '<div class="sec-h" style="margin-top:16px"><span>公布结果</span><i>'
+         + (rel && rel.vals && rel.vals.length ? "已公布" : "待收录") + '</i></div>';
+      if(rel && rel.vals && rel.vals.length){
+        const prev = prevRelOf(e.tid, e.d);
+        h += '<div class="etab act"><div class="erow eh"><span>指标</span><span>公布值</span><span>前值</span><span>变化</span></div>';
+        rel.vals.forEach(v=>{
+          const pv = prev && (prev.vals||[]).find(x=>x.k===v.k);
+          const diff = pv ? (v.v - pv.v) : null;
+          const sgn = x => x===null ? "—" : (x>0?"+":"")+Number(x).toFixed(1);
+          h += '<div class="erow"><span class="ek">'+esc(v.k)+'</span>'
+             +   '<span class="ev" style="color:'+(v.v>0?"#C0392B":"#0B7A56")+'">'+sgn(v.v)+(v.u?'<em>'+esc(v.u)+'</em>':'')+'</span>'
+             +   '<span class="ev">'+(pv?sgn(pv.v)+(v.u?'<em>'+esc(v.u)+'</em>':''):"—")+'</span>'
+             +   '<span class="ey" style="color:'+(diff===null?"#a1a1a6":(diff>0?"#C0392B":(diff<0?"#0B7A56":"#8e8e93")))+'">'
+             +   (diff===null?"—":(diff>0?"+":"")+diff.toFixed(1)+(v.u==="%"?"pp":""))+'</span></div>';
+        });
+        h += '</div>';
+        const mine = MYREL[relKey(e.tid,e.d)] || {};
+        const read = mine.read || rel.read || "";
+        const auto = rel.auto || "";
+        h += '<div class="relbox">'
+           + (read ? '<div class="relread">'+esc(read)+'</div>' : '')
+           + (auto ? '<div class="relauto">事实：'+esc(auto)+'</div>' : '')
+           + (read||auto ? '' : '<div class="ph">还没有解读<span>点下面按钮写一段，会显示在这里</span></div>')
+           + '</div>';
+        h += '<div class="rnote">来源 ' + esc(rel.src||"官方新闻稿")
+           + (rel.title ? '｜'+esc(rel.title) : '')
+           + (rel.got ? '｜收录 '+esc(rel.got) : '') + '</div>';
+        h += '<div class="tg"><button data-rel="'+e.tid+'" data-rd="'+e.d+'">改公布值 / 写解读</button></div>';
+      } else {
+        h += '<div class="ph">已经公布，但还没收录数字<span>录入后会连同解读一起显示在这里。</span></div>'
+           + '<div class="tg"><button data-rel="'+e.tid+'" data-rd="'+e.d+'">录入公布值</button>'
+           + '<button data-rel="'+e.tid+'" data-rd="'+e.d+'" data-paste="1">粘贴新闻稿自动提取</button></div>';
+      }
+    }
+
+    /* 未来几期 */
+    const list = schedOf(e.tid).filter(x=>x.d > e.d).slice(0,4);
+    if(list.length){
+      h += '<div class="sec-h" style="margin-top:14px"><span>接下来几期</span><i>'+list.length+'</i></div>';
+      list.forEach(x=>{
+        h += '<div class="schedrow"><span class="sd">'+x.d.slice(5)+'</span>'
+           + '<span class="st">'+(x.t||"")+'</span>'
+           + '<span class="sn">'+esc(e.t)+'</span></div>';
+      });
+    }
+
+    h += '<div class="acts"><button class="ghost" id="roClose">关闭</button><button class="ghost" id="roAdd">在当天加备注</button></div>';
+    h += '<div class="acts"><button class="ghost" id="roMacro" style="flex:1;color:#8a6a00">订阅管理</button>'
+       + '<button class="danger" id="roUnsub" style="flex:1">取消订阅这项</button></div>';
+
+    const body = document.getElementById("drBody");
+    body.innerHTML = h;
+    document.getElementById("roClose").onclick = closeDrawer;
+    document.getElementById("roAdd").onclick = ()=>openForm(null, e.d);
+    document.getElementById("roMacro").onclick = openMacro;
+    document.getElementById("roUnsub").onclick = ()=>{
+      toggleSub(e.tid); renderSidebar(); render(); closeDrawer();
+      toast("已取消订阅「"+e.t+"」");
+    };
+    body.querySelectorAll("[data-rel]").forEach(b=>{
+      b.onclick = ()=>openFillRelease(b.dataset.rel, b.dataset.rd, b.dataset.paste==="1", e.t);
+    });
+    openDrawer();
+    return;
+  }
+
   let h = '<div style="margin-bottom:2px">'
         + '<span class="pill fin">'+(KIND[e.kind]||"财经事件")+'</span>'
         + '<span class="pill" style="margin-left:5px">'+(passed?"已发生":"待发生")+'</span></div>';
@@ -1262,10 +2234,13 @@ function showFinance(e, dayKey){
 function showReadonly(e, dayKey){
   state.sel = dayKey || e.d;
   const d = parseD(e.d);
-  const done = !!(e.raw && e.raw.actual);
+  const metrics = metricsOf(e);
+  const verdict = verdictFrom(metrics);
+  const done = metrics.length > 0;
+  const tk = tkOf(e);
   document.getElementById("drTitle").textContent = e.t;
   document.getElementById("drSub").textContent = d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"
-    + (e.co ? "　"+(e.raw&&e.raw.ticker?e.raw.ticker+"　":"")+e.co : "");
+    + (e.co ? "　"+(tk?tk+"　":"")+e.co : "");
 
   const m = coMeta(e.co);
   const st = e.status==="confirmed" ? ["公司公告 / IR 已确认","ok"]
@@ -1273,6 +2248,7 @@ function showReadonly(e, dayKey){
            : ["按历史规律推算，官方未确认","est"];
   let h = '<div style="margin-bottom:2px"><span class="pill '+st[1]+'">'+st[0]+'</span>'
         + '<span class="pill" style="margin-left:5px">'+(done?"已披露":"未披露")+'</span>'
+        + (verdict?'<span class="verdict '+verdict.k+'" style="margin-left:5px">'+VLABEL[verdict.k]+'</span>':'')
         + (m.market?'<span class="pill" style="margin-left:5px">'+esc(m.market)+'</span>':'')
         + '</div>';
 
@@ -1282,7 +2258,19 @@ function showReadonly(e, dayKey){
            + subHTML("02","业绩预期", period, estHTML(e.raw))
            + subHTML("03","核心业务关注点","", focusHTML(e));
   h += secHTML("市场预期", exIn);
-  h += secHTML("实际业绩", actualHTML(e.raw), done?"":"发布后更新");
+  h += secHTML("实际业绩", actualHTML(e), done ? "已更新" : "公布后自动比对");
+  h += secHTML("股价表现", reactionHTML(e), tk||"");
+
+  /* 详情页两种填写方式 */
+  const nm = esc(e.co || m.name || "");
+  h += '<div class="sec-h"><span>资料维护</span><i>两种来源，都能再改</i></div>'
+     + '<div class="tg">'
+     +   '<button data-import="'+nm+'" data-mode="file">从本地文件夹</button>'
+     +   '<button data-import="'+nm+'" data-mode="web">从网上获取</button>'
+     +   '<button data-coform="'+nm+'">手动编辑</button>'
+     + '</div>'
+     + '<div class="droptip">从文件夹读：支持拖入 json / csv / md / txt，或直接选一个目录。'
+     + '从网上获取：填官网 IR 页或财报页链接，抓不到时会让你粘贴原文。写入后随时可改。</div>';
 
   if(e.n) h += '<div class="fld" style="margin-top:14px"><label>日程口径</label><div style="font-size:11.5px;color:#6e6e73;line-height:1.6">'+esc(e.n)+'</div></div>';
   h += '<div class="acts"><button class="ghost" id="roClose">关闭</button><button class="ghost" id="roAdd">在当天加备注</button></div>';
@@ -1293,6 +2281,18 @@ function showReadonly(e, dayKey){
   body.innerHTML = h;
   body.querySelectorAll("[data-coform]").forEach(b=>{
     b.onclick = ()=>openCoForm(b.dataset.coform);
+  });
+  body.querySelectorAll("[data-import]").forEach(b=>{
+    b.onclick = ()=>openImport(b.dataset.import, b.dataset.mode||"file");
+  });
+  body.querySelectorAll("[data-fill]").forEach(b=>{
+    b.onclick = ()=>openFillActual(b.dataset.fill);
+  });
+  body.querySelectorAll("[data-fetchq]").forEach(b=>{
+    b.onclick = ()=>fetchQuote(b.dataset.fetchq, ()=>showReadonly(e, dayKey));
+  });
+  body.querySelectorAll("[data-fillq]").forEach(b=>{
+    b.onclick = ()=>openFillQuote(b.dataset.fillq);
   });
   document.getElementById("roClose").onclick = closeDrawer;
   document.getElementById("roAdd").onclick = ()=>openForm(null, e.d);
@@ -1480,9 +2480,10 @@ document.getElementById("btnMacroMob").onclick = ()=>openMacro();
 
 document.getElementById("btnExp").onclick = ()=>{
   const data = JSON.stringify({
-    v:3, exportedAt:new Date().toISOString(), app:"财经日历",
+    v:4, exportedAt:new Date().toISOString(), app:"财经日历",
     events: state.events, hidden:[...state.hidden],
-    co: state.co, fired: state.fired
+    co: state.co, fired: state.fired,
+    subs: state.subs, myact: MYACT, myq: MYQ, myrel: MYREL
   }, null, 1);
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([data], {type:"application/json"}));
@@ -1501,11 +2502,15 @@ document.getElementById("btnImp").onclick = ()=>{
         const o = JSON.parse(r.result);
         if(!Array.isArray(o.events)) throw new Error("no events");
         const nco = o.co ? Object.keys(o.co).filter(k=>!o.co[k].deleted && (o.co[k].custom || o.co[k].focus || o.co[k].ticker)).length : 0;
-        if(!confirm("将用备份覆盖本机数据：\n事件 "+o.events.length+" 条"+(nco?"、自定义公司/资料 "+nco+" 家":"")+"\n\n本机现有改动会被替换，继续？")) return;
+        if(!confirm("将用备份覆盖本机数据：\n事件 "+o.events.length+" 条"+(nw?"、自定义公司/资料 "+nw+" 家":"")+"\n\n本机现有改动会被替换，继续？")) return;
         state.events = o.events.map(migrate);
         state.hidden = new Set(o.hidden||[]);
         state.co = o.co || {};
         state.fired = o.fired||[];
+        if(Array.isArray(o.subs)) state.subs = o.subs;
+        if(o.myact) MYACT = o.myact;
+        if(o.myq) MYQ = o.myq;
+        if(o.myrel) MYREL = o.myrel;
         save(); renderSidebar(); render();
         toast("已导入 "+o.events.length+" 个事件");
       }catch(e){ toast("文件格式不对"); }
@@ -1520,6 +2525,8 @@ document.getElementById("btnRst").onclick = ()=>{
   state.events = SEED.map(e=>migrate({...e, remind:0})).map((e,i)=>({id:"s"+i, ...e}));
   state.fired = []; state.hidden = new Set();
   state.co = {};
+  state.subs = DEFAULT_SUBS.slice();
+  MYACT = {}; MYQ = {}; MYREL = {};
   save(); renderSidebar(); render();
   toast("已重置为初始数据");
 };
@@ -1565,6 +2572,10 @@ state.view = parseD(TODAY);
 state.sel = TODAY;
 renderSidebar();
 render();
+
+document.getElementById("btnRefresh").onclick = ()=>refreshAll(true);
+/* 打开就先静默同步一次；离线（file://）时自动跳过 */
+setTimeout(()=>{ refreshAll(false); }, 500);
 </script>
 </body>
 </html>

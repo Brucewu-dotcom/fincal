@@ -218,6 +218,7 @@ button{font-family:inherit}
 .rleg span{display:flex;align-items:center;gap:3px}
 .rleg i{width:5px;height:5px;border-radius:50%}
 .etab{min-width:0}
+.etab.act .erow{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr) 46px}
 .erow{display:grid;grid-template-columns:minmax(0,1fr) auto 54px 52px;gap:6px;align-items:baseline;padding:6px 0;border-top:1px solid #f2f2f4;font-size:11.5px}
 .erow.eh{border-top:0;padding:0 0 4px;font-size:9px;color:#a1a1a6}
 .erow .ek{color:#3c3c43;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -249,6 +250,54 @@ button{font-family:inherit}
 .pill.bad{background:#E8F8EC;color:#0E8A46}
 .pill.fin{background:#FFF3B0;color:#2E2A1E}
 
+/* ── 刷新按钮 / 数据状态 / 导入面板 ── */
+.nav .rfbtn{border:1px solid #d8d8dd;background:#fff;border-radius:999px;font-family:inherit;font-size:12px;color:#3c3c43;padding:4px 12px;cursor:pointer;margin:0 7px 0 3px;line-height:1.4;white-space:nowrap}
+.nav .rfbtn:hover{border-color:#b8b8bf;background:#fafafb;color:#1d1d1f}
+.nav .rfbtn.spin{color:#8e8e93;animation:rpulse 1s ease-in-out infinite}
+@keyframes rpulse{50%{opacity:.45}}
+.stat{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:9.5px;color:#8e8e93;background:#fafafb;border:1px solid #f0f0f3;border-radius:8px;padding:7px 9px;line-height:1.5;margin-bottom:12px}
+.stat b{font-weight:600;color:#3c3c43}
+.stat .warn{color:#b26a00}
+.stat .dot{width:5px;height:5px;border-radius:50%;background:#1D9E75;display:inline-block;margin-right:3px}
+.stat .dot.off{background:#d0d0d5}
+.tabs{display:flex;gap:4px;background:#eaeaec;border-radius:8px;padding:2px;margin-bottom:12px}
+.tabs button{flex:1;border:0;background:transparent;font-family:inherit;font-size:11.5px;color:#3c3c43;padding:5px 6px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:#fff;font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.drop{border:1px dashed #d6d6dc;border-radius:10px;padding:16px 12px;text-align:center;font-size:11.5px;color:#8e8e93;line-height:1.6;cursor:pointer;background:#fafafb;transition:.15s}
+.drop:hover,.drop.over{border-color:#1D9E75;background:#f3fbf7;color:#0F6E56}
+.drop b{display:block;font-size:12.5px;color:#3c3c43;margin-bottom:3px;font-weight:600}
+.droptip{font-size:9.5px;color:#b0b0b5;margin-top:8px;line-height:1.6}
+.filerow{display:flex;align-items:center;gap:7px;font-size:11px;color:#3c3c43;padding:5px 0;border-top:1px solid #f2f2f4}
+.filerow:first-child{border-top:0}
+.filerow .fn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.filerow .fk{font-size:9px;color:#1D9E75;background:#EBF9F2;border-radius:4px;padding:1px 5px;white-space:nowrap}
+.filerow .fx{font-size:9px;color:#b0b0b5}
+.schedrow{display:flex;align-items:center;gap:7px;padding:6px 0;border-top:1px solid #f2f2f4;font-size:11.5px}
+.schedrow:first-child{border-top:0}
+.schedrow .sd{font-variant-numeric:tabular-nums;color:#3c3c43;font-weight:500;white-space:nowrap}
+.schedrow .st{font-size:9px;color:#8e8e93;white-space:nowrap}
+.schedrow .sn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#6e6e73}
+.verdict{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:2.5px 8px;border-radius:999px;letter-spacing:.2px}
+.verdict.beat{background:#FFEBE9;color:#D70015}
+.verdict.miss{background:#E8F8EC;color:#0E8A46}
+.verdict.inline{background:#f2f2f4;color:#6e6e73}
+.ract{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:2px}
+.rcell{background:#fafafb;border:1px solid #f0f0f3;border-radius:8px;padding:7px 9px;min-width:0}
+.rcell .rk{display:block;font-size:9.5px;color:#8e8e93;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rcell .rv{display:block;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.3px;line-height:1.2;white-space:nowrap}
+.rcell .rv em{font-style:normal;font-size:9px;font-weight:400;color:#8e8e93;margin-left:1px}
+.rcell .rv.up{color:#C0392B}
+.rcell .rv.down{color:#0B7A56}
+.rcell .rs{display:block;font-size:9px;color:#a1a1a6;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rnote{font-size:9.5px;color:#b0b0b5;margin-top:6px;line-height:1.5}
+.tg{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.tg button{border:1px solid #dcdce0;background:#fff;font-family:inherit;border-radius:999px;font-size:10.5px;color:#3c3c43;padding:3.5px 9px;cursor:pointer;white-space:nowrap}
+.tg button:hover{border-color:#1D9E75;color:#0F6E56}
+.tg button.on{background:#EBF9F2;border-color:#1D9E75;color:#0F6E56;font-weight:500}
+
+.relbox{margin-top:8px}
+.relread{font-size:12px;line-height:1.72;color:#3c3c43;background:#fbfbfc;border:1px solid #f0f0f3;border-left:2.5px solid #1D9E75;border-radius:7px;padding:8px 10px}
+.relauto{font-size:10.5px;line-height:1.65;color:#8e8e93;margin-top:6px;padding-left:2px}
 /* toast */
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:rgba(30,30,32,.94);color:#fff;font-size:12.5px;padding:9px 15px;border-radius:20px;opacity:0;transition:.24s;pointer-events:none;z-index:90;max-width:80vw}
 .toast.on{opacity:1;transform:translate(-50%,0)}
@@ -274,8 +323,13 @@ button{font-family:inherit}
 @media(max-width:880px){
   .sidebar{display:none}
   .mobtn{display:block}
-  .hdr h1{font-size:23px}
-  .hdr .sub{font-size:9.5px;margin-left:6px;max-width:40vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hdr{padding:0 12px 6px;gap:6px}
+  .hdr > div:first-child{min-width:0;flex:1}
+  .hdr h1{font-size:20px;white-space:nowrap}
+  .hdr .sub{font-size:9.5px;margin-left:6px;max-width:32vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}
+  .nav{gap:0;flex:0 0 auto}
+  .nav button{padding:4px 6px;font-size:12px}
+  .nav .rfbtn{padding:3px 9px;font-size:11px;margin:0 4px 0 0}
   .search input{width:60px}
   .toolbar{gap:6px;padding:0 10px}
   .seg{margin:0 auto}
@@ -323,6 +377,7 @@ button{font-family:inherit}
     <div style="display:flex;align-items:baseline"><h1 id="title">2026年11月</h1><span class="sub" id="earnSub"></span></div>
     <div class="nav">
       <button id="prev" title="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="rfbtn" id="btnRefresh" title="刷新全部内容：官方日程 / 公布结果 / 股价行情">刷新</button>
       <button id="today">今天</button>
       <button id="next" title="下一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
@@ -344,14 +399,30 @@ button{font-family:inherit}
 
 <script>
 /* ── 内置数据（构建时内联，替换 data/ 下四个 json） ── */
-const DATA = {"events":[{"d":"2026-01-01","s":"","e":"","t":"元旦（休）","c":"holiday","a":true,"n":""},{"d":"2026-01-04","s":"","e":"","t":"元旦（班）","c":"holiday","a":true,"n":""},{"d":"2026-01-05","s":"","e":"","t":"小寒","c":"holiday","a":true,"n":""},{"d":"2026-01-20","s":"","e":"","t":"大寒","c":"holiday","a":true,"n":""},{"d":"2026-02-04","s":"","e":"","t":"立春","c":"holiday","a":true,"n":""},{"d":"2026-02-14","s":"","e":"","t":"春节（班）","c":"holiday","a":true,"n":""},{"d":"2026-02-15","s":"","e":"","t":"春节（休）","c":"holiday","a":true,"n":""},{"d":"2026-02-16","s":"","e":"","t":"除夕","c":"holiday","a":true,"n":""},{"d":"2026-02-17","s":"","e":"","t":"春节","c":"holiday","a":true,"n":""},{"d":"2026-02-18","s":"","e":"","t":"正月初二","c":"holiday","a":true,"n":""},{"d":"2026-02-18","s":"","e":"","t":"雨水","c":"holiday","a":true,"n":""},{"d":"2026-02-19","s":"","e":"","t":"正月初三","c":"holiday","a":true,"n":""},{"d":"2026-02-28","s":"","e":"","t":"春节（班）","c":"holiday","a":true,"n":""},{"d":"2026-03-03","s":"","e":"","t":"元宵节","c":"holiday","a":true,"n":""},{"d":"2026-03-05","s":"","e":"","t":"惊蛰","c":"holiday","a":true,"n":""},{"d":"2026-03-20","s":"","e":"","t":"春分","c":"holiday","a":true,"n":""},{"d":"2026-04-04","s":"","e":"","t":"清明（休）","c":"holiday","a":true,"n":""},{"d":"2026-04-05","s":"","e":"","t":"清明","c":"holiday","a":true,"n":""},{"d":"2026-04-20","s":"","e":"","t":"谷雨","c":"holiday","a":true,"n":""},{"d":"2026-05-01","s":"","e":"","t":"劳动节（休）","c":"holiday","a":true,"n":""},{"d":"2026-05-05","s":"","e":"","t":"立夏","c":"holiday","a":true,"n":""},{"d":"2026-05-09","s":"","e":"","t":"劳动节（班）","c":"holiday","a":true,"n":""},{"d":"2026-05-21","s":"","e":"","t":"小满","c":"holiday","a":true,"n":""},{"d":"2026-06-05","s":"","e":"","t":"芒种","c":"holiday","a":true,"n":""},{"d":"2026-06-19","s":"","e":"","t":"端午节","c":"holiday","a":true,"n":""},{"d":"2026-06-19","s":"","e":"","t":"端午节（休）","c":"holiday","a":true,"n":""},{"d":"2026-06-21","s":"","e":"","t":"夏至","c":"holiday","a":true,"n":""},{"d":"2026-07-07","s":"","e":"","t":"小暑","c":"holiday","a":true,"n":""},{"d":"2026-07-23","s":"","e":"","t":"大暑","c":"holiday","a":true,"n":""},{"d":"2026-08-07","s":"","e":"","t":"立秋","c":"holiday","a":true,"n":""},{"d":"2026-08-19","s":"","e":"","t":"七夕节","c":"holiday","a":true,"n":""},{"d":"2026-08-23","s":"","e":"","t":"处暑","c":"holiday","a":true,"n":""},{"d":"2026-09-07","s":"","e":"","t":"白露","c":"holiday","a":true,"n":""},{"d":"2026-09-20","s":"","e":"","t":"国庆节（班）","c":"holiday","a":true,"n":""},{"d":"2026-09-23","s":"","e":"","t":"秋分","c":"holiday","a":true,"n":""},{"d":"2026-09-25","s":"","e":"","t":"中秋节","c":"holiday","a":true,"n":""},{"d":"2026-09-25","s":"","e":"","t":"中秋节（休）","c":"holiday","a":true,"n":""},{"d":"2026-10-01","s":"","e":"","t":"国庆节（休）","c":"holiday","a":true,"n":""},{"d":"2026-10-08","s":"","e":"","t":"寒露","c":"holiday","a":true,"n":""},{"d":"2026-10-10","s":"","e":"","t":"国庆节（班）","c":"holiday","a":true,"n":""},{"d":"2026-10-18","s":"","e":"","t":"重阳节","c":"holiday","a":true,"n":""},{"d":"2026-10-23","s":"","e":"","t":"霜降","c":"holiday","a":true,"n":""},{"d":"2026-11-07","s":"","e":"","t":"立冬","c":"holiday","a":true,"n":""},{"d":"2026-11-19","s":"10:00","e":"11:00","t":"示例 · 行业发布会","c":"work","a":false,"n":"双击日历空白处可新建事件"},{"d":"2026-11-20","s":"20:00","e":"21:00","t":"示例 · 财报电话会","c":"work","a":false,"n":""},{"d":"2026-11-22","s":"","e":"","t":"小雪","c":"holiday","a":true,"n":""},{"d":"2026-11-24","s":"09:30","e":"10:30","t":"示例 · 投研周会","c":"personal","a":false,"n":""},{"d":"2026-11-28","s":"","e":"","t":"示例 · 整理读书笔记","c":"other","a":true,"n":"全天事件示例"},{"d":"2026-12-07","s":"","e":"","t":"大雪","c":"holiday","a":true,"n":""},{"d":"2026-12-22","s":"","e":"","t":"冬至","c":"holiday","a":true,"n":""},{"d":"2027-01-05","s":"","e":"","t":"小寒","c":"holiday","a":true,"n":""},{"d":"2027-01-20","s":"","e":"","t":"大寒","c":"holiday","a":true,"n":""},{"d":"2027-02-04","s":"","e":"","t":"立春","c":"holiday","a":true,"n":""},{"d":"2027-02-05","s":"","e":"","t":"除夕","c":"holiday","a":true,"n":""},{"d":"2027-02-06","s":"","e":"","t":"春节","c":"holiday","a":true,"n":""},{"d":"2027-02-07","s":"","e":"","t":"正月初二","c":"holiday","a":true,"n":""},{"d":"2027-02-08","s":"","e":"","t":"正月初三","c":"holiday","a":true,"n":""},{"d":"2027-02-19","s":"","e":"","t":"雨水","c":"holiday","a":true,"n":""},{"d":"2027-02-20","s":"","e":"","t":"元宵节","c":"holiday","a":true,"n":""},{"d":"2027-03-06","s":"","e":"","t":"惊蛰","c":"holiday","a":true,"n":""},{"d":"2027-03-21","s":"","e":"","t":"春分","c":"holiday","a":true,"n":""},{"d":"2027-04-05","s":"","e":"","t":"清明","c":"holiday","a":true,"n":""},{"d":"2027-04-20","s":"","e":"","t":"谷雨","c":"holiday","a":true,"n":""},{"d":"2027-05-06","s":"","e":"","t":"立夏","c":"holiday","a":true,"n":""},{"d":"2027-05-21","s":"","e":"","t":"小满","c":"holiday","a":true,"n":""},{"d":"2027-06-06","s":"","e":"","t":"芒种","c":"holiday","a":true,"n":""},{"d":"2027-06-09","s":"","e":"","t":"端午节","c":"holiday","a":true,"n":""},{"d":"2027-06-21","s":"","e":"","t":"夏至","c":"holiday","a":true,"n":""}],"earnings":{"updated":"2026-11-17","note":"财报日为人工核对后写入。status=confirmed 表示官方或公司 IR 已公布；estimated 表示按历史规律/数据商预测推算，官方尚未确认。时间口径为北京时间。","items":[{"d":"2026-11-17","ticker":"JD","company":"京东","title":"京东 Q3 财报","status":"confirmed","note":"美股盘前，北京时间约 17:00；电话会 19:00","src":"公司公告","actual":null,"expect":{"val":{"target":38.96,"cur":27.91,"unit":"美元","n":40,"buy":88,"hold":10,"sell":2,"nTarget":34,"upside":39.6,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"人民币口径：NeoData 一致预期（港股 09618.HK，28 家），按 1 港币≈0.86 元折算；同比以 2025Q3 实际值（2,982 亿元）重算。","items":[{"k":"营业收入","v":"3,115","u":"亿元","yoy":4.5,"n":28},{"k":"归母净利润","v":"80.7","u":"亿元","yoy":39.6,"n":26},{"k":"每股收益","v":"2.97","u":"元","yoy":58.8,"n":18}]}}},{"d":"2026-11-17","ticker":"TME","company":"腾讯音乐","title":"TME Q3 财报","status":"confirmed","note":"美股盘前，北京时间约 17:00；电话会 20:00","src":"公司公告","actual":null,"expect":{"val":{"target":12.1,"cur":9.05,"unit":"美元","n":36,"buy":64,"hold":36,"sell":0,"nTarget":28,"upside":33.7,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"人民币口径：NeoData 一致预期（港股 01698.HK，12 家）；同比以 2025Q3 实际值（84.2 亿元）重算。","items":[{"k":"营业收入","v":"91.5","u":"亿元","yoy":8.7,"n":12},{"k":"归母净利润","v":"22.1","u":"亿元","yoy":3.1,"n":9}]}}},{"d":"2026-11-18","ticker":"NVDA","company":"英伟达","title":"英伟达 FY27Q3 财报","status":"confirmed","note":"美东 11/17 盘后，北京时间 11/18 约 05:20 发布，06:00 电话会","src":"NVIDIA IR 2026-10-28 新闻稿","actual":null,"expect":{"val":{"target":279.48,"cur":162.85,"unit":"美元","n":72,"buy":78,"hold":21,"sell":1,"nTarget":58,"upside":71.6,"asof":"2026-11-17"},"est":{"period":"FY2027Q3","periodKind":"fcst","basis":"公司指引取自 FY27Q2 财报（2026-08-27）；一致预期为披露时点市场预期；净利润为上一季实际（非本期预测）。","items":[{"k":"营业收入 · 指引","v":"1,080","u":"亿美元","yoy":89.4,"s":"指引 ±2%"},{"k":"营业收入 · 一致预期","v":"1,045.7","u":"亿美元","yoy":83.4,"s":"8月时点"},{"k":"Non-GAAP 毛利率","v":"74.0","u":"%","s":"指引 ±0.5%"},{"k":"净利润 · 上季实际","v":"596.9","u":"亿美元","yoy":125.9,"s":"上季"}]}}},{"d":"2026-11-18","ticker":"0700.HK","company":"腾讯","title":"腾讯 Q3 财报","status":"confirmed","note":"港股盘后，北京时间约 16:15 公布；电话会 20:00","src":"港交所公告","actual":null,"expect":{"val":{"target":647.07,"cur":376.0,"unit":"港元","n":58,"buy":93,"hold":5,"sell":2,"nTarget":47,"upside":72.1,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"中信证券 2026-10-17 三季报前瞻（人民币口径）；利润为 Non-IFRS 口径。","items":[{"k":"营业收入","v":"2,088","u":"亿元","yoy":8.2,"s":"中信"},{"k":"Non-IFRS 经营利润","v":"702","u":"亿元","yoy":-3.3,"s":"中信"},{"k":"Non-IFRS 净利润","v":"665","u":"亿元","yoy":-5.7,"s":"中信"},{"k":"毛利率","v":"56.4","u":"%","s":"持平"}]}}},{"d":"2026-11-19","ticker":"BABA","company":"阿里巴巴","title":"阿里 FY27Q2 财报","status":"confirmed","note":"美股盘前，北京时间约 17:00；电话会 19:30","src":"公司公告","actual":null,"expect":{"val":{"target":179.12,"cur":85.45,"unit":"港元","n":29,"buy":93,"hold":3,"sell":4,"nTarget":21,"upside":109.6,"asof":"2026-11-17"},"est":{"period":"FY2027Q2（3Q26）","periodKind":"fcst","basis":"中金公司 2026-10-09 前瞻：收入同增 9.8% 至 2,721 亿元，调整 EBITA 303 亿元、Non-GAAP 归母净利 272 亿元；卖方预览亦为 +9%，人民币口径。","items":[{"k":"营业收入","v":"2,721","u":"亿元","yoy":9.8,"s":"中金"},{"k":"调整 EBITA","v":"303","u":"亿元","s":"中金"},{"k":"Non-GAAP 归母净利","v":"272","u":"亿元","s":"中金"}]}}},{"d":"2026-11-19","ticker":"PDD","company":"拼多多","title":"拼多多 Q3 财报","status":"confirmed","note":"美股盘前，北京时间约 18:00；电话会 19:30","src":"公司公告","actual":null,"expect":{"val":{"target":113.04,"cur":78.97,"unit":"美元","n":35,"buy":64,"hold":31,"sell":5,"nTarget":35,"upside":43.1,"asof":"2026-11-17"},"est":{"period":"上季基数","basis":"美股无中国卖方一致预期口径，此处为最近一期已披露实际（作本期参照），非预测。","items":[{"k":"营业收入","v":"165.06","u":"亿美元","yoy":14.8,"s":"上季"},{"k":"净利润","v":"39.93","u":"亿美元","yoy":-6.1,"s":"上季"}],"periodKind":"ref"}}},{"d":"2026-11-19","ticker":"1024.HK","company":"快手","title":"快手 Q3 财报","status":"confirmed","note":"港股盘后，北京时间约 16:15 公布；电话会 20:00","src":"港交所公告","actual":null,"expect":{"val":{"target":44.54,"cur":24.24,"unit":"港元","n":39,"buy":64,"hold":28,"sell":8,"nTarget":30,"upside":83.7,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"人民币口径：NeoData 一致预期（港股 01024.HK，14 家）；同比以 2025Q3 实际值（356 亿元）重算。","items":[{"k":"营业收入","v":"328.6","u":"亿元","yoy":-7.8,"n":14},{"k":"归母净利润","v":"4.8","u":"亿元","yoy":-89.3,"n":11}]}}},{"d":"2026-11-27","ticker":"3690.HK","company":"美团","title":"美团 Q3 财报","status":"confirmed","note":"港交所董事会会议通告：11 月 27 日（周五）审议并披露 2026 年第三季度未经审核业绩；港股盘后","src":"港交所公告 2026-11-17","actual":null,"expect":{"val":{"target":109.72,"cur":70.5,"unit":"港元","n":44,"buy":82,"hold":14,"sell":4,"nTarget":35,"upside":55.6,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"人民币口径，主来源不需要任何汇率换算：Yahoo 财经 3690.HK 一致预期（18 家，货币标 CNY）本季营收 1,130.8 亿元、上年同期 954.9 亿元、同比 +18.42%；市场共识另有 1,133 亿元（雪球引述）、花旗 1,142 亿元（+20%）、高盛 +19%（目标价 123 港元）。本值取 1,130.4 亿元，与 Yahoo 相差 0.04%。基期 954.9 亿元即 income_statement 2025Q3 人民币原值 95,488,113,000 元，未经折算。附注：NeoData 的 ratings 字段按挂牌货币展示（其 revenue_currency 标港币，2026 年度固定按 1.15 折算），1,299.9 ÷ 1.15 ＝ 1,130.4 仅用于交叉校验，不是主口径；公司财报与卖方预测本身都是人民币。","items":[{"k":"营业收入","v":"1,130.4","u":"亿元","yoy":18.4,"n":19},{"k":"净利润","v":"3.5","u":"亿元","n":10,"s":"IFRS；上年同期 -186.3 亿元"}]}}},{"d":"2027-01-14","ticker":"TSM","company":"台积电","title":"台积电 Q4 财报","status":"estimated","note":"台北盘前，通常为周四；历次均在 1 月中","src":"Wall Street Horizon","expect":{"val":{"target":554.22,"cur":398.73,"unit":"美元","n":21,"buy":95,"hold":5,"sell":0,"nTarget":18,"upside":39.0,"asof":"2026-11-17"}}},{"d":"2027-01-27","ticker":"MSFT","company":"微软","title":"微软 FY27Q2 财报","status":"estimated","note":"美东盘后，北京时间次日 05:00；部分数据商标注 1/26","src":"TipRanks / Wall Street Horizon","expect":{"val":{"target":639.16,"cur":523.88,"unit":"美元","n":59,"buy":93,"hold":7,"sell":0,"nTarget":51,"upside":22.0,"asof":"2026-11-17"}}},{"d":"2027-01-27","ticker":"TSLA","company":"特斯拉","title":"特斯拉 Q4 财报","status":"estimated","note":"美东盘后，北京时间次日 05:00","src":"财报日历聚合","expect":{"val":{"target":423.7,"cur":390.22,"unit":"美元","n":49,"buy":47,"hold":47,"sell":6,"nTarget":37,"upside":8.6,"asof":"2026-11-17"}}},{"d":"2027-02-03","ticker":"GOOGL","company":"谷歌","title":"Alphabet Q4 财报","status":"estimated","note":"美东盘后，北京时间次日 05:00；Alphabet 通常 1 月第二周确认日期","src":"MEXC / 财报日历聚合","expect":{"val":{"target":392.08,"cur":295.77,"unit":"美元","n":72,"buy":89,"hold":11,"sell":0,"nTarget":61,"upside":32.6,"asof":"2026-11-17"}}},{"d":"2027-02-04","ticker":"AMZN","company":"亚马逊","title":"亚马逊 Q4 财报","status":"estimated","note":"美东盘后，北京时间次日 05:00","src":"Wall Street Horizon（UNCONFIRMED）","expect":{"val":{"target":327.54,"cur":266.66,"unit":"美元","n":69,"buy":94,"hold":6,"sell":0,"nTarget":63,"upside":22.8,"asof":"2026-11-17"}}},{"d":"2027-02-09","ticker":"SPCX","company":"SpaceX","title":"SpaceX Q4 财报","status":"estimated","note":"上市后首个完整季度；仅单一数据源列出，可信度低，需以公司 IR 为准","src":"财报日历聚合（待核实）"},{"d":"2027-04-15","ticker":"TSM","company":"台积电","title":"台积电 Q1 财报","status":"estimated","note":"按历次 4 月中规律推算","src":"规律推算","expect":{"val":{"target":554.22,"cur":398.73,"unit":"美元","n":21,"buy":95,"hold":5,"sell":0,"nTarget":18,"upside":39.0,"asof":"2026-11-17"}}},{"d":"2027-04-28","ticker":"MSFT","company":"微软","title":"微软 FY27Q3 财报","status":"estimated","note":"按历次 4 月底规律推算","src":"规律推算","expect":{"val":{"target":639.16,"cur":523.88,"unit":"美元","n":59,"buy":93,"hold":7,"sell":0,"nTarget":51,"upside":22.0,"asof":"2026-11-17"}}},{"d":"2027-04-28","ticker":"GOOGL","company":"谷歌","title":"Alphabet Q1 财报","status":"estimated","note":"按历次 4 月底规律推算","src":"规律推算","expect":{"val":{"target":392.08,"cur":295.77,"unit":"美元","n":72,"buy":89,"hold":11,"sell":0,"nTarget":61,"upside":32.6,"asof":"2026-11-17"}}},{"d":"2027-04-29","ticker":"AMZN","company":"亚马逊","title":"亚马逊 Q1 财报","status":"estimated","note":"按历次 4 月底规律推算","src":"规律推算","expect":{"val":{"target":327.54,"cur":266.66,"unit":"美元","n":69,"buy":94,"hold":6,"sell":0,"nTarget":63,"upside":22.8,"asof":"2026-11-17"}}},{"d":"2027-04-21","ticker":"TSLA","company":"特斯拉","title":"特斯拉 Q1 财报","status":"estimated","note":"按历次 4 月下旬规律推算","src":"规律推算","expect":{"val":{"target":423.7,"cur":390.22,"unit":"美元","n":49,"buy":47,"hold":47,"sell":6,"nTarget":37,"upside":8.6,"asof":"2026-11-17"}}},{"d":"2027-05-26","ticker":"NVDA","company":"英伟达","title":"英伟达 FY28Q1 财报","status":"estimated","note":"按历次 5 月下旬规律推算","src":"规律推算","expect":{"val":{"target":279.48,"cur":162.85,"unit":"美元","n":72,"buy":78,"hold":21,"sell":1,"nTarget":58,"upside":71.6,"asof":"2026-11-17"}}},{"d":"2027-03-04","ticker":"JD","company":"京东","title":"京东 Q4 财报","status":"estimated","note":"按历次 3 月上旬规律推算","src":"规律推算","expect":{"val":{"target":38.96,"cur":27.91,"unit":"美元","n":40,"buy":88,"hold":10,"sell":2,"nTarget":34,"upside":39.6,"asof":"2026-11-17"}}},{"d":"2027-03-11","ticker":"BABA","company":"阿里巴巴","title":"阿里 FY27Q3 财报","status":"estimated","note":"按历次 2 月中下旬规律推算","src":"规律推算","expect":{"val":{"target":179.12,"cur":85.45,"unit":"港元","n":29,"buy":93,"hold":3,"sell":4,"nTarget":21,"upside":109.6,"asof":"2026-11-17"}}},{"d":"2027-03-18","ticker":"0700.HK","company":"腾讯","title":"腾讯 Q4 财报","status":"estimated","note":"按历次 3 月中下旬规律推算","src":"规律推算","expect":{"val":{"target":647.07,"cur":376.0,"unit":"港元","n":58,"buy":93,"hold":5,"sell":2,"nTarget":47,"upside":72.1,"asof":"2026-11-17"}}},{"d":"2027-03-18","ticker":"PDD","company":"拼多多","title":"拼多多 Q4 财报","status":"estimated","note":"按历次 3 月中规律推算","src":"规律推算","expect":{"val":{"target":113.04,"cur":78.97,"unit":"美元","n":35,"buy":64,"hold":31,"sell":5,"nTarget":35,"upside":43.1,"asof":"2026-11-17"}}},{"d":"2027-03-25","ticker":"1024.HK","company":"快手","title":"快手 Q4 财报","status":"estimated","note":"按历次 3 月下旬规律推算","src":"规律推算","expect":{"val":{"target":44.54,"cur":24.24,"unit":"港元","n":39,"buy":64,"hold":28,"sell":8,"nTarget":30,"upside":83.7,"asof":"2026-11-17"}}},{"d":"2027-03-26","ticker":"3690.HK","company":"美团","title":"美团 Q4 财报","status":"estimated","note":"按历次 3 月底规律推算","src":"规律推算","expect":{"val":{"target":109.72,"cur":70.5,"unit":"港元","n":44,"buy":82,"hold":14,"sell":4,"nTarget":35,"upside":55.6,"asof":"2026-11-17"}}}]},"finance":{"updated":"2026-11-18","note":"内置财经事件（IPO、央行、宏观节点）。这里放的是「所有人都会看到」的公共事件；你自己关心的宏观数据请用页面左侧「财经事件 +」添加，存在浏览器本地，可随时改删。","items":[{"d":"2026-11-19","s":"22:30","e":"23:30","t":"示例 · 某公司挂牌上市","company":"","kind":"ipo","note":"示例数据。换成你自己关注的 IPO：交易所、代码与定价以官方公告 / 招股书为准。","src":"示例"},{"d":"2026-12-10","s":"03:00","e":"04:00","t":"示例 · FOMC 利率决议","company":"美联储","kind":"cb","note":"示例数据。实际公布时间以美联储官网日程为准，决议后 30 分钟有主席发布会。","src":"示例"}]},"companies":{"updated":"2026-11-17","note":"「核心业务关注点」为编辑判断，括号内是最近一期已披露的经营数据（财报 / 业绩会 / NeoData），用于对照下一场财报。市场预期数字来自 NeoData 一致预期；美股无中国卖方一致预期口径时，用最近一期已披露实际与公司指引，见每条 basis。","companies":{"腾讯":{"biz":"增值服务（游戏+社交）/ 营销服务 / 金融科技与企业服务","focus":["收入放缓到 8%：中信预测 Q3 营收 2,088 亿元、同比 +8.2%（Q2 为 2,355 亿元、+11.0%）","利润首次负增：Non-IFRS 净利 665 亿元、同比 -5.7%，Non-IFRS 经营利润 702 亿元、同比 -3.3%，毛利率 56.4% 与去年持平","结构分化：增值服务 1,000 亿元 +4.3%（本土游戏 +10.0%、海外游戏 -3.0%）；营销服务 431 亿元 +19.0%；金科企服 631 亿元 +8.4%","游戏本土常青（王者、和平）与海外递延确认节奏；广告看视频号 eCPM、加载率与 AI 推荐拉动"]},"快手":{"biz":"线上营销 / 电商佣金 / 直播打赏 / 可灵 AI","focus":["收入首次转负：Q3 一致预期 328.6 亿元、同比 -7.8%（Q2 为 409 亿元、+1.4%），直播与电商同时承压","利润几乎清零：一致预期净利 4.8 亿元、同比 -89.3%（Q2 为 36.3 亿元、-36.0%），可灵 AI 投入是主要吞利润项","卖方态度急转：买入占比从 7 月的 93% 掉到 64%，持有升至 28%，目标价 44.5 港元对现价 24.2 港元","看可灵 AI 单季收入体量与推理成本；电商 GMV 增速、货币化率与货架场占比"]},"美团":{"biz":"外卖 / 到店酒旅 / 即时零售（闪购） / 新业务（Keeta 等）","focus":["收入重回 18% 档：Q3 一致预期 1,130.8 亿元（Yahoo，18 家，CNY 口径）、同比 +18.4%；市场共识 1,133 亿元、花旗 1,142 亿元；上年同期 954.9 亿元（Q2 实际 1,046 亿元、+13.9%）","利润刚转正、底子薄：IFRS 净利润一致预期 3.5 亿元，上年同期亏 186.3 亿元；经调整净利（非 IFRS）市场预期 22 亿元。一个补贴季度就能打回亏损","UE 已见修复：国信调研 9 月外卖 UE 回升至 0.4 元（7 月 0.2、8 月 0.1），Q4 目标 0.4 元；Q3 日均单量 7,400-7,500 万单、同比 -3~4%","竞对收手是最大边际：淘闪 Q3 减亏 0.3-0.4 元/单、京东外卖 Q3 亏损从 62 亿收窄至 57 亿元","新业务看 Keeta 出海：巴西市场投入节奏决定 Q4 经营亏损是否扩大（花旗预计亏损环比走阔）"]},"京东":{"biz":"京东零售（带电/日百） / 京东物流 / 新业务（外卖、即时零售）","focus":["带电品类是最大变量：Q2 电子产品及家用电器收入 1,579 亿元、同比 -11.8%（去年国补高基数 + 原材料涨价）；高盛预计 Q3 零售收入 +3%（Q2 -5%）","日百对冲不足：Q2 日用百货 1,092 亿元、+5.6%，商品收入整体 -5.4% 至 2,671 亿元；服务收入 793 亿元、+6.8%，占比升至 22.9%","零售利润率是底牌：Q2 京东零售 Non-GAAP 营业利润 135 亿元、利润率 4.6%，毛利率 18.5%（+1.3pt，连续 17 季同比提升）","外卖减亏在兑现：Q2 新业务收入 73 亿元、营业亏损收窄至 99 亿元；高盛测算 Q3 外卖单均 EBIT -3.8 元（Q2 -4.0、去年 Q3 -9.9），Joybuy 海外亏损 19 亿元","本季共识（人民币）：营收 3,115 亿元、同比 +4.5%；净利 80.7 亿元、同比 +39.6%（去年外卖投入造成低基数）"]},"腾讯音乐":{"biz":"在线音乐订阅 / 社交娱乐 / 广告","focus":["收入在加速：Q3 一致预期 106.39 亿港元、同比 +18.2%（Q2 为 103.91 亿、+12.7%）","利润温和：一致预期净利 25.67 亿港元、+8.6%（Q2 为 28.74 亿、+6.7%），毛利率受版权成本与自制内容影响","订阅看付费用户数 vs ARPU 的取舍、SVIP 渗透率；社交娱乐直播收入下滑是否止住"]},"英伟达":{"biz":"数据中心（GPU+网络） / 游戏 / 专业可视化 / 汽车","focus":["上季（FY27Q2，7月止）营收 962.21 亿美元、同比 +106%；净利 598.88 亿美元、同比 +126%；毛利率 75%。公司指引 FY27Q3 营收 1,080 亿美元、毛利率 74%","毛利率是硬指标：Non-GAAP 74%±50bp 的指引能否守住，内存涨价向下一季传导的幅度","卖方在松动：11 月买入占比从 95% 掉到 78%、持有升至 21%，近半年首次明显下调（目标价仍 279.48 美元）","Rubin 爬坡与数据中心占比、应收账款周转天数（上季 45→60 天）与 2,790 亿美元供应承诺的现金占用"]},"阿里巴巴":{"biz":"电商集团 / AI 云与算力 / AI 实验室与应用 / 其他","focus":["收入提速靠 AI 云：本季一致预期 2,721 亿元、同比 +9.8%（中金）；其中云收入预计 +53%（上季 +45%），外部收入增速快于整体","利润仍靠减亏：上季 Non-GAAP 净利同比 -72%；本季 Non-GAAP 归母 272 亿元、调整 EBITA 303 亿元（均高于一致预期），AI 实验室亏损收窄至 100-110 亿元","电商承压：客户管理收入（CMR）预计同比 -5%（旧口径约 +1%），双十一中高个位数负增；即时零售（闪购）亏损收窄至约 91 亿元","风险在算力：国信测算若海外 GPU 采购受阻，FY28 云收入从 3,661 亿元降到 3,286 亿元、增速由 51% 回落至 35%"]},"拼多多":{"biz":"在线市场服务（广告） / 交易服务（佣金） / Temu","focus":["利润已在下滑：上季营收 165.06 亿美元、同比 +14.8%，净利 39.93 亿美元、同比 -6.1%","广告 vs 佣金结构：广告增速能否企稳，佣金受 Temu 欧洲关税扰动","Temu 本地仓配投入与关税成本转嫁、单位经济模型；供应链与自营品牌（新拼姆）对利润率的稀释"]},"台积电":{"biz":"先进制程代工（N3/N2）/ 成熟制程 / 先进封装（CoWoS）","focus":["上季基数：营收 466.84 亿美元、同比 +41.1%；净利 238.40 亿美元、+57.7%","AI 需求：HPC 营收占比与 CoWoS 产能扩张节奏，是当前估值锚","N2 量产爬坡与 A16 定价；海外厂（亚利桑那/熊本）毛利率稀释幅度与汇率影响"]},"微软":{"biz":"Azure 与云 / Microsoft 365 / LinkedIn / 游戏","focus":["上季基数：营收 900.07 亿美元、同比 +17.7%；净利 357.66 亿美元、+31.3%（利润率仍在扩张）","Azure 增速里 AI 贡献比例、产能约束解除时点","capex 与折旧周期对经营利润率的压制；Copilot 座位数与 ARPU 的实际变现进度"]},"特斯拉":{"biz":"汽车销售 / 能源与储能 / 服务与其他（FSD）","focus":["收入零增长、利润腰斩：上季营收 280.46 亿美元、同比 -0.2%；净利 7.87 亿美元、同比 -42.7%","交付结构与单车毛利：降价与金融贴息还能撑多久","FSD/Robotaxi 订阅收入确认与监管落地；Megapack 出货与毛利率能否继续对冲汽车业务"]},"谷歌":{"biz":"搜索与广告 / YouTube / Google Cloud / 其他押注","focus":["收入强、净利虚：上季营收 1,273.83 亿美元、同比 +24.2%；净利 264.68 亿美元、同比 -24.3%（去年同期含大额非经营收益，基数不可比）","搜索：AI Overviews 对查询量与 CPC 的净影响；云：增速与 backlog 转化","资本开支：TPU 与数据中心投入对自由现金流的压力"]},"亚马逊":{"biz":"北美零售 / 国际零售 / AWS / 广告","focus":["上季基数：营收 2,019.44 亿美元、同比 +12.1%；净利 206.85 亿美元、同比 -2.4%","AWS 增速与 AI 工作负载占比、Trainium 自研芯片进展","零售履约费用率与单位经济；2027 年 capex 指引与折旧对利润的影响"]},"SpaceX":{"biz":"发射服务 / Starlink / 星舰","focus":["未上市，无卖方一致预期；本日程为按惯例推算的沟通节点","关注 Starlink 用户数与 ARPU、发射频次","星舰试飞进度与资本开支节奏"]}}},"macro":{"note":"宏观事件模板库。项目不内置具体发布日期——不猜官方日程。用户添加时填首次日期，系统按频次往后铺开，日期标为「预计」，用户可在日历里拖到官方确认的日期。","templates":[{"id":"us-cpi","name":"美国 CPI 同比","country":"US","imp":"high","freq":"month","note":"BLS 每月中旬公布上月数据，同比与核心同比同时发布"},{"id":"us-core-cpi","name":"美国核心 CPI","country":"US","imp":"high","freq":"month","note":"剔除食品与能源，美联储更看重核心口径"},{"id":"us-ppi","name":"美国 PPI 同比","country":"US","imp":"mid","freq":"month","note":"BLS 公布，通常晚于 CPI 一天左右"},{"id":"us-pce","name":"美国核心 PCE","country":"US","imp":"high","freq":"month","note":"BEA 月底公布，是美联储 2% 目标的官方对标指标"},{"id":"us-nfp","name":"美国非农就业","country":"US","imp":"high","freq":"month","note":"BLS 每月第一个周五公布，同时发布失业率与时薪"},{"id":"us-retail","name":"美国零售销售","country":"US","imp":"mid","freq":"month","note":"普查局每月中旬公布，看环比与核心对照组"},{"id":"us-fomc","name":"FOMC 利率决议","country":"US","imp":"high","freq":"quarter","note":"每年 8 次，看点阵图与发布会措辞"},{"id":"us-jobless","name":"美国初请失业金","country":"US","imp":"low","freq":"week","note":"劳工部每周四公布，高频 labour 温度计"},{"id":"us-ism","name":"美国 ISM 制造业 PMI","country":"US","imp":"mid","freq":"month","note":"每月首个工作日公布，50 为荣枯线"},{"id":"us-gdp","name":"美国 GDP 环比折年","country":"US","imp":"mid","freq":"quarter","note":"BEA 初值 / 修正值 / 终值三次发布"},{"id":"cn-cpi","name":"中国 CPI / PPI","country":"CN","imp":"high","freq":"month","note":"统计局每月 9 日前后公布，注意春节错位"},{"id":"cn-tsf","name":"中国社融 / 新增贷款","country":"CN","imp":"high","freq":"month","note":"央行每月 10-15 日公布，看社融存量增速与结构"},{"id":"cn-lpr","name":"中国 LPR 报价","country":"CN","imp":"mid","freq":"month","note":"每月 20 日公布 1 年期与 5 年期以上报价"},{"id":"cn-pmi","name":"中国官方制造业 PMI","country":"CN","imp":"mid","freq":"month","note":"统计局每月最后一天公布"},{"id":"cn-caixin","name":"中国财新制造业 PMI","country":"CN","imp":"mid","freq":"month","note":"每月首个工作日公布，样本偏中小与出口企业"},{"id":"cn-trade","name":"中国进出口","country":"CN","imp":"mid","freq":"month","note":"海关总署每月 7 日前后公布，看同比与顺差"},{"id":"cn-m2","name":"中国 M2 / M1","country":"CN","imp":"mid","freq":"month","note":"与社融同期公布，看 M1-M2 剪刀差"},{"id":"cn-activity","name":"中国工业增加值 / 社零","country":"CN","imp":"high","freq":"month","note":"统计局每月 15 日前后公布，与固投同时发布"},{"id":"cn-gdp","name":"中国 GDP 同比","country":"CN","imp":"high","freq":"quarter","note":"季度公布，含分产业与支出法结构"},{"id":"ecb","name":"欧央行利率决议","country":"EU","imp":"high","freq":"quarter","note":"每 6 周一次，看声明与拉加德发布会"},{"id":"boj","name":"日本央行利率决议","country":"JP","imp":"mid","freq":"quarter","note":"关注 YCC 政策与日元汇率反应"},{"id":"eia","name":"美国 EIA 原油库存","country":"US","imp":"low","freq":"week","note":"每周三公布，影响油价与能源股"}]}};
+const DATA = {"events":[{"d":"2026-01-01","s":"","e":"","t":"元旦（休）","c":"holiday","a":true,"n":""},{"d":"2026-01-04","s":"","e":"","t":"元旦（班）","c":"holiday","a":true,"n":""},{"d":"2026-01-05","s":"","e":"","t":"小寒","c":"holiday","a":true,"n":""},{"d":"2026-01-20","s":"","e":"","t":"大寒","c":"holiday","a":true,"n":""},{"d":"2026-02-04","s":"","e":"","t":"立春","c":"holiday","a":true,"n":""},{"d":"2026-02-14","s":"","e":"","t":"春节（班）","c":"holiday","a":true,"n":""},{"d":"2026-02-15","s":"","e":"","t":"春节（休）","c":"holiday","a":true,"n":""},{"d":"2026-02-16","s":"","e":"","t":"除夕","c":"holiday","a":true,"n":""},{"d":"2026-02-17","s":"","e":"","t":"春节","c":"holiday","a":true,"n":""},{"d":"2026-02-18","s":"","e":"","t":"正月初二","c":"holiday","a":true,"n":""},{"d":"2026-02-18","s":"","e":"","t":"雨水","c":"holiday","a":true,"n":""},{"d":"2026-02-19","s":"","e":"","t":"正月初三","c":"holiday","a":true,"n":""},{"d":"2026-02-28","s":"","e":"","t":"春节（班）","c":"holiday","a":true,"n":""},{"d":"2026-03-03","s":"","e":"","t":"元宵节","c":"holiday","a":true,"n":""},{"d":"2026-03-05","s":"","e":"","t":"惊蛰","c":"holiday","a":true,"n":""},{"d":"2026-03-20","s":"","e":"","t":"春分","c":"holiday","a":true,"n":""},{"d":"2026-04-04","s":"","e":"","t":"清明（休）","c":"holiday","a":true,"n":""},{"d":"2026-04-05","s":"","e":"","t":"清明","c":"holiday","a":true,"n":""},{"d":"2026-04-20","s":"","e":"","t":"谷雨","c":"holiday","a":true,"n":""},{"d":"2026-05-01","s":"","e":"","t":"劳动节（休）","c":"holiday","a":true,"n":""},{"d":"2026-05-05","s":"","e":"","t":"立夏","c":"holiday","a":true,"n":""},{"d":"2026-05-09","s":"","e":"","t":"劳动节（班）","c":"holiday","a":true,"n":""},{"d":"2026-05-21","s":"","e":"","t":"小满","c":"holiday","a":true,"n":""},{"d":"2026-06-05","s":"","e":"","t":"芒种","c":"holiday","a":true,"n":""},{"d":"2026-06-19","s":"","e":"","t":"端午节","c":"holiday","a":true,"n":""},{"d":"2026-06-19","s":"","e":"","t":"端午节（休）","c":"holiday","a":true,"n":""},{"d":"2026-06-21","s":"","e":"","t":"夏至","c":"holiday","a":true,"n":""},{"d":"2026-07-07","s":"","e":"","t":"小暑","c":"holiday","a":true,"n":""},{"d":"2026-07-23","s":"","e":"","t":"大暑","c":"holiday","a":true,"n":""},{"d":"2026-08-07","s":"","e":"","t":"立秋","c":"holiday","a":true,"n":""},{"d":"2026-08-19","s":"","e":"","t":"七夕节","c":"holiday","a":true,"n":""},{"d":"2026-08-23","s":"","e":"","t":"处暑","c":"holiday","a":true,"n":""},{"d":"2026-09-07","s":"","e":"","t":"白露","c":"holiday","a":true,"n":""},{"d":"2026-09-20","s":"","e":"","t":"国庆节（班）","c":"holiday","a":true,"n":""},{"d":"2026-09-23","s":"","e":"","t":"秋分","c":"holiday","a":true,"n":""},{"d":"2026-09-25","s":"","e":"","t":"中秋节","c":"holiday","a":true,"n":""},{"d":"2026-09-25","s":"","e":"","t":"中秋节（休）","c":"holiday","a":true,"n":""},{"d":"2026-10-01","s":"","e":"","t":"国庆节（休）","c":"holiday","a":true,"n":""},{"d":"2026-10-08","s":"","e":"","t":"寒露","c":"holiday","a":true,"n":""},{"d":"2026-10-10","s":"","e":"","t":"国庆节（班）","c":"holiday","a":true,"n":""},{"d":"2026-10-18","s":"","e":"","t":"重阳节","c":"holiday","a":true,"n":""},{"d":"2026-10-23","s":"","e":"","t":"霜降","c":"holiday","a":true,"n":""},{"d":"2026-11-07","s":"","e":"","t":"立冬","c":"holiday","a":true,"n":""},{"d":"2026-11-19","s":"10:00","e":"11:00","t":"示例 · 行业发布会","c":"work","a":false,"n":"双击日历空白处可新建事件"},{"d":"2026-11-20","s":"20:00","e":"21:00","t":"示例 · 财报电话会","c":"work","a":false,"n":""},{"d":"2026-11-22","s":"","e":"","t":"小雪","c":"holiday","a":true,"n":""},{"d":"2026-11-24","s":"09:30","e":"10:30","t":"示例 · 投研周会","c":"personal","a":false,"n":""},{"d":"2026-11-28","s":"","e":"","t":"示例 · 整理读书笔记","c":"other","a":true,"n":"全天事件示例"},{"d":"2026-12-07","s":"","e":"","t":"大雪","c":"holiday","a":true,"n":""},{"d":"2026-12-22","s":"","e":"","t":"冬至","c":"holiday","a":true,"n":""},{"d":"2027-01-05","s":"","e":"","t":"小寒","c":"holiday","a":true,"n":""},{"d":"2027-01-20","s":"","e":"","t":"大寒","c":"holiday","a":true,"n":""},{"d":"2027-02-04","s":"","e":"","t":"立春","c":"holiday","a":true,"n":""},{"d":"2027-02-05","s":"","e":"","t":"除夕","c":"holiday","a":true,"n":""},{"d":"2027-02-06","s":"","e":"","t":"春节","c":"holiday","a":true,"n":""},{"d":"2027-02-07","s":"","e":"","t":"正月初二","c":"holiday","a":true,"n":""},{"d":"2027-02-08","s":"","e":"","t":"正月初三","c":"holiday","a":true,"n":""},{"d":"2027-02-19","s":"","e":"","t":"雨水","c":"holiday","a":true,"n":""},{"d":"2027-02-20","s":"","e":"","t":"元宵节","c":"holiday","a":true,"n":""},{"d":"2027-03-06","s":"","e":"","t":"惊蛰","c":"holiday","a":true,"n":""},{"d":"2027-03-21","s":"","e":"","t":"春分","c":"holiday","a":true,"n":""},{"d":"2027-04-05","s":"","e":"","t":"清明","c":"holiday","a":true,"n":""},{"d":"2027-04-20","s":"","e":"","t":"谷雨","c":"holiday","a":true,"n":""},{"d":"2027-05-06","s":"","e":"","t":"立夏","c":"holiday","a":true,"n":""},{"d":"2027-05-21","s":"","e":"","t":"小满","c":"holiday","a":true,"n":""},{"d":"2027-06-06","s":"","e":"","t":"芒种","c":"holiday","a":true,"n":""},{"d":"2027-06-09","s":"","e":"","t":"端午节","c":"holiday","a":true,"n":""},{"d":"2027-06-21","s":"","e":"","t":"夏至","c":"holiday","a":true,"n":""}],"earnings":{"updated":"2026-11-17","note":"财报日为人工核对后写入。status=confirmed 表示官方或公司 IR 已公布；estimated 表示按历史规律/数据商预测推算，官方尚未确认。时间口径为北京时间。","items":[{"d":"2026-11-17","ticker":"JD","company":"京东","title":"京东 Q3 财报","status":"confirmed","note":"美股盘前，北京时间约 17:00；电话会 19:00","src":"公司公告","actual":null,"expect":{"val":{"target":38.96,"cur":27.91,"unit":"美元","n":40,"buy":88,"hold":10,"sell":2,"nTarget":34,"upside":39.6,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"人民币口径：NeoData 一致预期（港股 09618.HK，28 家），按 1 港币≈0.86 元折算；同比以 2025Q3 实际值（2,982 亿元）重算。","items":[{"k":"营业收入","v":"3,115","u":"亿元","yoy":4.5,"n":28},{"k":"归母净利润","v":"80.7","u":"亿元","yoy":39.6,"n":26},{"k":"每股收益","v":"2.97","u":"元","yoy":58.8,"n":18}]}}},{"d":"2026-11-17","ticker":"TME","company":"腾讯音乐","title":"TME Q3 财报","status":"confirmed","note":"美股盘前，北京时间约 17:00；电话会 20:00","src":"公司公告","actual":null,"expect":{"val":{"target":12.1,"cur":9.05,"unit":"美元","n":36,"buy":64,"hold":36,"sell":0,"nTarget":28,"upside":33.7,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"人民币口径：NeoData 一致预期（港股 01698.HK，12 家）；同比以 2025Q3 实际值（84.2 亿元）重算。","items":[{"k":"营业收入","v":"91.5","u":"亿元","yoy":8.7,"n":12},{"k":"归母净利润","v":"22.1","u":"亿元","yoy":3.1,"n":9}]}}},{"d":"2026-11-18","ticker":"NVDA","company":"英伟达","title":"英伟达 FY27Q3 财报","status":"confirmed","note":"美东 11/17 盘后，北京时间 11/18 约 05:20 发布，06:00 电话会","src":"NVIDIA IR 2026-10-28 新闻稿","actual":null,"expect":{"val":{"target":279.48,"cur":162.85,"unit":"美元","n":72,"buy":78,"hold":21,"sell":1,"nTarget":58,"upside":71.6,"asof":"2026-11-17"},"est":{"period":"FY2027Q3","periodKind":"fcst","basis":"公司指引取自 FY27Q2 财报（2026-08-27）；一致预期为披露时点市场预期；净利润为上一季实际（非本期预测）。","items":[{"k":"营业收入 · 指引","v":"1,080","u":"亿美元","yoy":89.4,"s":"指引 ±2%"},{"k":"营业收入 · 一致预期","v":"1,045.7","u":"亿美元","yoy":83.4,"s":"8月时点"},{"k":"Non-GAAP 毛利率","v":"74.0","u":"%","s":"指引 ±0.5%"},{"k":"净利润 · 上季实际","v":"596.9","u":"亿美元","yoy":125.9,"s":"上季"}]}}},{"d":"2026-11-18","ticker":"0700.HK","company":"腾讯","title":"腾讯 Q3 财报","status":"confirmed","note":"港股盘后，北京时间约 16:15 公布；电话会 20:00","src":"港交所公告","actual":null,"expect":{"val":{"target":647.07,"cur":376.0,"unit":"港元","n":58,"buy":93,"hold":5,"sell":2,"nTarget":47,"upside":72.1,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"中信证券 2026-10-17 三季报前瞻（人民币口径）；利润为 Non-IFRS 口径。","items":[{"k":"营业收入","v":"2,088","u":"亿元","yoy":8.2,"s":"中信"},{"k":"Non-IFRS 经营利润","v":"702","u":"亿元","yoy":-3.3,"s":"中信"},{"k":"Non-IFRS 净利润","v":"665","u":"亿元","yoy":-5.7,"s":"中信"},{"k":"毛利率","v":"56.4","u":"%","s":"持平"}]}}},{"d":"2026-11-19","ticker":"BABA","company":"阿里巴巴","title":"阿里 FY27Q2 财报","status":"confirmed","note":"美股盘前，北京时间约 17:00；电话会 19:30","src":"公司公告","actual":null,"expect":{"val":{"target":179.12,"cur":85.45,"unit":"港元","n":29,"buy":93,"hold":3,"sell":4,"nTarget":21,"upside":109.6,"asof":"2026-11-17"},"est":{"period":"FY2027Q2（3Q26）","periodKind":"fcst","basis":"中金公司 2026-10-09 前瞻：收入同增 9.8% 至 2,721 亿元，调整 EBITA 303 亿元、Non-GAAP 归母净利 272 亿元；卖方预览亦为 +9%，人民币口径。","items":[{"k":"营业收入","v":"2,721","u":"亿元","yoy":9.8,"s":"中金"},{"k":"调整 EBITA","v":"303","u":"亿元","s":"中金"},{"k":"Non-GAAP 归母净利","v":"272","u":"亿元","s":"中金"}]}}},{"d":"2026-11-19","ticker":"PDD","company":"拼多多","title":"拼多多 Q3 财报","status":"confirmed","note":"美股盘前，北京时间约 18:00；电话会 19:30","src":"公司公告","actual":null,"expect":{"val":{"target":113.04,"cur":78.97,"unit":"美元","n":35,"buy":64,"hold":31,"sell":5,"nTarget":35,"upside":43.1,"asof":"2026-11-17"},"est":{"period":"上季基数","basis":"美股无中国卖方一致预期口径，此处为最近一期已披露实际（作本期参照），非预测。","items":[{"k":"营业收入","v":"165.06","u":"亿美元","yoy":14.8,"s":"上季"},{"k":"净利润","v":"39.93","u":"亿美元","yoy":-6.1,"s":"上季"}],"periodKind":"ref"}}},{"d":"2026-11-19","ticker":"1024.HK","company":"快手","title":"快手 Q3 财报","status":"confirmed","note":"港股盘后，北京时间约 16:15 公布；电话会 20:00","src":"港交所公告","actual":null,"expect":{"val":{"target":44.54,"cur":24.24,"unit":"港元","n":39,"buy":64,"hold":28,"sell":8,"nTarget":30,"upside":83.7,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"人民币口径：NeoData 一致预期（港股 01024.HK，14 家）；同比以 2025Q3 实际值（356 亿元）重算。","items":[{"k":"营业收入","v":"328.6","u":"亿元","yoy":-7.8,"n":14},{"k":"归母净利润","v":"4.8","u":"亿元","yoy":-89.3,"n":11}]}}},{"d":"2026-11-27","ticker":"3690.HK","company":"美团","title":"美团 Q3 财报","status":"confirmed","note":"港交所董事会会议通告：11 月 27 日（周五）审议并披露 2026 年第三季度未经审核业绩；港股盘后","src":"港交所公告 2026-11-17","actual":null,"expect":{"val":{"target":109.72,"cur":70.5,"unit":"港元","n":44,"buy":82,"hold":14,"sell":4,"nTarget":35,"upside":55.6,"asof":"2026-11-17"},"est":{"period":"2026Q3","periodKind":"fcst","basis":"人民币口径，主来源不需要任何汇率换算：Yahoo 财经 3690.HK 一致预期（18 家，货币标 CNY）本季营收 1,130.8 亿元、上年同期 954.9 亿元、同比 +18.42%；市场共识另有 1,133 亿元（雪球引述）、花旗 1,142 亿元（+20%）、高盛 +19%（目标价 123 港元）。本值取 1,130.4 亿元，与 Yahoo 相差 0.04%。基期 954.9 亿元即 income_statement 2025Q3 人民币原值 95,488,113,000 元，未经折算。附注：NeoData 的 ratings 字段按挂牌货币展示（其 revenue_currency 标港币，2026 年度固定按 1.15 折算），1,299.9 ÷ 1.15 ＝ 1,130.4 仅用于交叉校验，不是主口径；公司财报与卖方预测本身都是人民币。","items":[{"k":"营业收入","v":"1,130.4","u":"亿元","yoy":18.4,"n":19},{"k":"净利润","v":"3.5","u":"亿元","n":10,"s":"IFRS；上年同期 -186.3 亿元"}]}}},{"d":"2027-01-14","ticker":"TSM","company":"台积电","title":"台积电 Q4 财报","status":"estimated","note":"台北盘前，通常为周四；历次均在 1 月中","src":"Wall Street Horizon","expect":{"val":{"target":554.22,"cur":398.73,"unit":"美元","n":21,"buy":95,"hold":5,"sell":0,"nTarget":18,"upside":39.0,"asof":"2026-11-17"}}},{"d":"2027-01-27","ticker":"MSFT","company":"微软","title":"微软 FY27Q2 财报","status":"estimated","note":"美东盘后，北京时间次日 05:00；部分数据商标注 1/26","src":"TipRanks / Wall Street Horizon","expect":{"val":{"target":639.16,"cur":523.88,"unit":"美元","n":59,"buy":93,"hold":7,"sell":0,"nTarget":51,"upside":22.0,"asof":"2026-11-17"}}},{"d":"2027-01-27","ticker":"TSLA","company":"特斯拉","title":"特斯拉 Q4 财报","status":"estimated","note":"美东盘后，北京时间次日 05:00","src":"财报日历聚合","expect":{"val":{"target":423.7,"cur":390.22,"unit":"美元","n":49,"buy":47,"hold":47,"sell":6,"nTarget":37,"upside":8.6,"asof":"2026-11-17"}}},{"d":"2027-02-03","ticker":"GOOGL","company":"谷歌","title":"Alphabet Q4 财报","status":"estimated","note":"美东盘后，北京时间次日 05:00；Alphabet 通常 1 月第二周确认日期","src":"MEXC / 财报日历聚合","expect":{"val":{"target":392.08,"cur":295.77,"unit":"美元","n":72,"buy":89,"hold":11,"sell":0,"nTarget":61,"upside":32.6,"asof":"2026-11-17"}}},{"d":"2027-02-04","ticker":"AMZN","company":"亚马逊","title":"亚马逊 Q4 财报","status":"estimated","note":"美东盘后，北京时间次日 05:00","src":"Wall Street Horizon（UNCONFIRMED）","expect":{"val":{"target":327.54,"cur":266.66,"unit":"美元","n":69,"buy":94,"hold":6,"sell":0,"nTarget":63,"upside":22.8,"asof":"2026-11-17"}}},{"d":"2027-02-09","ticker":"SPCX","company":"SpaceX","title":"SpaceX Q4 财报","status":"estimated","note":"上市后首个完整季度；仅单一数据源列出，可信度低，需以公司 IR 为准","src":"财报日历聚合（待核实）"},{"d":"2027-04-15","ticker":"TSM","company":"台积电","title":"台积电 Q1 财报","status":"estimated","note":"按历次 4 月中规律推算","src":"规律推算","expect":{"val":{"target":554.22,"cur":398.73,"unit":"美元","n":21,"buy":95,"hold":5,"sell":0,"nTarget":18,"upside":39.0,"asof":"2026-11-17"}}},{"d":"2027-04-28","ticker":"MSFT","company":"微软","title":"微软 FY27Q3 财报","status":"estimated","note":"按历次 4 月底规律推算","src":"规律推算","expect":{"val":{"target":639.16,"cur":523.88,"unit":"美元","n":59,"buy":93,"hold":7,"sell":0,"nTarget":51,"upside":22.0,"asof":"2026-11-17"}}},{"d":"2027-04-28","ticker":"GOOGL","company":"谷歌","title":"Alphabet Q1 财报","status":"estimated","note":"按历次 4 月底规律推算","src":"规律推算","expect":{"val":{"target":392.08,"cur":295.77,"unit":"美元","n":72,"buy":89,"hold":11,"sell":0,"nTarget":61,"upside":32.6,"asof":"2026-11-17"}}},{"d":"2027-04-29","ticker":"AMZN","company":"亚马逊","title":"亚马逊 Q1 财报","status":"estimated","note":"按历次 4 月底规律推算","src":"规律推算","expect":{"val":{"target":327.54,"cur":266.66,"unit":"美元","n":69,"buy":94,"hold":6,"sell":0,"nTarget":63,"upside":22.8,"asof":"2026-11-17"}}},{"d":"2027-04-21","ticker":"TSLA","company":"特斯拉","title":"特斯拉 Q1 财报","status":"estimated","note":"按历次 4 月下旬规律推算","src":"规律推算","expect":{"val":{"target":423.7,"cur":390.22,"unit":"美元","n":49,"buy":47,"hold":47,"sell":6,"nTarget":37,"upside":8.6,"asof":"2026-11-17"}}},{"d":"2027-05-26","ticker":"NVDA","company":"英伟达","title":"英伟达 FY28Q1 财报","status":"estimated","note":"按历次 5 月下旬规律推算","src":"规律推算","expect":{"val":{"target":279.48,"cur":162.85,"unit":"美元","n":72,"buy":78,"hold":21,"sell":1,"nTarget":58,"upside":71.6,"asof":"2026-11-17"}}},{"d":"2027-03-04","ticker":"JD","company":"京东","title":"京东 Q4 财报","status":"estimated","note":"按历次 3 月上旬规律推算","src":"规律推算","expect":{"val":{"target":38.96,"cur":27.91,"unit":"美元","n":40,"buy":88,"hold":10,"sell":2,"nTarget":34,"upside":39.6,"asof":"2026-11-17"}}},{"d":"2027-03-11","ticker":"BABA","company":"阿里巴巴","title":"阿里 FY27Q3 财报","status":"estimated","note":"按历次 2 月中下旬规律推算","src":"规律推算","expect":{"val":{"target":179.12,"cur":85.45,"unit":"港元","n":29,"buy":93,"hold":3,"sell":4,"nTarget":21,"upside":109.6,"asof":"2026-11-17"}}},{"d":"2027-03-18","ticker":"0700.HK","company":"腾讯","title":"腾讯 Q4 财报","status":"estimated","note":"按历次 3 月中下旬规律推算","src":"规律推算","expect":{"val":{"target":647.07,"cur":376.0,"unit":"港元","n":58,"buy":93,"hold":5,"sell":2,"nTarget":47,"upside":72.1,"asof":"2026-11-17"}}},{"d":"2027-03-18","ticker":"PDD","company":"拼多多","title":"拼多多 Q4 财报","status":"estimated","note":"按历次 3 月中规律推算","src":"规律推算","expect":{"val":{"target":113.04,"cur":78.97,"unit":"美元","n":35,"buy":64,"hold":31,"sell":5,"nTarget":35,"upside":43.1,"asof":"2026-11-17"}}},{"d":"2027-03-25","ticker":"1024.HK","company":"快手","title":"快手 Q4 财报","status":"estimated","note":"按历次 3 月下旬规律推算","src":"规律推算","expect":{"val":{"target":44.54,"cur":24.24,"unit":"港元","n":39,"buy":64,"hold":28,"sell":8,"nTarget":30,"upside":83.7,"asof":"2026-11-17"}}},{"d":"2027-03-26","ticker":"3690.HK","company":"美团","title":"美团 Q4 财报","status":"estimated","note":"按历次 3 月底规律推算","src":"规律推算","expect":{"val":{"target":109.72,"cur":70.5,"unit":"港元","n":44,"buy":82,"hold":14,"sell":4,"nTarget":35,"upside":55.6,"asof":"2026-11-17"}}}]},"finance":{"updated":"2026-11-18","note":"内置财经事件（IPO、央行、宏观节点）。这里放的是「所有人都会看到」的公共事件；你自己关心的宏观数据请用页面左侧「财经事件 +」添加，存在浏览器本地，可随时改删。","items":[{"d":"2026-11-19","s":"22:30","e":"23:30","t":"示例 · 某公司挂牌上市","company":"","kind":"ipo","note":"示例数据。换成你自己关注的 IPO：交易所、代码与定价以官方公告 / 招股书为准。","src":"示例"},{"d":"2026-12-10","s":"03:00","e":"04:00","t":"示例 · FOMC 利率决议","company":"美联储","kind":"cb","note":"示例数据。实际公布时间以美联储官网日程为准，决议后 30 分钟有主席发布会。","src":"示例"}]},"companies":{"updated":"2026-11-17","note":"「核心业务关注点」为编辑判断，括号内是最近一期已披露的经营数据（财报 / 业绩会 / NeoData），用于对照下一场财报。市场预期数字来自 NeoData 一致预期；美股无中国卖方一致预期口径时，用最近一期已披露实际与公司指引，见每条 basis。","companies":{"腾讯":{"biz":"增值服务（游戏+社交）/ 营销服务 / 金融科技与企业服务","focus":["收入放缓到 8%：中信预测 Q3 营收 2,088 亿元、同比 +8.2%（Q2 为 2,355 亿元、+11.0%）","利润首次负增：Non-IFRS 净利 665 亿元、同比 -5.7%，Non-IFRS 经营利润 702 亿元、同比 -3.3%，毛利率 56.4% 与去年持平","结构分化：增值服务 1,000 亿元 +4.3%（本土游戏 +10.0%、海外游戏 -3.0%）；营销服务 431 亿元 +19.0%；金科企服 631 亿元 +8.4%","游戏本土常青（王者、和平）与海外递延确认节奏；广告看视频号 eCPM、加载率与 AI 推荐拉动"]},"快手":{"biz":"线上营销 / 电商佣金 / 直播打赏 / 可灵 AI","focus":["收入首次转负：Q3 一致预期 328.6 亿元、同比 -7.8%（Q2 为 409 亿元、+1.4%），直播与电商同时承压","利润几乎清零：一致预期净利 4.8 亿元、同比 -89.3%（Q2 为 36.3 亿元、-36.0%），可灵 AI 投入是主要吞利润项","卖方态度急转：买入占比从 7 月的 93% 掉到 64%，持有升至 28%，目标价 44.5 港元对现价 24.2 港元","看可灵 AI 单季收入体量与推理成本；电商 GMV 增速、货币化率与货架场占比"]},"美团":{"biz":"外卖 / 到店酒旅 / 即时零售（闪购） / 新业务（Keeta 等）","focus":["收入重回 18% 档：Q3 一致预期 1,130.8 亿元（Yahoo，18 家，CNY 口径）、同比 +18.4%；市场共识 1,133 亿元、花旗 1,142 亿元；上年同期 954.9 亿元（Q2 实际 1,046 亿元、+13.9%）","利润刚转正、底子薄：IFRS 净利润一致预期 3.5 亿元，上年同期亏 186.3 亿元；经调整净利（非 IFRS）市场预期 22 亿元。一个补贴季度就能打回亏损","UE 已见修复：国信调研 9 月外卖 UE 回升至 0.4 元（7 月 0.2、8 月 0.1），Q4 目标 0.4 元；Q3 日均单量 7,400-7,500 万单、同比 -3~4%","竞对收手是最大边际：淘闪 Q3 减亏 0.3-0.4 元/单、京东外卖 Q3 亏损从 62 亿收窄至 57 亿元","新业务看 Keeta 出海：巴西市场投入节奏决定 Q4 经营亏损是否扩大（花旗预计亏损环比走阔）"]},"京东":{"biz":"京东零售（带电/日百） / 京东物流 / 新业务（外卖、即时零售）","focus":["带电品类是最大变量：Q2 电子产品及家用电器收入 1,579 亿元、同比 -11.8%（去年国补高基数 + 原材料涨价）；高盛预计 Q3 零售收入 +3%（Q2 -5%）","日百对冲不足：Q2 日用百货 1,092 亿元、+5.6%，商品收入整体 -5.4% 至 2,671 亿元；服务收入 793 亿元、+6.8%，占比升至 22.9%","零售利润率是底牌：Q2 京东零售 Non-GAAP 营业利润 135 亿元、利润率 4.6%，毛利率 18.5%（+1.3pt，连续 17 季同比提升）","外卖减亏在兑现：Q2 新业务收入 73 亿元、营业亏损收窄至 99 亿元；高盛测算 Q3 外卖单均 EBIT -3.8 元（Q2 -4.0、去年 Q3 -9.9），Joybuy 海外亏损 19 亿元","本季共识（人民币）：营收 3,115 亿元、同比 +4.5%；净利 80.7 亿元、同比 +39.6%（去年外卖投入造成低基数）"]},"腾讯音乐":{"biz":"在线音乐订阅 / 社交娱乐 / 广告","focus":["收入在加速：Q3 一致预期 106.39 亿港元、同比 +18.2%（Q2 为 103.91 亿、+12.7%）","利润温和：一致预期净利 25.67 亿港元、+8.6%（Q2 为 28.74 亿、+6.7%），毛利率受版权成本与自制内容影响","订阅看付费用户数 vs ARPU 的取舍、SVIP 渗透率；社交娱乐直播收入下滑是否止住"]},"英伟达":{"biz":"数据中心（GPU+网络） / 游戏 / 专业可视化 / 汽车","focus":["上季（FY27Q2，7月止）营收 962.21 亿美元、同比 +106%；净利 598.88 亿美元、同比 +126%；毛利率 75%。公司指引 FY27Q3 营收 1,080 亿美元、毛利率 74%","毛利率是硬指标：Non-GAAP 74%±50bp 的指引能否守住，内存涨价向下一季传导的幅度","卖方在松动：11 月买入占比从 95% 掉到 78%、持有升至 21%，近半年首次明显下调（目标价仍 279.48 美元）","Rubin 爬坡与数据中心占比、应收账款周转天数（上季 45→60 天）与 2,790 亿美元供应承诺的现金占用"]},"阿里巴巴":{"biz":"电商集团 / AI 云与算力 / AI 实验室与应用 / 其他","focus":["收入提速靠 AI 云：本季一致预期 2,721 亿元、同比 +9.8%（中金）；其中云收入预计 +53%（上季 +45%），外部收入增速快于整体","利润仍靠减亏：上季 Non-GAAP 净利同比 -72%；本季 Non-GAAP 归母 272 亿元、调整 EBITA 303 亿元（均高于一致预期），AI 实验室亏损收窄至 100-110 亿元","电商承压：客户管理收入（CMR）预计同比 -5%（旧口径约 +1%），双十一中高个位数负增；即时零售（闪购）亏损收窄至约 91 亿元","风险在算力：国信测算若海外 GPU 采购受阻，FY28 云收入从 3,661 亿元降到 3,286 亿元、增速由 51% 回落至 35%"]},"拼多多":{"biz":"在线市场服务（广告） / 交易服务（佣金） / Temu","focus":["利润已在下滑：上季营收 165.06 亿美元、同比 +14.8%，净利 39.93 亿美元、同比 -6.1%","广告 vs 佣金结构：广告增速能否企稳，佣金受 Temu 欧洲关税扰动","Temu 本地仓配投入与关税成本转嫁、单位经济模型；供应链与自营品牌（新拼姆）对利润率的稀释"]},"台积电":{"biz":"先进制程代工（N3/N2）/ 成熟制程 / 先进封装（CoWoS）","focus":["上季基数：营收 466.84 亿美元、同比 +41.1%；净利 238.40 亿美元、+57.7%","AI 需求：HPC 营收占比与 CoWoS 产能扩张节奏，是当前估值锚","N2 量产爬坡与 A16 定价；海外厂（亚利桑那/熊本）毛利率稀释幅度与汇率影响"]},"微软":{"biz":"Azure 与云 / Microsoft 365 / LinkedIn / 游戏","focus":["上季基数：营收 900.07 亿美元、同比 +17.7%；净利 357.66 亿美元、+31.3%（利润率仍在扩张）","Azure 增速里 AI 贡献比例、产能约束解除时点","capex 与折旧周期对经营利润率的压制；Copilot 座位数与 ARPU 的实际变现进度"]},"特斯拉":{"biz":"汽车销售 / 能源与储能 / 服务与其他（FSD）","focus":["收入零增长、利润腰斩：上季营收 280.46 亿美元、同比 -0.2%；净利 7.87 亿美元、同比 -42.7%","交付结构与单车毛利：降价与金融贴息还能撑多久","FSD/Robotaxi 订阅收入确认与监管落地；Megapack 出货与毛利率能否继续对冲汽车业务"]},"谷歌":{"biz":"搜索与广告 / YouTube / Google Cloud / 其他押注","focus":["收入强、净利虚：上季营收 1,273.83 亿美元、同比 +24.2%；净利 264.68 亿美元、同比 -24.3%（去年同期含大额非经营收益，基数不可比）","搜索：AI Overviews 对查询量与 CPC 的净影响；云：增速与 backlog 转化","资本开支：TPU 与数据中心投入对自由现金流的压力"]},"亚马逊":{"biz":"北美零售 / 国际零售 / AWS / 广告","focus":["上季基数：营收 2,019.44 亿美元、同比 +12.1%；净利 206.85 亿美元、同比 -2.4%","AWS 增速与 AI 工作负载占比、Trainium 自研芯片进展","零售履约费用率与单位经济；2027 年 capex 指引与折旧对利润的影响"]},"SpaceX":{"biz":"发射服务 / Starlink / 星舰","focus":["未上市，无卖方一致预期；本日程为按惯例推算的沟通节点","关注 Starlink 用户数与 ARPU、发射频次","星舰试飞进度与资本开支节奏"]}}},"macro":{"note":"宏观事件模板库。auto=true 的模板有官方日程源（data/schedule.json 由 scripts/fetch_schedule.py 抓取），订阅后日期自动跟随官方公布时间，不用手工填；auto=false 的模板暂无稳定的官方机器可读日程，订阅时用「按频次铺开」并标为预计。","templates":[{"id":"us-cpi","name":"美国 CPI 同比","country":"US","imp":"high","freq":"month","auto":true,"note":"劳工统计局 BLS 发布，同比与核心同比同时公布。美东 8:30，北京时间当月 21:30（夏令时 20:30）"},{"id":"us-core-cpi","name":"美国核心 CPI","country":"US","imp":"high","freq":"month","auto":false,"note":"与 CPI 同一份报告同时发布，剔除食品与能源，美联储更看重这个口径"},{"id":"us-ppi","name":"美国 PPI 同比","country":"US","imp":"mid","freq":"month","auto":true,"note":"BLS 发布，通常晚于 CPI 一到两天"},{"id":"us-pce","name":"美国核心 PCE","country":"US","imp":"high","freq":"month","auto":true,"note":"经济分析局 BEA 的 Personal Income and Outlays 里发布，是美联储 2% 目标的官方对标指标"},{"id":"us-nfp","name":"美国非农就业","country":"US","imp":"high","freq":"month","auto":true,"note":"BLS 就业形势报告，同时发布失业率与平均时薪。美东 8:30"},{"id":"us-jolts","name":"美国 JOLTS 职位空缺","country":"US","imp":"low","freq":"month","auto":true,"note":"BLS 发布，滞后约两个月，看劳动力需求松紧"},{"id":"us-import-price","name":"美国进出口价格指数","country":"US","imp":"low","freq":"month","auto":true,"note":"BLS 发布，看输入型通胀与美元传导"},{"id":"us-retail","name":"美国零售销售","country":"US","imp":"mid","freq":"month","auto":true,"note":"人口普查局 Advance Retail and Food Services Sales，看环比与核心对照组"},{"id":"us-trade","name":"美国贸易帐","country":"US","imp":"low","freq":"month","auto":true,"note":"BEA 与人口普查局联合发布，影响 Q/GDP 净出口分项"},{"id":"us-gdp","name":"美国 GDP 环比折年","country":"US","imp":"mid","freq":"quarter","auto":true,"note":"BEA 初值 / 修正值 / 终值分三次发布"},{"id":"us-fomc","name":"FOMC 利率决议","country":"US","imp":"high","freq":"quarter","auto":true,"note":"每年 8 次。美东第二天 14:00 公布决议，14:30 发布会，北京时间次日凌晨 03:00（夏令时 02:00）"},{"id":"us-jobless","name":"美国初请失业金","country":"US","imp":"low","freq":"week","auto":false,"note":"劳工部每周四发布，最高频的劳动力温度计。无稳定的机器可读日程，按周铺开后手工校准"},{"id":"us-ism","name":"美国 ISM 制造业 PMI","country":"US","imp":"mid","freq":"month","auto":false,"note":"每月首个工作日，50 为荣枯线。ISM 官网日程无稳定结构，按频次铺开后手工校准"},{"id":"cn-cpi","name":"中国 CPI 同比","country":"CN","imp":"high","freq":"month","auto":true,"note":"国家统计局居民消费价格指数月度报告，通常每月 9 日 9:30"},{"id":"cn-ppi","name":"中国 PPI 同比","country":"CN","imp":"high","freq":"month","auto":true,"note":"工业生产者价格指数月度报告，与 CPI 同日 9:30"},{"id":"cn-activity","name":"中国工业增加值 / 社零 / 固投","country":"CN","imp":"high","freq":"month","auto":true,"note":"统计局「国民经济运行情况」，每月 15 日前后 10:00，同时发布工业、社零、固投、地产、能源五份月报"},{"id":"cn-pmi","name":"中国官方制造业 PMI","country":"CN","imp":"mid","freq":"month","auto":true,"note":"统计局采购经理指数月度报告，月末最后一天 9:30"},{"id":"cn-profit","name":"中国工业企业利润","country":"CN","imp":"mid","freq":"month","auto":true,"note":"统计局工业经济效益月度报告，每月 27 日 9:30"},{"id":"cn-tsf","name":"中国社融 / 新增贷款","country":"CN","imp":"high","freq":"month","auto":false,"note":"央行每月 10—15 日公布，具体日期由央行另行通知，无固定日程表"},{"id":"cn-lpr","name":"中国 LPR 报价","country":"CN","imp":"mid","freq":"month","auto":false,"note":"每月 20 日 9:15 公布 1 年期与 5 年期以上报价"},{"id":"cn-caixin","name":"中国财新制造业 PMI","country":"CN","imp":"mid","freq":"month","auto":false,"note":"每月首个工作日 9:45，样本偏中小与出口企业"},{"id":"cn-trade","name":"中国进出口","country":"CN","imp":"mid","freq":"month","auto":false,"note":"海关总署每月 7 日前后公布，看同比与顺差"},{"id":"cn-m2","name":"中国 M2 / M1","country":"CN","imp":"mid","freq":"month","auto":false,"note":"与社融同期公布，看 M1-M2 剪刀差"},{"id":"cn-gdp","name":"中国 GDP 同比","country":"CN","imp":"high","freq":"quarter","auto":false,"note":"季度公布，含分产业与支出法结构，通常在 1/4/7/10 月的国民经济运行情况里"},{"id":"ecb","name":"欧央行利率决议","country":"EU","imp":"high","freq":"quarter","auto":false,"note":"每 6 周一次，看声明与拉加德发布会"},{"id":"boj","name":"日本央行利率决议","country":"JP","imp":"mid","freq":"quarter","auto":false,"note":"关注 YCC 政策与日元汇率反应"},{"id":"eia","name":"美国 EIA 原油库存","country":"US","imp":"low","freq":"week","auto":false,"note":"每周三 22:30（冬令时 23:30）公布，影响油价与能源股"}]},"schedule":{"updated":"2026-11-18T10:14:58+08:00","timezone":"Asia/Shanghai","note":"官方发布日程快照。日期时间已换算为北京时间；美国数据来源的原始口径写在 note 里。抓不到时不猜，沿用上次结果。","sources":[{"id":"fed","name":"美联储 FOMC 会议日历","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","ok":true,"count":29,"checked":"2026-11-18","err":""},{"id":"bls","name":"美国劳工统计局 发布日程","url":"https://www.bls.gov/schedule/2026/home.htm","ok":false,"count":0,"checked":"2026-11-18","err":"RuntimeError: 抓不到任何数据；HTTP Error 403: Forbidden；HTTP Error 403: Forbidden"},{"id":"bea","name":"美国经济分析局 发布日程","url":"https://www.bea.gov/news/schedule","ok":true,"count":4,"checked":"2026-11-18","err":""},{"id":"census","name":"美国人口普查局 经济指标","url":"https://www.census.gov/economic-indicators/calendar-list.html","ok":false,"count":0,"checked":"2026-11-18","err":"HTTPError: HTTP Error 403: Forbidden"},{"id":"nbs","name":"国家统计局 主要统计信息发布日程表","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/","ok":true,"count":57,"checked":"2026-11-18","err":""}],"items":[{"tid":"cn-cpi","name":"","d":"2026-10-14","t":"9:30","imp":"high","c":"CN","src":"nbs","note":"居民消费价格指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"cn-ppi","name":"","d":"2026-10-14","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"工业生产者价格指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"cn-activity","name":"","d":"2026-10-19","t":"10:00","imp":"high","c":"CN","src":"nbs","note":"国民经济运行情况","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"cn-profit","name":"","d":"2026-10-27","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"工业经济效益月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2026-10-29","t":"02:00","imp":"high","c":"US","src":"fed","note":"美东 10-28 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"cn-pmi","name":"","d":"2026-10-31","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"采购经理指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"us-nfp","name":"美国非农就业","d":"2026-11-06","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 11-06 08:30","period":"","url":"https://www.bls.gov/schedule/2026/home.htm"},{"tid":"cn-cpi","name":"","d":"2026-11-09","t":"9:30","imp":"high","c":"CN","src":"nbs","note":"居民消费价格指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"cn-ppi","name":"","d":"2026-11-09","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"工业生产者价格指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"us-cpi","name":"美国 CPI","d":"2026-11-10","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 11-10 08:30","period":"","url":"https://www.bls.gov/schedule/2026/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2026-11-13","t":"21:30","imp":"mid","c":"US","src":"bls","note":"美东 11-13 08:30","period":"","url":"https://www.bls.gov/schedule/2026/home.htm"},{"tid":"cn-activity","name":"","d":"2026-11-16","t":"10:00","imp":"high","c":"CN","src":"nbs","note":"国民经济运行情况","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"us-gdp","name":"","d":"2026-11-25","t":"21:30","imp":"high","c":"US","src":"bea","note":"GDP (Second Estimate) and Corporate Profits, 3rd Quarter 2026｜美东 11-25 08:30","period":"","url":"https://www.bea.gov/news/schedule"},{"tid":"us-pce","name":"","d":"2026-11-25","t":"21:30","imp":"high","c":"US","src":"bea","note":"Personal Income and Outlays, October 2026｜美东 11-25 08:30","period":"","url":"https://www.bea.gov/news/schedule"},{"tid":"cn-profit","name":"","d":"2026-11-27","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"工业经济效益月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"cn-pmi","name":"","d":"2026-11-30","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"采购经理指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2026-12-01","t":"23:00","imp":"low","c":"US","src":"bls","note":"美东 12-01 10:00","period":"","url":"https://www.bls.gov/schedule/2026/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2026-12-04","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 12-04 08:30","period":"","url":"https://www.bls.gov/schedule/2026/home.htm"},{"tid":"us-trade","name":"","d":"2026-12-08","t":"21:30","imp":"high","c":"US","src":"bea","note":"U.S. International Trade in Goods and Services, October 2026｜美东 12-08 08:30","period":"","url":"https://www.bea.gov/news/schedule"},{"tid":"cn-cpi","name":"","d":"2026-12-09","t":"9:30","imp":"high","c":"CN","src":"nbs","note":"居民消费价格指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"cn-ppi","name":"","d":"2026-12-09","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"工业生产者价格指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"us-cpi","name":"美国 CPI","d":"2026-12-10","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 12-10 08:30","period":"","url":"https://www.bls.gov/schedule/2026/home.htm"},{"tid":"cn-activity","name":"","d":"2026-12-15","t":"10:00","imp":"high","c":"CN","src":"nbs","note":"国民经济运行情况","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"us-ppi","name":"美国 PPI","d":"2026-12-15","t":"21:30","imp":"mid","c":"US","src":"bls","note":"美东 12-15 08:30","period":"","url":"https://www.bls.gov/schedule/2026/home.htm"},{"tid":"us-retail","name":"美国零售销售","d":"2026-12-16","t":"","imp":"mid","c":"US","src":"census","note":"Advance Retail and Food Services Sales｜人口普查局，发布时间以官方为准","period":"","url":"https://www.census.gov/retail/index.html"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2026-12-17","t":"21:30","imp":"low","c":"US","src":"bls","note":"美东 12-17 08:30","period":"","url":"https://www.bls.gov/schedule/2026/home.htm"},{"tid":"us-pce","name":"","d":"2026-12-23","t":"21:30","imp":"high","c":"US","src":"bea","note":"Personal Income and Outlays, November 2026｜美东 12-23 08:30","period":"","url":"https://www.bea.gov/news/schedule"},{"tid":"cn-profit","name":"","d":"2026-12-27","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"工业经济效益月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"cn-pmi","name":"","d":"2026-12-31","t":"9:30","imp":"mid","c":"CN","src":"nbs","note":"采购经理指数月度报告","period":"","url":"https://www.stats.gov.cn/xxgk/sjfb/fbrcb/202512/t20251224_1962137.html"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-01-05","t":"23:00","imp":"low","c":"US","src":"bls","note":"美东 01-05 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-01-08","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 01-08 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-01-13","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 01-13 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-01-14","t":"21:30","imp":"mid","c":"US","src":"bls","note":"美东 01-14 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-01-15","t":"21:30","imp":"low","c":"US","src":"bls","note":"美东 01-15 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2027-01-28","t":"03:00","imp":"high","c":"US","src":"fed","note":"美东 01-27 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-02-02","t":"23:00","imp":"low","c":"US","src":"bls","note":"美东 02-02 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-02-05","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 02-05 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-02-11","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 02-11 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-02-12","t":"21:30","imp":"mid","c":"US","src":"bls","note":"美东 02-12 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-02-17","t":"21:30","imp":"low","c":"US","src":"bls","note":"美东 02-17 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-03-05","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 03-05 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-03-09","t":"23:00","imp":"low","c":"US","src":"bls","note":"美东 03-09 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-03-10","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 03-10 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-03-12","t":"21:30","imp":"mid","c":"US","src":"bls","note":"美东 03-12 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-03-17","t":"20:30","imp":"low","c":"US","src":"bls","note":"美东 03-17 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2027-03-18","t":"02:00","imp":"high","c":"US","src":"fed","note":"美东 03-17 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-03-30","t":"22:00","imp":"low","c":"US","src":"bls","note":"美东 03-30 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-04-02","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 04-02 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-04-13","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 04-13 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-04-14","t":"20:30","imp":"mid","c":"US","src":"bls","note":"美东 04-14 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-04-16","t":"20:30","imp":"low","c":"US","src":"bls","note":"美东 04-16 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2027-04-29","t":"02:00","imp":"high","c":"US","src":"fed","note":"美东 04-28 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-05-04","t":"22:00","imp":"low","c":"US","src":"bls","note":"美东 05-04 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-05-07","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 05-07 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-05-12","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 05-12 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-05-13","t":"20:30","imp":"mid","c":"US","src":"bls","note":"美东 05-13 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-05-14","t":"20:30","imp":"low","c":"US","src":"bls","note":"美东 05-14 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-06-02","t":"22:00","imp":"low","c":"US","src":"bls","note":"美东 06-02 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-06-04","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 06-04 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2027-06-10","t":"02:00","imp":"high","c":"US","src":"fed","note":"美东 06-09 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-06-10","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 06-10 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-06-11","t":"20:30","imp":"mid","c":"US","src":"bls","note":"美东 06-11 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-06-16","t":"20:30","imp":"low","c":"US","src":"bls","note":"美东 06-16 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-06-29","t":"22:00","imp":"low","c":"US","src":"bls","note":"美东 06-29 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-07-02","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 07-02 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-07-14","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 07-14 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-07-15","t":"20:30","imp":"mid","c":"US","src":"bls","note":"美东 07-15 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-07-16","t":"20:30","imp":"low","c":"US","src":"bls","note":"美东 07-16 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2027-07-29","t":"02:00","imp":"high","c":"US","src":"fed","note":"美东 07-28 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-08-03","t":"22:00","imp":"low","c":"US","src":"bls","note":"美东 08-03 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-08-06","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 08-06 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-08-10","t":"20:30","imp":"mid","c":"US","src":"bls","note":"美东 08-10 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-08-11","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 08-11 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-08-13","t":"20:30","imp":"low","c":"US","src":"bls","note":"美东 08-13 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-08-31","t":"22:00","imp":"low","c":"US","src":"bls","note":"美东 08-31 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-09-03","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 09-03 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-09-10","t":"20:30","imp":"mid","c":"US","src":"bls","note":"美东 09-10 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-09-14","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 09-14 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2027-09-16","t":"02:00","imp":"high","c":"US","src":"fed","note":"美东 09-15 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-09-17","t":"20:30","imp":"low","c":"US","src":"bls","note":"美东 09-17 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-10-05","t":"22:00","imp":"low","c":"US","src":"bls","note":"美东 10-05 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-10-08","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 10-08 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-10-14","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 10-14 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-10-15","t":"20:30","imp":"mid","c":"US","src":"bls","note":"美东 10-15 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-10-19","t":"20:30","imp":"low","c":"US","src":"bls","note":"美东 10-19 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2027-10-28","t":"02:00","imp":"high","c":"US","src":"fed","note":"美东 10-27 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-11-02","t":"22:00","imp":"low","c":"US","src":"bls","note":"美东 11-02 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-11-05","t":"20:30","imp":"high","c":"US","src":"bls","note":"美东 11-05 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-11-10","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 11-10 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-11-12","t":"21:30","imp":"mid","c":"US","src":"bls","note":"美东 11-12 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-11-16","t":"21:30","imp":"low","c":"US","src":"bls","note":"美东 11-16 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-fomc","name":"FOMC 利率决议","d":"2027-11-18","t":"03:00","imp":"high","c":"US","src":"fed","note":"美东 11-17 14:00 决议 + 发布会","period":"","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"tid":"us-jolts","name":"美国 JOLTS 职位空缺","d":"2027-12-01","t":"23:00","imp":"low","c":"US","src":"bls","note":"美东 12-01 10:00","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-nfp","name":"美国非农就业","d":"2027-12-03","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 12-03 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-cpi","name":"美国 CPI","d":"2027-12-10","t":"21:30","imp":"high","c":"US","src":"bls","note":"美东 12-10 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-ppi","name":"美国 PPI","d":"2027-12-15","t":"21:30","imp":"mid","c":"US","src":"bls","note":"美东 12-15 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"},{"tid":"us-import-price","name":"美国进出口价格指数","d":"2027-12-16","t":"21:30","imp":"low","c":"US","src":"bls","note":"美东 12-16 08:30","period":"","url":"https://www.bls.gov/schedule/2027/home.htm"}]},"actuals":{"note":"财报实际业绩。key 为股票代码；a=实际，e=预期（e 留空则用 data/earnings.json 里的一致预期），u=单位。可在页面内录入、从本地文件导入，或由抓取脚本合并。price 段由 scripts/fetch_quotes.py 写入。","updated":"","items":{}},"quotes":{"note":"财报次日股价反应。pre=财报前一日收盘，close=财报当日收盘，next=次日收盘；chg/next_chg 为对应涨跌幅（%）。由 scripts/fetch_quotes.py 生成。","updated":"","items":{}},"releases":{"items":{"cn-activity@2026-11-16":{"tid":"cn-activity","d":"2026-11-16","vals":[{"k":"工业增加值同比","v":4.8,"u":"%"},{"k":"社零同比","v":1.0,"u":"%"}],"title":"2026年10月份规模以上工业增加值增长4.8%","read":"","auto":"工业增加值同比 +4.8%，较前值 5.5% 回落 0.7 个百分点；社零同比 +1.0%，较前值 1.1% 回落 0.1 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-cpi@2026-11-09":{"tid":"cn-cpi","d":"2026-11-09","vals":[{"k":"CPI 同比","v":0.7,"u":"%"}],"title":"2026年10月份居民消费价格同比上涨0.7%","read":"同比 0.7%，连续四个月在 1% 以下，9 月短暂回到 0.9% 后又回落 0.2 个百分点。拆结构看是食品项拖累、核心 CPI 基本走平——这种组合对货币政策既不是约束，也给不出加码理由。对股票来说，CPI 已经不是变量，看 PPI 和社融的剪刀差更有信息量。","auto":"CPI 同比 +0.7%，较前值 0.9% 回落 0.2 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-ppi@2026-11-09":{"tid":"cn-ppi","d":"2026-11-09","vals":[{"k":"PPI 同比","v":5.7,"u":"%"}],"title":"2026年10月份工业生产者出厂价格同比上涨5.7% 环比上涨0.7%","read":"同比 5.7%，连续四个月回升（3.5% → 3.8% → 5.0% → 5.7%），环比还有 0.7%。与 CPI 的剪刀差拉到 5 个百分点：上游涨价没传到消费端，中游制造、公用事业和出口代工的毛利继续被压。这一轮 PPI 上行的来源要看大宗和基数，别当成需求回升。","auto":"PPI 同比 +5.7%，较前值 5.0% 回升 0.7 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-activity@2026-10-19":{"tid":"cn-activity","d":"2026-10-19","vals":[{"k":"工业增加值同比","v":5.5,"u":"%"},{"k":"社零同比","v":1.1,"u":"%"}],"title":"2026年9月份规模以上工业增加值增长5.5%","read":"","auto":"工业增加值同比 +5.5%，较前值 5.2% 回升 0.3 个百分点；社零同比 +1.1%，与前值 1.1% 持平。","src":"国家统计局","got":"2026-11-18"},"cn-cpi@2026-10-14":{"tid":"cn-cpi","d":"2026-10-14","vals":[{"k":"CPI 同比","v":0.9,"u":"%"}],"title":"2026年9月份居民消费价格同比上涨0.9%","read":"","auto":"CPI 同比 +0.9%，较前值 0.8% 回升 0.1 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-ppi@2026-10-14":{"tid":"cn-ppi","d":"2026-10-14","vals":[{"k":"PPI 同比","v":5.0,"u":"%"}],"title":"2026年9月份工业生产者出厂价格同比上涨5.0% 环比上涨1.2%","read":"","auto":"PPI 同比 +5.0%，较前值 3.8% 回升 1.2 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-activity@2026-09-15":{"tid":"cn-activity","d":"2026-09-15","vals":[{"k":"工业增加值同比","v":5.2,"u":"%"},{"k":"社零同比","v":1.1,"u":"%"}],"title":"2026年8月份规模以上工业增加值增长5.2%","read":"","auto":"工业增加值同比 +5.2%，较前值 4.5% 回升 0.7 个百分点；社零同比 +1.1%，较前值 1.2% 回落 0.1 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-cpi@2026-09-09":{"tid":"cn-cpi","d":"2026-09-09","vals":[{"k":"CPI 同比","v":0.8,"u":"%"}],"title":"2026年8月份居民消费价格同比上涨0.8%","read":"","auto":"CPI 同比 +0.8%，较前值 0.5% 回升 0.3 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-ppi@2026-09-09":{"tid":"cn-ppi","d":"2026-09-09","vals":[{"k":"PPI 同比","v":3.8,"u":"%"}],"title":"2026年8月份工业生产者出厂价格同比上涨3.8% 环比上涨0.4%","read":"","auto":"PPI 同比 +3.8%，较前值 3.5% 回升 0.3 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-activity@2026-08-17":{"tid":"cn-activity","d":"2026-08-17","vals":[{"k":"工业增加值同比","v":4.5,"u":"%"},{"k":"社零同比","v":1.2,"u":"%"}],"title":"2026年7月份规模以上工业增加值增长4.5%","read":"","auto":"工业增加值同比 +4.5%，较前值 5.3% 回落 0.8 个百分点；社零同比 +1.2%，较前值 1.3% 回落 0.1 个百分点。","src":"国家统计局","got":"2026-11-18"},"cn-cpi@2026-08-09":{"tid":"cn-cpi","d":"2026-08-09","vals":[{"k":"CPI 同比","v":0.5,"u":"%"}],"title":"2026年7月份居民消费价格同比上涨0.5%","read":"","auto":"CPI 同比 +0.5%。","src":"国家统计局","got":"2026-11-18"},"cn-ppi@2026-08-09":{"tid":"cn-ppi","d":"2026-08-09","vals":[{"k":"PPI 同比","v":3.5,"u":"%"}],"title":"2026年7月份工业生产者出厂价格同比上涨3.5%","read":"","auto":"PPI 同比 +3.5%。","src":"国家统计局","got":"2026-11-18"},"cn-activity@2026-07-15":{"tid":"cn-activity","d":"2026-07-15","vals":[{"k":"工业增加值同比","v":5.3,"u":"%"},{"k":"社零同比","v":1.3,"u":"%"}],"title":"2026年6月份规模以上工业增加值增长5.3%","read":"","auto":"工业增加值同比 +5.3%；社零同比 +1.3%。","src":"国家统计局","got":"2026-11-18"}},"updated":"2026-11-18T10:27:15+08:00","note":"宏观数据公布结果。key = 模板id@公布日。vals 为官方新闻稿里的真实数字；auto 是脚本按「本期 vs 上期」生成的事实摘要；read 是人工解读，脚本不覆盖。"}};
 const SEED = DATA.events || [];
 const EARN = DATA.earnings || {items:[]};
 const FIN  = DATA.finance  || {items:[]};
 const COMP = DATA.companies || {companies:{}};
 const MACRO = (DATA.macro && DATA.macro.templates) || [];
 
-const TODAY = "2026-11-18";
+/* 官方日程 / 实际业绩 / 行情：构建时内联一份快照，运行时可被 fetch 覆盖 */
+const SCHED0 = DATA.schedule || {items:[], sources:[], updated:""};
+let   SCHED = {items:(SCHED0.items||[]).slice(), sources:SCHED0.sources||[], updated:SCHED0.updated||""};
+let   ACTS  = Object.assign({}, (DATA.actuals && DATA.actuals.items) || {});
+let   QTS   = Object.assign({}, (DATA.quotes  && DATA.quotes.items)  || {});
+/* 用户自己在页面里录/导入的，覆盖内置快照 */
+let   MYACT = {};
+let   MYQ   = {};
+const RELS0 = (DATA.releases && DATA.releases.items) || {};
+let   RELS  = Object.assign({}, RELS0);
+let   MYREL = {};      // 页面里录/改的公布结果，key = tid@日期
+
+/* 「今天」用运行时日期：部署后页面是静态的，不能靠构建日期 */
+const TODAY = (function(){ const d = new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+})();
+const BUILT_ON = "2026-11-18";
 const EARN_UPD = (DATA.earnings && DATA.earnings.updated) || "";
 const KEY = "fincal.v1";
 
@@ -412,6 +483,7 @@ const state = {
   events: [],
   fired: [],
   co: {},          // 公司覆盖表：{名称: {deleted} | {custom, ticker, market, biz, focus[], earnings[]}}
+  subs: [],        // 订阅的宏观模板 id（日期随官方日程自动更新）
   editing: null
 };
 
@@ -486,9 +558,50 @@ function earnEvents(){
   return out;
 }
 
-/* 财经事件：IPO / 央行议息 / 宏观数据等，数据来自 data/finance.json，页面内只读 */
+/* 财经事件：① 官方日程订阅（自动，只读）② 内置 finance.json（IPO/并购等个案） */
+function tplOf(id){ return MACRO.find(t=>t.id===id) || null; }
+function schedOf(tid){
+  return SCHED.items.filter(x=>x.tid===tid)
+    .sort((a,b)=>(a.d+(a.t||"")).localeCompare(b.d+(b.t||"")));
+}
+function nextSchedOf(tid){
+  const up = schedOf(tid).filter(x=>x.d >= TODAY);
+  return up.length ? up[0] : null;
+}
+function srcName(id){
+  const s = (SCHED.sources||[]).find(x=>x.id===id);
+  return s ? s.name : id;
+}
+
+
+/* 公布结果：key = 模板id@公布日。官方抓的 + 页面录的 */
+function relKey(tid, d){ return tid + "@" + d; }
+function relOf(tid, d){
+  const k = relKey(tid, d);
+  return MYREL[k] || RELS[k] || null;
+}
+function prevRelOf(tid, d){
+  const keys = Object.keys(RELS).concat(Object.keys(MYREL))
+    .filter(k=>k.indexOf(tid+"@")===0 && k.split("@")[1] < d).sort();
+  const k = keys[keys.length-1];
+  if(!k) return null;
+  return MYREL[k] || RELS[k] || null;
+}
+function relCount(){ return Object.keys(RELS).length + Object.keys(MYREL).filter(k=>!RELS[k]).length; }
+
 function financeEvents(){
   const out = [];
+  const subs = state.subs || [];
+  SCHED.items.forEach((it,i)=>{
+    if(subs.indexOf(it.tid)<0) return;
+    const tp = tplOf(it.tid);
+    out.push({id:"g"+i, d:it.d, s:it.t||"", e:"", t:(tp && tp.name) || it.name || it.tid,
+      c:"finance", a:!it.t,
+      n:(it.note||"")+(it.period?"　·　"+it.period:"")+
+        (it.t?"　·　北京时间":"")+(it.src?"　·　"+srcName(it.src):""),
+      ro:true, official:true, sched:it, tid:it.tid,
+      url:it.url||"", imp:it.imp||(tp&&tp.imp)||"mid"});
+  });
   (FIN.items||[]).forEach((it,i)=>{
     out.push({id:"f"+i, d:it.d, s:it.s||"", e:it.e||"", t:it.t, c:"finance", a:!it.s,
       n:(it.note||"")+(it.company?"　·　"+it.company:"")+(it.src?"　·　来源："+it.src:""),
@@ -496,6 +609,8 @@ function financeEvents(){
   });
   return out;
 }
+
+const DEFAULT_SUBS = ["us-fomc","us-cpi","us-nfp","cn-cpi","cn-activity"];
 
 function loadStore(){
   let raw=null;
@@ -507,10 +622,15 @@ function loadStore(){
       state.fired = o.fired || [];
       state.hidden = new Set(o.hidden || []);
       state.co = o.co || {};
+      state.subs = Array.isArray(o.subs) ? o.subs : DEFAULT_SUBS.slice();
+      MYACT = o.myact || {};
+      MYQ = o.myq || {};
+      MYREL = o.myrel || {};
       return;
     }catch(e){}
   }
   state.events = SEED.map(e=>migrate({...e, remind:0})).map((e,i)=>({id:"s"+i, ...e}));
+  state.subs = DEFAULT_SUBS.slice();
   save();
 }
 
@@ -524,7 +644,8 @@ function save(){
   try{
     localStorage.setItem(KEY, JSON.stringify({
       events: state.events, fired: state.fired,
-      hidden:[...state.hidden], co: state.co
+      hidden:[...state.hidden], co: state.co,
+      subs: state.subs, myact: MYACT, myq: MYQ, myrel: MYREL
     }));
   }catch(e){}
 }
@@ -989,7 +1110,7 @@ function openCoForm(name){
   };
 }
 
-/* ── 抽屉：关注财经事件（左侧「财经事件」+ 号） ── */
+/* ── 抽屉：关注财经事件（官方日程订阅 + 手工铺开） ── */
 const FREQ = {month:"每月", quarter:"每季", week:"每周", year:"每年", once:"单次"};
 
 /* 加 k 个月，自动收口到月末，避免 1/31 + 1 月跳到 3/3 */
@@ -1015,7 +1136,7 @@ function addPeriods(first, freq, n){
   return out;
 }
 
-/* 已添加的事件组：按 gid 聚合 */
+/* 手工铺开的事件组：按 gid 聚合 */
 function macroGroups(){
   const g = {};
   state.events.forEach(e=>{
@@ -1030,28 +1151,84 @@ function macroGroups(){
   }).sort((a,b)=> (a.dates[0]||"").localeCompare(b.dates[0]||""));
 }
 
+function isSub(tid){ return (state.subs||[]).indexOf(tid) >= 0; }
+function toggleSub(tid){
+  if(isSub(tid)) state.subs = state.subs.filter(x=>x!==tid);
+  else state.subs = (state.subs||[]).concat([tid]);
+  save();
+}
+
+function subCount(){
+  let n = 0;
+  (state.subs||[]).forEach(tid=>{ n += schedOf(tid).length; });
+  return n;
+}
+
+/* 数据状态条：官方日程什么时候抓的、哪些源挂了 */
+function statHTML(){
+  const srcs = SCHED.sources || [];
+  const bad = srcs.filter(s=>!s.ok);
+  const upd = (SCHED.updated||"").replace("T"," ").slice(0,16);
+  let h = '<div class="stat"><span class="dot'+(bad.length?" off":"")+'"></span>'
+        + '<b>官方日程</b> '+(upd||"未抓取")+' 抓取 · '+(SCHED.items||[]).length+' 条 · '
+        + srcs.length+' 个来源';
+  if(bad.length) h += '<span class="warn">· '+bad.length+' 个来源不可用</span>';
+  h += '</div>';
+  return h;
+}
+
 function openMacro(){
   document.getElementById("drTitle").textContent = "财经事件";
-  document.getElementById("drSub").textContent = "关注宏观数据与政策节点，按频次铺进日历";
+  document.getElementById("drSub").textContent = "订阅后日期自动跟随官方公布时间";
+  const subs = state.subs || [];
   const groups = macroGroups();
+  const CN = {US:"美国", CN:"中国", EU:"欧元区", JP:"日本"};
 
-  let h = '<div class="fld"><label>常用事件</label><div class="chips" id="mChips">'
-        +   MACRO.map((t,i)=>'<button class="chip" data-i="'+i+'">'+esc(t.name)+'</button>').join('')
-        + '</div>'
-        +   '<div class="sec-hint" id="mTip" style="margin-top:6px">点一个带出名称与说明，也可以直接在下面自己填。</div></div>'
-        + '<div class="fld"><label>事件名称</label><input type="text" id="mName" placeholder="例：美国 CPI 同比"></div>'
-        + '<div class="row2">'
-        +   '<div class="fld"><label>首次日期</label><input type="date" id="mDate" value="'+TODAY+'"></div>'
-        +   '<div class="fld"><label>重复</label><select id="mFreq">'
-        +     ['month','quarter','week','year','once'].map(k=>'<option value="'+k+'">'+FREQ[k]+'</option>').join('')
-        +   '</select></div>'
-        + '</div>'
-        + '<div class="fld"><label>生成期数</label><input type="number" id="mN" value="12" min="1" max="60"></div>'
-        + '<div class="fld"><label>备注</label><textarea id="mNote" rows="2" placeholder="可选，会显示在每条事件里"></textarea></div>'
-        + '<button class="add2" id="mAdd" style="margin-bottom:18px">+ 添加到日历</button>';
+  let h = statHTML();
 
+  /* 已订阅 */
+  const subTpl = MACRO.filter(t=>isSub(t.id));
+  h += '<div class="sec-h"><span>已订阅</span><i>'+subTpl.length+' 项 · '+subCount()+' 期</i></div>';
+  if(subTpl.length){
+    subTpl.forEach(t=>{
+      const list = schedOf(t.id);
+      const nx = nextSchedOf(t.id);
+      h += '<div class="gcard"><div class="gh"><b>'+esc(t.name)+'</b>'
+         +   '<span style="font-size:10.5px;color:#a1a1a6">'
+         +   (list.length ? list.length+' 期' : '暂无官方日程') + '</span></div>'
+         +   '<div class="gd">'+(nx ? "下一期 "+nx.d.slice(5)+(nx.t?" "+nx.t:"") : "官方尚未公布")
+         +     (list.length && !nx ? "　·　今年的已过完" : "") + '</div>'
+         +   '<div class="mini-act"><button data-unsub="'+esc(t.id)+'">取消订阅</button>'
+         +     (nx ? '<button data-go2="'+esc(t.id)+'">看下一期</button>' : '') + '</div></div>';
+    });
+  } else {
+    h += '<div class="sec-hint">还没订阅。下面挑几个，日期会自动跟着官方日程走。</div>';
+  }
+
+  /* 可选模板，按地区分组 */
+  ["US","CN","EU","JP"].forEach(cc=>{
+    const list = MACRO.filter(t=>t.country===cc);
+    if(!list.length) return;
+    h += '<div class="sec-h"><span>'+(CN[cc]||cc)+'</span><i>'+list.length+' 项</i></div>';
+    list.forEach(t=>{
+      const n = schedOf(t.id).length;
+      const nx = nextSchedOf(t.id);
+      const on = isSub(t.id);
+      const st = t.auto
+        ? (n ? '官方 '+n+' 期' + (nx?' · 下期 '+nx.d.slice(5):'') : '官方日程暂缺')
+        : '无官方日程';
+      h += '<div class="schedrow">'
+         +   '<span class="sd" style="font-weight:400;font-size:11.5px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(t.name)+'</span>'
+         +   '<span class="st'+(t.auto&&!n?' warn':'')+'" style="'+(t.auto&&!n?'color:#b26a00':'')+'">'+st+'</span>'
+         +   '<button class="chip'+(on?' on':'')+'" data-sub="'+esc(t.id)+'" style="padding:2px 9px;font-size:10.5px">'
+         +   (on?'已订阅':'订阅')+'</button>'
+         + '</div>';
+    });
+  });
+
+  /* 手工铺开（没有官方日程时用） */
   if(groups.length){
-    h += '<div class="sec-h"><span>已关注</span><i>'+groups.length+' 组</i></div>';
+    h += '<div class="sec-h"><span>手工铺开的事件</span><i>'+groups.length+' 组</i></div>';
     groups.forEach(g=>{
       const first = g.dates[0]||"", last = g.dates[g.dates.length-1]||"";
       h += '<div class="gcard"><div class="gh"><b>'+esc(g.name)+'</b>'
@@ -1060,51 +1237,44 @@ function openMacro(){
          +   '<div class="mini-act"><button data-go="'+esc(g.gid)+'">看第一期</button>'
          +   '<button class="dl" data-del="'+esc(g.gid)+'">整组删除</button></div></div>';
     });
-  } else {
-    h += '<div class="sec-hint">还没有自定义财经事件。上面选一个，按每月铺 12 期，全年就不用再管了。</div>';
   }
+
+  h += '<div class="sec-h"><span>自己加一个</span><i>无官方日程的按频次铺开</i></div>'
+     + '<div class="fld"><label>事件名称</label><input type="text" id="mName" placeholder="例：美国 CPI 同比"></div>'
+     + '<div class="row2">'
+     +   '<div class="fld"><label>首次日期</label><input type="date" id="mDate" value="'+TODAY+'"></div>'
+     +   '<div class="fld"><label>重复</label><select id="mFreq">'
+     +     ['month','quarter','week','year','once'].map(k=>'<option value="'+k+'">'+FREQ[k]+'</option>').join('')
+     +   '</select></div>'
+     + '</div>'
+     + '<div class="fld"><label>生成期数</label><input type="number" id="mN" value="12" min="1" max="60"></div>'
+     + '<button class="add2" id="mAdd" style="margin-bottom:18px">+ 添加到日历</button>';
 
   const body = document.getElementById("drBody");
   body.innerHTML = h;
   openDrawer();
 
-  body.querySelectorAll(".chip").forEach(c=>{
-    c.onclick = ()=>{
-      const t = MACRO[Number(c.dataset.i)];
-      body.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on", x===c));
-      document.getElementById("mName").value = t.name;
-      document.getElementById("mFreq").value = t.freq || "month";
-      document.getElementById("mN").value = t.freq==="week" ? 13 : (t.freq==="year" ? 3 : 12);
-      document.getElementById("mTip").textContent = (t.country? "["+t.country+"] ":"") + (t.note||"");
+  body.querySelectorAll("[data-sub]").forEach(b=>{
+    b.onclick = ()=>{
+      const t = tplOf(b.dataset.sub);
+      toggleSub(b.dataset.sub);
+      renderSidebar(); render();
+      toast(isSub(b.dataset.sub) ? "已订阅「"+t.name+"」，日期自动跟官方日程" : "已取消订阅");
+      openMacro();
     };
   });
-
-  document.getElementById("mAdd").onclick = ()=>{
-    const name = document.getElementById("mName").value.trim();
-    const first = document.getElementById("mDate").value;
-    const freq = document.getElementById("mFreq").value;
-    const n = Math.min(60, Math.max(1, Number(document.getElementById("mN").value)||1));
-    const note = document.getElementById("mNote").value.trim();
-    if(!name){ toast("请填事件名称"); return; }
-    if(!first){ toast("请选首次日期"); return; }
-
-    const dates = addPeriods(first, freq, n);
-    if(!dates.length){ toast("日期不对"); return; }
-    const gid = "g"+Date.now();
-    const stamp = Date.now();
-    dates.forEach((d,i)=>{
-      state.events.push({
-        id:"m"+stamp+"_"+i, gid, gt:name, d, s:"", e:"", t:name,
-        c:"finance", a:true,
-        n: (note || "由「财经事件 +」添加") + "　·　" + FREQ[freq] +
-           (freq!=="once" ? "　·　日期为预计，官方日程公布后可点开改" : "")
-      });
-    });
-    save(); renderSidebar(); render();
-    toast("已添加 "+dates.length+" 期「"+name+"」");
-    openMacro();
-  };
-
+  body.querySelectorAll("[data-unsub]").forEach(b=>{
+    b.onclick = ()=>{ toggleSub(b.dataset.unsub); renderSidebar(); render(); openMacro(); };
+  });
+  body.querySelectorAll("[data-go2]").forEach(b=>{
+    b.onclick = ()=>{
+      const nx = nextSchedOf(b.dataset.go2);
+      if(!nx) return;
+      state.view = parseD(nx.d); state.sel = nx.d; render();
+      const ev = allEvents().find(e=>e.official && e.tid===b.dataset.go2 && e.d===nx.d);
+      if(ev) showFinance(ev, nx.d); else selectDay(nx.d);
+    };
+  });
   body.querySelectorAll("[data-go]").forEach(b=>{
     b.onclick = ()=>{
       const gid = b.dataset.go;
@@ -1124,6 +1294,619 @@ function openMacro(){
       toast("已删除整组");
     };
   });
+
+  document.getElementById("mAdd").onclick = ()=>{
+    const name = document.getElementById("mName").value.trim();
+    const first = document.getElementById("mDate").value;
+    const freq = document.getElementById("mFreq").value;
+    const n = Math.min(60, Math.max(1, Number(document.getElementById("mN").value)||1));
+    if(!name){ toast("请填事件名称"); return; }
+    if(!first){ toast("请选首次日期"); return; }
+    const dates = addPeriods(first, freq, n);
+    if(!dates.length){ toast("日期不对"); return; }
+    const gid = "g"+Date.now();
+    const stamp = Date.now();
+    dates.forEach((d,i)=>{
+      state.events.push({
+        id:"m"+stamp+"_"+i, gid, gt:name, d, s:"", e:"", t:name,
+        c:"finance", a:true,
+        n: FREQ[freq] + "　·　日期为手工铺开，非官方公布时间"
+      });
+    });
+    save(); renderSidebar(); render();
+    toast("已添加 "+dates.length+" 期「"+name+"」");
+    openMacro();
+  };
+}
+
+/* ── 详情页两种填写方式：本地文件夹 / 网上获取 ─────────────── */
+
+/* 解析器：把任意文本（json / csv / md / txt / 网页正文）解析成公司档案 */
+function parseProfile(text, fileName){
+  const out = {focus:[], earnings:[], metrics:[], quote:null, src:fileName||""};
+  const t = String(text||"").trim();
+  if(!t) return out;
+
+  /* 1) JSON */
+  if(/^[\[{]/.test(t)){
+    let o = null;
+    try{ o = JSON.parse(t); }catch(e){ return out; }
+    let rec = o;
+    if(Array.isArray(o)) rec = o[0];
+    else if(o.companies) rec = Object.values(o.companies)[0];
+    else if(o.items && !o.ticker && !o.biz) rec = Array.isArray(o.items)?o.items[0]:o.items;
+    if(rec && typeof rec === "object"){
+      if(rec.ticker) out.ticker = String(rec.ticker);
+      if(rec.name || rec.company) out.name = rec.name || rec.company;
+      if(rec.market) out.market = rec.market;
+      if(rec.biz) out.biz = rec.biz;
+      if(Array.isArray(rec.focus)) out.focus = rec.focus.filter(Boolean).map(String);
+      if(Array.isArray(rec.earnings)) out.earnings = rec.earnings.filter(x=>x&&x.d).map(x=>({d:x.d, note:x.note||""}));
+      if(rec.d && rec.title) out.earnings.push({d:rec.d, note:rec.title});
+      const act = rec.actual;
+      if(act && Array.isArray(act.items)){
+        out.metrics = act.items.map(m=>({k:m.k, a:m.v, e:m.e, u:m.u||"", yoy:m.yoy}));
+        out.period = (rec.expect && rec.expect.est && rec.expect.est.period) || act.period || "";
+      }
+      if(rec.metrics) out.metrics = rec.metrics;
+      if(rec.price) out.quote = rec.price;
+      if(rec.report_date && !out.earnings.length) out.earnings.push({d:rec.report_date, note:"财报"});
+      if(rec.period) out.period = rec.period;
+      if(rec.note) out.note = rec.note;
+      if(rec.focus || rec.biz || rec.ticker) return out;
+    }
+  }
+
+  /* 2) CSV：按表头映射 */
+  const lines = t.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  if(lines.length > 1 && lines[0].includes(",")){
+    const head = lines[0].split(",").map(s=>s.trim().toLowerCase());
+    if(head.some(h=>/ticker|代码|symbol/.test(h))){
+      const rows = lines.slice(1).map(l=>l.split(",").map(s=>s.trim()));
+      const col = re => head.findIndex(h=>re.test(h));
+      const ci = {tk:col(/ticker|代码|symbol/), nm:col(/name|名称|公司/), eps:col(/eps|每股/),
+                  rev:col(/rev|营收|收入/), eeps:col(/est.*eps|eps.*est|预期.*eps/),
+                  erev:col(/est.*rev|rev.*est|预期.*(营收|收入)/)};
+      const r = rows[0] || [];
+      if(ci.tk>=0 && r[ci.tk]) out.ticker = r[ci.tk];
+      if(ci.nm>=0 && r[ci.nm]) out.name = r[ci.nm];
+      if(ci.eps>=0 && r[ci.eps]) out.metrics.push({k:"每股收益", a:r[ci.eps], e:ci.eeps>=0?r[ci.eeps]:null, u:""});
+      if(ci.rev>=0 && r[ci.rev]) out.metrics.push({k:"营业收入", a:r[ci.rev], e:ci.erev>=0?r[ci.erev]:null, u:""});
+      return out;
+    }
+  }
+
+  /* 3) 文本 / Markdown / 网页正文 */
+  const grab = re => { const m = t.match(re); return m ? m[1].trim() : ""; };
+  const tk = grab(/(?:股票代码|证券代码|代码|ticker|symbol)\s*[:：]?\s*([A-Z0-9]{2,10}(?:\.[A-Z]{2})?)/i)
+           || grab(/\(([A-Z]{1,5})\)\s*(?:股价|股票|Nasdaq|NYSE)/);
+  if(tk) out.ticker = tk.toUpperCase();
+  const nm = grab(/^(?:公司名称|公司|企业名称)\s*[:：]\s*(.+)$/m);
+  if(nm) out.name = nm;
+  const biz = grab(/(?:业务结构|主营业务|业务构成|业务板块)\s*[:：]\s*(.+)$/m);
+  if(biz) out.biz = biz.slice(0,120);
+
+  /* 关注点：先找小标题，再取下面的列表行 */
+  let block = "";
+  const sec = t.match(/(?:核心关注点|关注点|投资要点|核心看点|关键指标)[^\n]*\n([\s\S]{0,600})/);
+  if(sec) block = sec[1];
+  (block ? block.split(/\n/) : lines).forEach(raw=>{
+    const l = raw.trim();
+    if(!/^([-*·•—]|\d+[.、)]|\(\d+\))/.test(l)) return;
+    const item = l.replace(/^([-*·•—]|\d+[.、)]|\(\d+\))\s*/,"").trim();
+    if(item.length > 3 && item.length < 120) out.focus.push(item);
+  });
+
+  /* 财报日 */
+  const dm = t.match(/(20\d{2})[-/年](\d{1,2})[-/月](\d{1,2})/g) || [];
+  dm.slice(0,8).forEach(s=>{
+    const p = s.match(/(\d{4})\D(\d{1,2})\D(\d{1,2})/);
+    if(p) out.earnings.push({d:`${p[1]}-${String(p[2]).padStart(2,"0")}-${String(p[3]).padStart(2,"0")}`, note:"来自导入文件"});
+  });
+
+  /* 实际值 */
+  const eps = grab(/(?:每股收益|EPS|摊薄EPS)[^\d\-]{0,14}(-?[\d.]+)/i);
+  const rev = grab(/(?:营业收入|营收|收入)[^\d\-]{0,14}([\d,.]+)/i);
+  if(eps) out.metrics.push({k:"每股收益", a:eps, e:null, u:""});
+  if(rev) out.metrics.push({k:"营业收入", a:rev.replace(/,/g,""), e:null, u:""});
+
+  /* 去重 */
+  const seen = {};
+  out.focus = out.focus.filter(x=>{ if(seen[x]) return false; seen[x]=1; return true; });
+  const dseen = {};
+  out.earnings = out.earnings.filter(x=>{ if(dseen[x.d]) return false; dseen[x.d]=1; return true; });
+  return out;
+}
+
+/* 把解析结果写进公司覆盖表 + 实际业绩 */
+function applyProfile(name, p, mode){
+  if(!name) return 0;
+  const ov = state.co[name] || {};
+  const patch = {custom: baseCo(name) ? false : true};
+  if(p.ticker) patch.ticker = String(p.ticker).toUpperCase();
+  if(p.market) patch.market = p.market;
+  if(p.biz) patch.biz = p.biz;
+  if(p.focus && p.focus.length) patch.focus = p.focus.slice(0,12);
+  const dates = (ov.earnings||[]).slice();
+  (p.earnings||[]).forEach(x=>{ if(!dates.some(y=>y.d===x.d)) dates.push({d:x.d, note:x.note||"", status:"imported"}); });
+  if(dates.length) patch.earnings = dates;
+  patch.src = mode==="web" ? "网上获取" : "本地文件";
+  patch.filledAt = TODAY;
+  state.co[name] = Object.assign({}, ov, patch);
+
+  if(p.metrics && p.metrics.length){
+    const tk = (patch.ticker || coMeta(name).ticker || name).toUpperCase();
+    MYACT[tk] = {
+      period: p.period || "", report_date: (p.earnings[0]||{}).d || "",
+      metrics: p.metrics.map(m=>({k:m.k, a:num(m.a), e:num(m.e), u:m.u||"", yoy:m.yoy})),
+      src: p.src, note: p.note || ""
+    };
+  }
+  if(p.quote) MYQ[(patch.ticker||"").toUpperCase()] = p.quote;
+  save(); renderSidebar(); render();
+  return (p.focus||[]).length + (p.metrics||[]).length + (p.earnings||[]).length;
+}
+
+function profHTML(p, name){
+  const rows = [];
+  rows.push(['代码', p.ticker || '—']);
+  rows.push(['市场', p.market || guessMarket(p.ticker||"") || '—']);
+  rows.push(['业务结构', p.biz || '—']);
+  rows.push(['关注点', (p.focus||[]).length ? p.focus.length+' 条' : '—']);
+  rows.push(['财报日', (p.earnings||[]).length ? p.earnings.map(x=>x.d).join("、") : '—']);
+  rows.push(['实际业绩', (p.metrics||[]).length ? p.metrics.map(m=>m.k+" "+(m.a===null||m.a===undefined?"—":m.a)).join("　") : '—']);
+  let h = '';
+  rows.forEach(([k,v])=>{
+    h += '<div class="filerow"><span class="fx" style="width:52px;flex:0 0 52px">'+k+'</span>'
+       + '<span class="fn">'+esc(v)+'</span></div>';
+  });
+  if((p.focus||[]).length){
+    h += '<ul class="flist" style="margin-top:8px">'+p.focus.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
+  }
+  return h;
+}
+
+function openImport(name, mode){
+  const tk = coMeta(name).ticker || "";
+  document.getElementById("drTitle").textContent = "填写 "+name+" 的资料";
+  document.getElementById("drSub").textContent = "两种来源，写入后都能继续改";
+
+  let h = '<div class="tabs" id="impTabs">'
+        + '<button data-m="file" class="'+(mode!=="web"?"on":"")+'">根据我的文件夹</button>'
+        + '<button data-m="web" class="'+(mode==="web"?"on":"")+'">根据网上信息</button>'
+        + '</div>'
+        + '<div id="impBody"></div>';
+  document.getElementById("drBody").innerHTML = h;
+  openDrawer();
+
+  const body = document.getElementById("impBody");
+  const draw = (m)=>{
+    document.querySelectorAll("#impTabs button").forEach(b=>b.classList.toggle("on", b.dataset.m===m));
+    if(m==="file") drawFile(); else drawWeb();
+  };
+  document.querySelectorAll("#impTabs button").forEach(b=>{ b.onclick = ()=>draw(b.dataset.m); });
+
+  /* 解析 + 预览 + 应用 */
+  const handleText = (txt, fname, m)=>{
+    const p = parseProfile(txt, fname);
+    const score = (p.focus||[]).length + (p.metrics||[]).length + (p.earnings||[]).length + (p.ticker?1:0) + (p.biz?1:0);
+    const box = document.getElementById("impPrev");
+    if(box){
+      box.innerHTML = '<div class="sec-h" style="margin-top:12px"><span>识别结果</span><i>'+esc(fname)+'</i></div>'
+        + (score ? profHTML(p, name) : '<div class="ph">没识别出可用字段<span>试试带「代码 / 业务结构 / 关注点 / 财报日 / EPS」这类标题的文本</span></div>')
+        + '<div class="acts" style="margin-top:10px"><button class="primary"'+(score?'':' disabled')+' id="impApply">'
+        + '写入 '+name+'</button><button class="ghost" id="impCancel">取消</button></div>';
+      const ap = document.getElementById("impApply");
+      if(ap) ap.onclick = ()=>{
+        const n = applyProfile(name, p, m);
+        toast(n ? "已写入 "+n+" 项「"+name+"」资料" : "没有可写入的字段");
+        openCoLatest(name);
+      };
+      document.getElementById("impCancel").onclick = ()=>openImport(name, m);
+    }
+    return score;
+  };
+
+  function drawFile(){
+    body.innerHTML =
+        '<div class="drop" id="dropZone">'
+      +   '<b>拖文件到这里，或点一下选文件</b>'
+      +   '支持 .json / .csv / .md / .txt，可多选'
+      +   '<div class="droptip">也能直接选整个文件夹，页面会遍历里面的文本文件逐个识别</div>'
+      + '</div>'
+      + '<div class="tg" style="margin-top:8px">'
+      +   '<button id="pickFiles">选文件</button><button id="pickDir">选文件夹</button>'
+      +   (location.protocol.startsWith("http") ? '<button id="pickUserdata">用项目 userdata 目录</button>' : '')
+      + '</div>'
+      + '<div id="impPrev"></div>';
+
+    const zone = document.getElementById("dropZone");
+    const readFiles = (files)=>{
+      const list = [...files].filter(f=>/\.(json|csv|md|txt|markdown)$/i.test(f.name));
+      if(!list.length){ toast("没有可识别的文本文件"); return; }
+      let best = null, bestScore = -1, done = 0;
+      list.forEach(f=>{
+        const r = new FileReader();
+        r.onload = ()=>{
+          const p = parseProfile(r.result, f.name);
+          const s = (p.focus||[]).length + (p.metrics||[]).length + (p.earnings||[]).length + (p.ticker?1:0) + (p.biz?1:0);
+          if(s > bestScore){ bestScore = s; best = {txt:r.result, name:f.name}; }
+          if(++done === list.length && best) handleText(best.txt, best.name, "file");
+        };
+        r.readAsText(f);
+      });
+    };
+    zone.onclick = ()=>{
+      const inp = document.createElement("input");
+      inp.type = "file"; inp.multiple = true;
+      inp.accept = ".json,.csv,.md,.txt,text/plain,application/json";
+      inp.onchange = ()=>readFiles(inp.files);
+      inp.click();
+    };
+    zone.ondragover = e=>{ e.preventDefault(); zone.classList.add("over"); };
+    zone.ondragleave = ()=>zone.classList.remove("over");
+    zone.ondrop = e=>{ e.preventDefault(); zone.classList.remove("over"); readFiles(e.dataTransfer.files); };
+
+    document.getElementById("pickFiles").onclick = ()=>zone.click();
+    document.getElementById("pickDir").onclick = ()=>{
+      const inp = document.createElement("input");
+      inp.type = "file"; inp.webkitdirectory = true; inp.multiple = true;
+      inp.onchange = ()=>readFiles(inp.files);
+      inp.click();
+    };
+    const pu = document.getElementById("pickUserdata");
+    if(pu) pu.onclick = async ()=>{
+      try{
+        const r = await fetch("userdata/index.json?t="+Date.now(), {cache:"no-store"});
+        if(!r.ok) throw 0;
+        const list = await r.json();
+        const arr = Array.isArray(list) ? list : (list.files||[]);
+        if(!arr.length){ toast("userdata/index.json 是空的"); return; }
+        body.querySelector("#impPrev").innerHTML =
+          '<div class="sec-h" style="margin-top:12px"><span>userdata 里的档案</span><i>'+arr.length+' 份</i></div>'
+          + arr.map(f=>'<div class="filerow"><span class="fn">'+esc(f)+'</span>'
+            + '<button class="chip" data-uf="'+esc(f)+'">读它</button></div>').join("");
+        body.querySelectorAll("[data-uf]").forEach(b=>{
+          b.onclick = async ()=>{
+            const r2 = await fetch("userdata/"+b.dataset.uf+"?t="+Date.now(), {cache:"no-store"});
+            handleText(await r2.text(), b.dataset.uf, "file");
+          };
+        });
+      }catch(e){
+        toast("读不到 userdata/index.json（需要 http 打开，且目录里有这个索引）");
+      }
+    };
+  }
+
+  function drawWeb(){
+    body.innerHTML =
+        '<div class="fld"><label>网页地址或股票代码</label>'
+      +   '<input type="text" id="wUrl" placeholder="例：https://ir.company.com/quarterly-results 或 NVDA" value="'+esc(tk)+'">'
+      + '</div>'
+      + '<div class="fld"><label>CORS 代理（可选，抓不到时填）</label>'
+      +   '<input type="text" id="wProxy" placeholder="https://your-worker.dev/?url=" value="'+esc(localStorage.getItem("fincal.proxy")||"")+'">'
+      +   '<div class="sec-hint" style="margin-top:5px">静态页面直接抓别的站点会被浏览器拦，'
+      +   '填一个自己部署的代理前缀（会拼在原地址前面）就能抓。留空则只尝试直连。</div>'
+      + '</div>'
+      + '<div class="tg"><button id="wGo">抓取</button><button id="wPaste">粘贴网页正文</button></div>'
+      + '<div id="wStat" class="droptip" style="margin-top:8px"></div>'
+      + '<div id="wPasteBox"></div>'
+      + '<div id="impPrev"></div>';
+
+    const stat = document.getElementById("wStat");
+    const tryFetch = async (url)=>{
+      const r = await fetch(url, {cache:"no-store"});
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      return await r.text();
+    };
+
+    document.getElementById("wGo").onclick = async ()=>{
+      const u = document.getElementById("wUrl").value.trim();
+      const px = document.getElementById("wProxy").value.trim();
+      try{ localStorage.setItem("fincal.proxy", px); }catch(e){}
+      if(!u){ toast("先填地址或代码"); return; }
+      stat.textContent = "抓取中…";
+      const targets = [];
+      if(/^https?:\/\//.test(u)) targets.push(u);
+      else {
+        const sym = /^\d{6}$/.test(u) ? u+".SS" : u.toUpperCase();
+        targets.push("https://query1.finance.yahoo.com/v8/finance/chart/"+encodeURIComponent(sym)+"?range=3mo&interval=1d");
+      }
+      const urls = [];
+      targets.forEach(t=>{ if(px) urls.push(px + encodeURIComponent(t)); urls.push(t); });
+      let text = "";
+      for(const v of urls){
+        try{ text = await tryFetch(v); if(text && text.length > 40){ break; } }catch(e){ text = ""; }
+      }
+      if(!text){
+        stat.innerHTML = '<span class="warn">抓不到（多半是跨域拦截）。点「粘贴网页正文」，把 IR 页内容贴进来一样能解析。</span>';
+        return;
+      }
+      if(/^\s*\{/.test(text) && text.includes("chart")){
+        /* Yahoo 行情：直接转成股价反应 */
+        try{
+          const j = JSON.parse(text);
+          const r0 = (j.chart.result||[])[0];
+          const ts = r0.timestamp||[], cl = r0.indicators.quote[0].close||[];
+          const pts = ts.map((t,i)=>[new Date(t*1000), cl[i]]).filter(x=>x[1]!=null);
+          const last = pts[pts.length-1], prev = pts[pts.length-2];
+          if(last){
+            const sym = u.toUpperCase();
+            MYQ[sym] = {report_date: "", pre: prev?prev[1]:null, close: last[1],
+              next: null, chg: prev?+(((last[1]/prev[1])-1)*100).toFixed(2):null,
+              next_chg: null, asof: last[0].toISOString().slice(0,10), src:"yahoo"};
+            save();
+            stat.textContent = "拿到最近两个交易日收盘，已记为股价反应。";
+            handleText(JSON.stringify({ticker:sym, price:MYQ[sym]}), "yahoo 行情", "web");
+            return;
+          }
+        }catch(e){}
+      }
+      stat.textContent = "抓到了 "+text.length+" 字符，正在识别…";
+      handleText(text.replace(/<script[\s\S]*?<\/script>/gi,"").replace(/<[^>]+>/g," "), u.slice(0,40), "web");
+    };
+
+    document.getElementById("wPaste").onclick = ()=>{
+      const box = document.getElementById("wPasteBox");
+      box.innerHTML = '<div class="fld" style="margin-top:10px"><label>粘贴网页正文 / 财报段落</label>'
+        + '<textarea id="wText" rows="7" placeholder="把 IR 页面或财报公告复制进来，至少包含代码、业务、关注点、财报日或 EPS 中的几项"></textarea></div>'
+        + '<div class="tg"><button id="wParse">解析这段文字</button></div>';
+      document.getElementById("wParse").onclick = ()=>{
+        const txt = document.getElementById("wText").value;
+        if(!txt.trim()){ toast("先粘贴内容"); return; }
+        handleText(txt, "粘贴的正文", "web");
+      };
+    };
+  }
+
+  draw(mode==="web" ? "web" : "file");
+}
+
+/* 从新闻稿正文里捞数字：只认「名称 + 同比/环比 + 上涨/下降 + 数值%」这种句式 */
+function parseReleaseText(t){
+  const txt = String(t||"").replace(/<[^>]+>/g," ").replace(/\s+/g," ");
+  const out = [], seen = {};
+  const re = /([\u4e00-\u9fa5]{2,12})(同比|环比)?(上涨|下降|增长|回落|持平)\s*([\d.]+)?\s*%/g;
+  let m;
+  while((m = re.exec(txt))){
+    const name = (m[1]||"").trim().replace(/^(其中|分项|从|与|比|较|而|但)/,"");
+    if(name.length < 2 || seen[name]) continue;
+    const kind = m[3];
+    const v = kind === "持平" ? 0 : Number(m[4]);
+    if(!isFinite(v)) continue;
+    seen[name] = 1;
+    out.push({k:name + (m[2]||""), v: (kind==="下降"||kind==="回落") ? -v : v, u:"%"});
+    if(out.length >= 8) break;
+  }
+  return out;
+}
+
+/* 录入 / 编辑一次公布结果（数字 + 解读） */
+function openFillRelease(tid, d, paste, name){
+  const key = relKey(tid, d);
+  const cur = relOf(tid, d) || {};
+  const vals = (cur.vals||[]).slice();
+  while(vals.length < 3) vals.push({k:"", v:"", u:"%"});
+  document.getElementById("drTitle").textContent = "公布结果";
+  document.getElementById("drSub").textContent = (name||tplOf(tid)&&tplOf(tid).name||tid) + "　" + d;
+
+  let h = '';
+  if(paste){
+    h += '<div class="fld"><label>粘贴官方新闻稿正文</label>'
+       + '<textarea id="rpText" rows="6" placeholder="例：2026年11月份居民消费价格同比上涨0.9%，环比上涨0.1%"></textarea>'
+       + '<div class="sec-hint" style="margin-top:5px">只认「名称 + 同比/环比 + 上涨/下降 + 数字%」这种句式，提取后可以逐行改。</div></div>'
+       + '<div class="tg"><button id="rpParse">提取数字</button></div>'
+       + '<div class="sec-h"><span>逐项确认</span><i>可改</i></div>';
+  }
+  h += '<div id="rpRows">';
+  vals.forEach((v,i)=>{
+    h += '<div class="row2" style="margin-bottom:7px">'
+       +   '<div class="fld"><label>'+(i===0?"指标":"　")+'</label><input data-rk="'+i+'" value="'+esc(v.k||"")+'" placeholder="CPI 同比"></div>'
+       +   '<div class="fld"><label>公布值</label><input data-rv="'+i+'" value="'+(v.v===""||v.v===undefined?"":esc(v.v))+'" placeholder="0.9"></div>'
+       + '</div>';
+  });
+  h += '</div>'
+     + '<div class="fld"><label>解读（会显示在事件详情页）</label>'
+     +   '<textarea id="rpRead" rows="4" placeholder="写一段自己的判断：这组数字意味着什么，和上期比变了什么，对哪类资产有影响">'
+     +   esc(cur.read||"")+'</textarea></div>'
+     + '<div class="acts"><button class="primary" id="rpSave">保存</button><button class="ghost" id="rpCancel">取消</button></div>';
+  document.getElementById("drBody").innerHTML = h;
+  openDrawer();
+
+  let rows = vals.slice();
+  const redraw = ()=>{
+    const box = document.getElementById("rpRows");
+    box.innerHTML = rows.map((v,i)=>
+      '<div class="row2" style="margin-bottom:7px">'
+      + '<div class="fld"><label>'+(i===0?"指标":"　")+'</label><input data-rk="'+i+'" value="'+esc(v.k||"")+'" placeholder="CPI 同比"></div>'
+      + '<div class="fld"><label>公布值</label><input data-rv="'+i+'" value="'+(v.v===""||v.v===undefined?"":esc(v.v))+'" placeholder="0.9"></div>'
+      + '</div>').join("");
+  };
+  const collect = ()=>{
+    rows = rows.map((v,i)=>({
+      k: (document.querySelector('[data-rk="'+i+'"]')||{}).value || v.k,
+      v: (document.querySelector('[data-rv="'+i+'"]')||{}).value || v.v,
+      u: v.u || "%"
+    }));
+  };
+  const pp = document.getElementById("rpParse");
+  if(pp) pp.onclick = ()=>{
+    const got = parseReleaseText(document.getElementById("rpText").value);
+    if(!got.length){ toast("没认出来，手动填更快"); return; }
+    collect();
+    rows = got;
+    redraw();
+    toast("提取到 "+got.length+" 项，确认后保存");
+  };
+  document.getElementById("rpCancel").onclick = ()=>{
+    const ev0 = allEvents().find(x=>x.official && x.tid===tid && x.d===d);
+    if(ev0) showFinance(ev0, d); else closeDrawer();
+  };
+  document.getElementById("rpSave").onclick = ()=>{
+    collect();
+    const out = rows.filter(v=>v.k && String(v.v).trim()!=="").map(v=>({
+      k: v.k.trim(), v: Number(String(v.v).replace(/[^\d.\-]/g,"")), u: v.u || "%"
+    })).filter(v=>isFinite(v.v));
+    const read = document.getElementById("rpRead").value.trim();
+    if(!out.length && !read){ toast("至少填一项数字或一段解读"); return; }
+    MYREL[key] = {
+      tid, d, vals: out, read,
+      auto: (cur.auto||""), title: cur.title || "手工录入",
+      src: "页面录入", got: TODAY
+    };
+    save(); render();
+    toast("已保存，细节页已更新");
+    const ev2 = allEvents().find(x=>x.official && x.tid===tid && x.d===d);
+    if(ev2) showFinance(ev2, d); else closeDrawer();
+  };
+}
+
+/* 手动录入实际业绩 */
+function openFillActual(name){
+  const tk = (coMeta(name).ticker || name || "").toUpperCase();
+  const rec = actOf(tk) || {};
+  const metrics = (rec.metrics || []).slice();
+  while(metrics.length < 3) metrics.push({k:"", a:"", e:"", u:""});
+  document.getElementById("drTitle").textContent = "录入实际业绩";
+  document.getElementById("drSub").textContent = name + (tk?"　"+tk:"");
+
+  let h = '<div class="fld"><label>报告期</label><input id="faPeriod" placeholder="例：2026Q3" value="'+esc(rec.period||"")+'"></div>';
+  h += '<div class="sec-h"><span>指标 · 实际 vs 预期</span><i>预期留空则用内置一致预期</i></div>';
+  metrics.forEach((m,i)=>{
+    h += '<div class="row2" style="margin-bottom:8px">'
+       +   '<div class="fld"><label>'+(i===0?"指标名":'　')+'</label><input data-mk="'+i+'" value="'+esc(m.k||"")+'" placeholder="每股收益 / 营业收入"></div>'
+       +   '<div class="fld"><label>单位</label><input data-mu="'+i+'" value="'+esc(m.u||"")+'" placeholder="元 / 亿元"></div>'
+       + '</div>'
+       + '<div class="row2" style="margin-bottom:12px">'
+       +   '<div class="fld"><label>预期</label><input data-me="'+i+'" value="'+(m.e===null||m.e===undefined?"":esc(m.e))+'" placeholder="留空用一致预期"></div>'
+       +   '<div class="fld"><label>实际</label><input data-ma="'+i+'" value="'+(m.a===null||m.a===undefined?"":esc(m.a))+'" placeholder="财报里的实际值"></div>'
+       + '</div>';
+  });
+  h += '<div class="acts"><button class="primary" id="faSave">保存</button><button class="ghost" id="faCancel">取消</button></div>';
+  document.getElementById("drBody").innerHTML = h;
+  openDrawer();
+
+  document.getElementById("faCancel").onclick = ()=>openCoLatest(name);
+  document.getElementById("faSave").onclick = ()=>{
+    const out = [];
+    for(let i=0;i<metrics.length;i++){
+      const k = (document.querySelector('[data-mk="'+i+'"]')||{}).value||"";
+      if(!k.trim()) continue;
+      out.push({k:k.trim(),
+        u:(document.querySelector('[data-mu="'+i+'"]')||{}).value||"",
+        e:num((document.querySelector('[data-me="'+i+'"]')||{}).value),
+        a:num((document.querySelector('[data-ma="'+i+'"]')||{}).value)});
+    }
+    if(!out.length){ toast("至少填一个指标"); return; }
+    MYACT[tk] = Object.assign({}, rec, {period:document.getElementById("faPeriod").value.trim(),
+      metrics:out, src:"页面录入", note:"手工录入，来源 " + TODAY});
+    save(); render(); openCoLatest(name);
+    const v = verdictFrom(out);
+    toast(v ? "已保存，" + VLABEL[v.k] : "已保存实际业绩");
+  };
+}
+
+/* 手动填股价 */
+function openFillQuote(tk){
+  const q = quoteOf(tk) || {};
+  document.getElementById("drTitle").textContent = "填股价";
+  document.getElementById("drSub").textContent = tk;
+  let h = ''
+    + '<div class="row2"><div class="fld"><label>财报前收</label><input id="qPre" value="'+(q.pre||"")+'"></div>'
+    + '<div class="fld"><label>财报当日收</label><input id="qClose" value="'+(q.close||"")+'"></div></div>'
+    + '<div class="row2"><div class="fld"><label>次日收</label><input id="qNext" value="'+(q.next||"")+'"></div>'
+    + '<div class="fld"><label>日期</label><input type="date" id="qDate" value="'+(q.report_date||TODAY)+'"></div></div>'
+    + '<div class="acts"><button class="primary" id="qSave">保存</button><button class="ghost" id="qCancel">取消</button></div>';
+  document.getElementById("drBody").innerHTML = h;
+  openDrawer();
+  document.getElementById("qCancel").onclick = closeDrawer;
+  document.getElementById("qSave").onclick = ()=>{
+    const pre = num(document.getElementById("qPre").value);
+    const close = num(document.getElementById("qClose").value);
+    const next = num(document.getElementById("qNext").value);
+    MYQ[tk] = {report_date:document.getElementById("qDate").value, pre, close, next,
+      chg: (pre&&close)? +(((close/pre)-1)*100).toFixed(2) : null,
+      next_chg: (close&&next)? +(((next/close)-1)*100).toFixed(2) : null,
+      asof: TODAY, src:"手动填写"};
+    save(); render();
+    toast("已保存股价"); closeDrawer();
+  };
+}
+
+/* 抓一家公司的行情（浏览器直连，失败就走代理） */
+async function fetchQuote(tk, cb, silent){
+  const px = (()=>{ try{ return localStorage.getItem("fincal.proxy")||""; }catch(e){ return ""; } })();
+  const sym = /^\d{6}$/.test(tk) ? tk + ".SS" : String(tk).toUpperCase();
+  const url = "https://query1.finance.yahoo.com/v8/finance/chart/"+encodeURIComponent(sym)+"?range=3mo&interval=1d";
+  if(!silent) toast("抓取 "+sym+" 行情…");
+  const tries = px ? [px + encodeURIComponent(url), url] : [url];
+  for(const u of tries){
+    try{
+      const r = await fetch(u, {cache:"no-store"});
+      if(!r.ok) continue;
+      const j = await r.json();
+      const r0 = (j.chart.result||[])[0];
+      const ts = r0.timestamp||[], cl = r0.indicators.quote[0].close||[];
+      const pts = ts.map((t,i)=>[new Date(t*1000), cl[i]]).filter(x=>x[1]!=null);
+      if(!pts.length) continue;
+      const last = pts[pts.length-1], prev = pts[pts.length-2];
+      MYQ[sym] = {report_date: "", pre: prev?prev[1]:null, close: last[1], next: null,
+        chg: prev? +(((last[1]/prev[1])-1)*100).toFixed(2) : null, next_chg: null,
+        asof: last[0].toISOString().slice(0,10), src:"yahoo"};
+      save(); render();
+      if(!silent) toast("拿到 "+sym+" 最近两个交易日收盘");
+      if(cb) cb();
+      return true;
+    }catch(e){}
+  }
+  if(!silent) toast("抓不到（跨域或网络），可以直接手填");
+  return false;
+}
+
+/* ── 刷新：重新拉取全部数据源并重绘 ───── */
+async function loadJSON(f){
+  try{
+    const r = await fetch("data/"+f+"?t="+Date.now(), {cache:"no-store"});
+    if(!r.ok) return null;
+    return await r.json();
+  }catch(e){ return null; }
+}
+
+async function refreshAll(manual){
+  const btn = document.getElementById("btnRefresh");
+  if(btn){ btn.classList.add("spin"); btn.textContent = "刷新中"; }
+  const http = /^https?:/.test(location.protocol);
+  const log = [];
+
+  if(http){
+    const sc = await loadJSON("schedule.json");
+    if(sc && Array.isArray(sc.items)){
+      SCHED = {items:sc.items, sources:sc.sources||[], updated:sc.updated||""};
+      log.push("日程 "+sc.items.length+" 条");
+    }
+    const ac = await loadJSON("actuals.json");
+    if(ac && ac.items){ ACTS = Object.assign(ACTS, ac.items); log.push("业绩 "+Object.keys(ac.items).length+" 家"); }
+    const qq = await loadJSON("quotes.json");
+    if(qq && qq.items){ QTS = Object.assign(QTS, qq.items); log.push("行情 "+Object.keys(qq.items).length+" 家"); }
+    const rl = await loadJSON("releases.json");
+    if(rl && rl.items){ RELS = Object.assign(RELS, rl.items); log.push("公布结果 "+Object.keys(rl.items).length+" 条"); }
+  }
+
+  /* 已披露但还没行情的，顺手抓最近两家 */
+  let got = 0;
+  const need = (EARN.items||[]).filter(it=>it.d<=TODAY && it.ticker && !quoteOf(it.ticker)).slice(0,2);
+  for(const it of need){
+    if(await fetchQuote(it.ticker, null, true)) got++;
+  }
+  if(got) log.push("新抓行情 "+got+" 家");
+
+  renderSidebar(); render();
+  if(btn){ btn.classList.remove("spin"); btn.textContent = "刷新"; }
+  const msg = log.length ? "已刷新：" + log.join(" · ")
+    : (http ? "已刷新，数据没有变化"
+            : "本地打开只能重绘；部署到网上（或跑 scripts/ 里的脚本）才会拉到最新");
+  if(manual) toast(msg);
+  return log;
 }
 
 /* ── 抽屉：财报详情（预期 / 关注点 / 实际） ── */
@@ -1219,17 +2002,118 @@ function focusHTML(e){
   return h;
 }
 
-function actualHTML(raw){
-  const act = raw && raw.actual;
-  if(!act || !act.items || !act.items.length){
-    return '<div class="ph">待披露<span>财报发布后回填实际数字，并标出与上面一致预期的偏离（超预期 / 不及预期）。</span></div>';
+/* ③ 实际业绩 + 预期差 + 股价反应 */
+function num(x){
+  if(x===null || x===undefined || x==="") return null;
+  const v = Number(String(x).replace(/[,，\s]/g,""));
+  return isFinite(v) ? v : null;
+}
+function actOf(ticker){ return (ticker && (MYACT[ticker] || ACTS[ticker])) || null; }
+function quoteOf(ticker){ return (ticker && (MYQ[ticker] || QTS[ticker])) || null; }
+function pct(a,e){
+  if(a===null||e===null||e===0) return null;
+  return (a-e)/Math.abs(e)*100;
+}
+function tkOf(e){
+  const m = coMeta(e.co || "");
+  return (e.raw && e.raw.ticker) || m.ticker || "";
+}
+
+/* 把三种来源（内置 actual / 页面录入 / 文件导入）统一成 [{k,a,e,u,yoy}] */
+function metricsOf(e){
+  const rec = actOf(tkOf(e));
+  if(rec && rec.metrics && rec.metrics.length){
+    return rec.metrics.map(m=>({k:m.k, a:num(m.a), e:num(m.e), u:m.u||"", yoy:(m.yoy===undefined?null:m.yoy)}));
   }
-  const vmap = {beat:["超预期","ok"], inline:["符合预期","me"], miss:["不及预期","bad"]};
-  const vt = vmap[act.verdict] || ["已披露",""];
-  let h = '<div style="margin-bottom:8px"><span class="pill '+vt[1]+'">'+vt[0]+'</span>'
-        + (act.time?'<span class="pill" style="margin-left:5px">'+esc(act.time)+' 发布</span>':'')+'</div>';
-  h += metricGrid(act.items);
-  if(act.note) h += '<div class="basis">'+esc(act.note)+'</div>';
+  const legacy = e.raw && e.raw.actual;
+  if(legacy && legacy.items && legacy.items.length){
+    return legacy.items.map(m=>({k:m.k, a:num(m.v), e:num(m.e), u:m.u||"", yoy:(m.yoy===undefined?null:m.yoy)}));
+  }
+  return [];
+}
+
+/* 结论：优先看每股收益的预期差，没有就看第一个有预期值的指标 */
+function verdictFrom(metrics){
+  const both = metrics.filter(m=>m.a!==null && m.e!==null);
+  if(!both.length) return null;
+  const eps = both.find(m=>/每股|EPS|摊薄/i.test(m.k)) || both[0];
+  const s = pct(eps.a, eps.e);
+  if(s===null) return null;
+  return {k: s>2 ? "beat" : (s<-2 ? "miss" : "inline"), s, metric:eps};
+}
+const VLABEL = {beat:"超预期", miss:"低于预期", inline:"符合预期"};
+
+function actualHTML(e){
+  const metrics = metricsOf(e);
+  if(!metrics.length){
+    return '<div class="ph">待披露<span>财报发布后录入实际值，自动与上面的一致预期比对，标出超预期 / 低于预期 / 符合预期。</span></div>'
+         + '<div class="tg"><button data-fill="'+esc(e.co||"")+'">录入实际业绩</button>'
+         +   '<button data-import="'+esc(e.co||"")+'">从文件 / 网上获取</button></div>';
+  }
+  const v = verdictFrom(metrics);
+  let h = '<div style="margin-bottom:8px">'
+        + (v ? '<span class="verdict '+v.k+'">'+VLABEL[v.k]+'</span>' : '<span class="verdict inline">已披露 · 无预期值可比</span>')
+        + (v ? '<span class="pill" style="margin-left:5px">预期差 '+(v.s>=0?"+":"")+v.s.toFixed(1)+'%</span>' : '')
+        + '</div>';
+  h += '<div class="etab act">'
+     +   '<div class="erow eh"><span>指标</span><span>预期</span><span>实际</span><span>预期差</span></div>';
+  metrics.forEach(m=>{
+    const d = pct(m.a, m.e);
+    h += '<div class="erow"><span class="ek">'+esc(m.k)+'</span>'
+       +   '<span class="ev">'+(m.e===null?"—":fmtNum(m.e))+(m.e!==null&&m.u?'<em>'+esc(m.u)+'</em>':'')+'</span>'
+       +   '<span class="ev">'+(m.a===null?"—":fmtNum(m.a))+(m.a!==null&&m.u?'<em>'+esc(m.u)+'</em>':'')+'</span>'
+       +   '<span class="ey'+(d!==null&&d<0?' neg':'')+'" style="'+(d!==null&&d<0?'color:#0B7A56':(d!==null?'color:#C0392B':''))+'">'
+       +   (d===null?"—":(d>=0?"+":"")+d.toFixed(1)+"%")+'</span></div>';
+  });
+  h += '</div>';
+  const rec = actOf(tkOf(e));
+  if(rec && rec.note) h += '<div class="basis">'+esc(rec.note)+'</div>';
+  else if(rec && rec.src) h += '<div class="basis">来源：'+esc(rec.src)+'</div>';
+  h += '<div class="tg"><button data-fill="'+esc(e.co||"")+'">改实际业绩</button>'
+     +   '<button data-import="'+esc(e.co||"")+'">从文件 / 网上获取</button></div>';
+  return h;
+}
+
+function fmtNum(v){
+  const a = Math.abs(v);
+  if(a >= 10000) return (v/10000).toFixed(2)+" 万";
+  if(a >= 100) return v.toFixed(0);
+  if(a >= 1) return v.toFixed(2);
+  return v.toFixed(3);
+}
+
+/* 股价反应：财报前收 → 当日 → 次日 */
+function reactionHTML(e){
+  const tk = tkOf(e);
+  const q = quoteOf(tk);
+  if(!q){
+    return '<div class="ph">还没有股价数据<span>'
+         + (tk ? "点下面按钮抓取（需要联网）；也可以手填或用文件导入。" : "这家没有股票代码，先补代码。")
+         + '</span></div>'
+         + (tk ? '<div class="tg"><button data-fetchq="'+esc(tk)+'">抓取股价</button>'
+               + '<button data-fillq="'+esc(tk)+'">手动填股价</button></div>' : '');
+  }
+  const cls = x => x===null||x===undefined ? "" : (x>=0?"up":"down");
+  const sgn  = x => x===null||x===undefined ? "—" : (x>=0?"+":"")+Number(x).toFixed(2)+"%";
+  const pre = Number(q.pre||0), cur = Number(q.close||0), nxt = Number(q.next||0);
+  const chg = (q.chg!==null && q.chg!==undefined) ? Number(q.chg) : (pre ? (cur/pre-1)*100 : null);
+  const nch = (q.next_chg!==null && q.next_chg!==undefined) ? Number(q.next_chg) : (nxt && cur ? (nxt/cur-1)*100 : null);
+  let h = '<div class="ract">'
+    + '<div class="rcell"><span class="rk">财报前收</span><span class="rv">'+(pre?fmtNum(pre):"—")+'</span>'
+    +   '<span class="rs">'+esc(q.report_date||e.d)+'</span></div>'
+    + '<div class="rcell"><span class="rk">当日涨跌</span><span class="rv '+cls(chg)+'">'+sgn(chg)+'</span>'
+    +   '<span class="rs">收 '+(cur?fmtNum(cur):"—")+'</span></div>'
+    + '<div class="rcell"><span class="rk">次日涨跌</span><span class="rv '+cls(nch)+'">'+sgn(nch)+'</span>'
+    +   '<span class="rs">收 '+(nxt?fmtNum(nxt):"—")+'</span></div>'
+    + '</div>';
+  const rel = (nch!==null?nch:chg);
+  if(rel!==null){
+    h += '<div class="rnote">公布后'+(nch!==null?"次日":"当日")+(rel>=0?"涨":"跌")
+       + Math.abs(rel).toFixed(2)+'%，'+(rel>=0?"红盘收":"绿盘收")+'　·　'
+       + '数据 '+esc(q.asof||"")+(q.src?"（"+esc(q.src)+"）":"")+'</div>';
+  }
+  h += '<div class="tg"><button data-fetchq="'+esc(tk)+'">重新抓取</button>'
+     + '<button data-fillq="'+esc(tk)+'">手动修正</button></div>';
   return h;
 }
 
@@ -1239,8 +2123,96 @@ function showFinance(e, dayKey){
   const KIND = {ipo:"IPO / 上市", macro:"宏观数据", cb:"央行 / 货币政策", mna:"并购", other:"财经事件"};
   document.getElementById("drTitle").textContent = e.t;
   document.getElementById("drSub").textContent = d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"
-    + " " + WD[d.getDay()] + (e.s ? "　"+e.s+(e.e?"–"+e.e:"") : "");
+    + " " + WD[d.getDay()] + (e.s ? "　"+e.s+"（北京时间）" : "");
   const passed = e.d < TODAY;
+
+  if(e.official){
+    const it = e.sched || {};
+    const IMP = {high:["重要","ok"], mid:["中等","est"], low:["一般","me"]};
+    const im = IMP[e.imp] || IMP.mid;
+    let h = '<div style="margin-bottom:2px">'
+          + '<span class="pill fin">官方日程</span>'
+          + '<span class="pill '+im[1]+'" style="margin-left:5px">'+im[0]+'</span>'
+          + '<span class="pill" style="margin-left:5px">'+(passed?"已公布":"待公布")+'</span></div>';
+
+    h += '<div class="fld"><label>公布时间</label><div style="font-size:12.5px;line-height:1.7">'
+       + e.d + (it.t ? "　"+it.t+" 北京时间" : "　（官方只给了日期）") + '</div></div>';
+    if(it.note) h += '<div class="fld"><label>官方口径</label><div style="font-size:11.5px;line-height:1.7;color:#6e6e73">'
+       + esc(it.note) + '</div></div>';
+    if(it.src) h += '<div class="fld"><label>来源</label><div style="font-size:11.5px;line-height:1.7;color:#6e6e73">'
+       + esc(srcName(it.src)) + '</div></div>'
+       + '<div class="hint">这张日程由 scripts/fetch_schedule.py 从官方页面抓取，'
+       + '官方改期后重新抓取即可更新，不需要手改日历。</div>';
+
+    /* 公布结果：数字 + 解读 */
+    const rel = relOf(e.tid, e.d);
+    if(rel || passed){
+      h += '<div class="sec-h" style="margin-top:16px"><span>公布结果</span><i>'
+         + (rel && rel.vals && rel.vals.length ? "已公布" : "待收录") + '</i></div>';
+      if(rel && rel.vals && rel.vals.length){
+        const prev = prevRelOf(e.tid, e.d);
+        h += '<div class="etab act"><div class="erow eh"><span>指标</span><span>公布值</span><span>前值</span><span>变化</span></div>';
+        rel.vals.forEach(v=>{
+          const pv = prev && (prev.vals||[]).find(x=>x.k===v.k);
+          const diff = pv ? (v.v - pv.v) : null;
+          const sgn = x => x===null ? "—" : (x>0?"+":"")+Number(x).toFixed(1);
+          h += '<div class="erow"><span class="ek">'+esc(v.k)+'</span>'
+             +   '<span class="ev" style="color:'+(v.v>0?"#C0392B":"#0B7A56")+'">'+sgn(v.v)+(v.u?'<em>'+esc(v.u)+'</em>':'')+'</span>'
+             +   '<span class="ev">'+(pv?sgn(pv.v)+(v.u?'<em>'+esc(v.u)+'</em>':''):"—")+'</span>'
+             +   '<span class="ey" style="color:'+(diff===null?"#a1a1a6":(diff>0?"#C0392B":(diff<0?"#0B7A56":"#8e8e93")))+'">'
+             +   (diff===null?"—":(diff>0?"+":"")+diff.toFixed(1)+(v.u==="%"?"pp":""))+'</span></div>';
+        });
+        h += '</div>';
+        const mine = MYREL[relKey(e.tid,e.d)] || {};
+        const read = mine.read || rel.read || "";
+        const auto = rel.auto || "";
+        h += '<div class="relbox">'
+           + (read ? '<div class="relread">'+esc(read)+'</div>' : '')
+           + (auto ? '<div class="relauto">事实：'+esc(auto)+'</div>' : '')
+           + (read||auto ? '' : '<div class="ph">还没有解读<span>点下面按钮写一段，会显示在这里</span></div>')
+           + '</div>';
+        h += '<div class="rnote">来源 ' + esc(rel.src||"官方新闻稿")
+           + (rel.title ? '｜'+esc(rel.title) : '')
+           + (rel.got ? '｜收录 '+esc(rel.got) : '') + '</div>';
+        h += '<div class="tg"><button data-rel="'+e.tid+'" data-rd="'+e.d+'">改公布值 / 写解读</button></div>';
+      } else {
+        h += '<div class="ph">已经公布，但还没收录数字<span>录入后会连同解读一起显示在这里。</span></div>'
+           + '<div class="tg"><button data-rel="'+e.tid+'" data-rd="'+e.d+'">录入公布值</button>'
+           + '<button data-rel="'+e.tid+'" data-rd="'+e.d+'" data-paste="1">粘贴新闻稿自动提取</button></div>';
+      }
+    }
+
+    /* 未来几期 */
+    const list = schedOf(e.tid).filter(x=>x.d > e.d).slice(0,4);
+    if(list.length){
+      h += '<div class="sec-h" style="margin-top:14px"><span>接下来几期</span><i>'+list.length+'</i></div>';
+      list.forEach(x=>{
+        h += '<div class="schedrow"><span class="sd">'+x.d.slice(5)+'</span>'
+           + '<span class="st">'+(x.t||"")+'</span>'
+           + '<span class="sn">'+esc(e.t)+'</span></div>';
+      });
+    }
+
+    h += '<div class="acts"><button class="ghost" id="roClose">关闭</button><button class="ghost" id="roAdd">在当天加备注</button></div>';
+    h += '<div class="acts"><button class="ghost" id="roMacro" style="flex:1;color:#8a6a00">订阅管理</button>'
+       + '<button class="danger" id="roUnsub" style="flex:1">取消订阅这项</button></div>';
+
+    const body = document.getElementById("drBody");
+    body.innerHTML = h;
+    document.getElementById("roClose").onclick = closeDrawer;
+    document.getElementById("roAdd").onclick = ()=>openForm(null, e.d);
+    document.getElementById("roMacro").onclick = openMacro;
+    document.getElementById("roUnsub").onclick = ()=>{
+      toggleSub(e.tid); renderSidebar(); render(); closeDrawer();
+      toast("已取消订阅「"+e.t+"」");
+    };
+    body.querySelectorAll("[data-rel]").forEach(b=>{
+      b.onclick = ()=>openFillRelease(b.dataset.rel, b.dataset.rd, b.dataset.paste==="1", e.t);
+    });
+    openDrawer();
+    return;
+  }
+
   let h = '<div style="margin-bottom:2px">'
         + '<span class="pill fin">'+(KIND[e.kind]||"财经事件")+'</span>'
         + '<span class="pill" style="margin-left:5px">'+(passed?"已发生":"待发生")+'</span></div>';
@@ -1262,10 +2234,13 @@ function showFinance(e, dayKey){
 function showReadonly(e, dayKey){
   state.sel = dayKey || e.d;
   const d = parseD(e.d);
-  const done = !!(e.raw && e.raw.actual);
+  const metrics = metricsOf(e);
+  const verdict = verdictFrom(metrics);
+  const done = metrics.length > 0;
+  const tk = tkOf(e);
   document.getElementById("drTitle").textContent = e.t;
   document.getElementById("drSub").textContent = d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"
-    + (e.co ? "　"+(e.raw&&e.raw.ticker?e.raw.ticker+"　":"")+e.co : "");
+    + (e.co ? "　"+(tk?tk+"　":"")+e.co : "");
 
   const m = coMeta(e.co);
   const st = e.status==="confirmed" ? ["公司公告 / IR 已确认","ok"]
@@ -1273,6 +2248,7 @@ function showReadonly(e, dayKey){
            : ["按历史规律推算，官方未确认","est"];
   let h = '<div style="margin-bottom:2px"><span class="pill '+st[1]+'">'+st[0]+'</span>'
         + '<span class="pill" style="margin-left:5px">'+(done?"已披露":"未披露")+'</span>'
+        + (verdict?'<span class="verdict '+verdict.k+'" style="margin-left:5px">'+VLABEL[verdict.k]+'</span>':'')
         + (m.market?'<span class="pill" style="margin-left:5px">'+esc(m.market)+'</span>':'')
         + '</div>';
 
@@ -1282,7 +2258,19 @@ function showReadonly(e, dayKey){
            + subHTML("02","业绩预期", period, estHTML(e.raw))
            + subHTML("03","核心业务关注点","", focusHTML(e));
   h += secHTML("市场预期", exIn);
-  h += secHTML("实际业绩", actualHTML(e.raw), done?"":"发布后更新");
+  h += secHTML("实际业绩", actualHTML(e), done ? "已更新" : "公布后自动比对");
+  h += secHTML("股价表现", reactionHTML(e), tk||"");
+
+  /* 详情页两种填写方式 */
+  const nm = esc(e.co || m.name || "");
+  h += '<div class="sec-h"><span>资料维护</span><i>两种来源，都能再改</i></div>'
+     + '<div class="tg">'
+     +   '<button data-import="'+nm+'" data-mode="file">从本地文件夹</button>'
+     +   '<button data-import="'+nm+'" data-mode="web">从网上获取</button>'
+     +   '<button data-coform="'+nm+'">手动编辑</button>'
+     + '</div>'
+     + '<div class="droptip">从文件夹读：支持拖入 json / csv / md / txt，或直接选一个目录。'
+     + '从网上获取：填官网 IR 页或财报页链接，抓不到时会让你粘贴原文。写入后随时可改。</div>';
 
   if(e.n) h += '<div class="fld" style="margin-top:14px"><label>日程口径</label><div style="font-size:11.5px;color:#6e6e73;line-height:1.6">'+esc(e.n)+'</div></div>';
   h += '<div class="acts"><button class="ghost" id="roClose">关闭</button><button class="ghost" id="roAdd">在当天加备注</button></div>';
@@ -1293,6 +2281,18 @@ function showReadonly(e, dayKey){
   body.innerHTML = h;
   body.querySelectorAll("[data-coform]").forEach(b=>{
     b.onclick = ()=>openCoForm(b.dataset.coform);
+  });
+  body.querySelectorAll("[data-import]").forEach(b=>{
+    b.onclick = ()=>openImport(b.dataset.import, b.dataset.mode||"file");
+  });
+  body.querySelectorAll("[data-fill]").forEach(b=>{
+    b.onclick = ()=>openFillActual(b.dataset.fill);
+  });
+  body.querySelectorAll("[data-fetchq]").forEach(b=>{
+    b.onclick = ()=>fetchQuote(b.dataset.fetchq, ()=>showReadonly(e, dayKey));
+  });
+  body.querySelectorAll("[data-fillq]").forEach(b=>{
+    b.onclick = ()=>openFillQuote(b.dataset.fillq);
   });
   document.getElementById("roClose").onclick = closeDrawer;
   document.getElementById("roAdd").onclick = ()=>openForm(null, e.d);
@@ -1480,9 +2480,10 @@ document.getElementById("btnMacroMob").onclick = ()=>openMacro();
 
 document.getElementById("btnExp").onclick = ()=>{
   const data = JSON.stringify({
-    v:3, exportedAt:new Date().toISOString(), app:"财经日历",
+    v:4, exportedAt:new Date().toISOString(), app:"财经日历",
     events: state.events, hidden:[...state.hidden],
-    co: state.co, fired: state.fired
+    co: state.co, fired: state.fired,
+    subs: state.subs, myact: MYACT, myq: MYQ, myrel: MYREL
   }, null, 1);
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([data], {type:"application/json"}));
@@ -1501,11 +2502,15 @@ document.getElementById("btnImp").onclick = ()=>{
         const o = JSON.parse(r.result);
         if(!Array.isArray(o.events)) throw new Error("no events");
         const nco = o.co ? Object.keys(o.co).filter(k=>!o.co[k].deleted && (o.co[k].custom || o.co[k].focus || o.co[k].ticker)).length : 0;
-        if(!confirm("将用备份覆盖本机数据：\n事件 "+o.events.length+" 条"+(nco?"、自定义公司/资料 "+nco+" 家":"")+"\n\n本机现有改动会被替换，继续？")) return;
+        if(!confirm("将用备份覆盖本机数据：\n事件 "+o.events.length+" 条"+(nw?"、自定义公司/资料 "+nw+" 家":"")+"\n\n本机现有改动会被替换，继续？")) return;
         state.events = o.events.map(migrate);
         state.hidden = new Set(o.hidden||[]);
         state.co = o.co || {};
         state.fired = o.fired||[];
+        if(Array.isArray(o.subs)) state.subs = o.subs;
+        if(o.myact) MYACT = o.myact;
+        if(o.myq) MYQ = o.myq;
+        if(o.myrel) MYREL = o.myrel;
         save(); renderSidebar(); render();
         toast("已导入 "+o.events.length+" 个事件");
       }catch(e){ toast("文件格式不对"); }
@@ -1520,6 +2525,8 @@ document.getElementById("btnRst").onclick = ()=>{
   state.events = SEED.map(e=>migrate({...e, remind:0})).map((e,i)=>({id:"s"+i, ...e}));
   state.fired = []; state.hidden = new Set();
   state.co = {};
+  state.subs = DEFAULT_SUBS.slice();
+  MYACT = {}; MYQ = {}; MYREL = {};
   save(); renderSidebar(); render();
   toast("已重置为初始数据");
 };
@@ -1565,6 +2572,10 @@ state.view = parseD(TODAY);
 state.sel = TODAY;
 renderSidebar();
 render();
+
+document.getElementById("btnRefresh").onclick = ()=>refreshAll(true);
+/* 打开就先静默同步一次；离线（file://）时自动跳过 */
+setTimeout(()=>{ refreshAll(false); }, 500);
 </script>
 </body>
 </html>

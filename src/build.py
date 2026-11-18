@@ -35,6 +35,10 @@ def main():
         "finance": load("finance.json", {"updated": "", "items": []}),
         "companies": load("companies.json", {"companies": {}}),
         "macro": load("macro.json", {"templates": []}),
+        "schedule": load("schedule.json", {"updated": "", "sources": [], "items": []}),
+        "actuals": load("actuals.json", {"updated": "", "items": {}}),
+        "quotes": load("quotes.json", {"updated": "", "items": {}}),
+        "releases": load("releases.json", {"updated": "", "items": {}}),
     }
 
     tpl = (BASE / "src" / "template.html").read_text(encoding="utf-8")
@@ -54,8 +58,13 @@ def main():
     n_f = len(payload["finance"].get("items", []))
     n_c = len(payload["companies"].get("companies", {}))
     n_m = len(payload["macro"].get("templates", []))
+    n_s = len(payload["schedule"].get("items", []))
+    n_a = len(payload["actuals"].get("items", {}))
+    n_q = len(payload["quotes"].get("items", {}))
+    n_r = len(payload["releases"].get("items", {}))
     print(f"OK  {OUT}  ({len(html):,} 字节)")
-    print(f"    普通事件 {n_ev} · 财经事件 {n_f} · 财报 {n_e} · 公司 {n_c} · 宏观模板 {n_m}")
+    print(f"    普通事件 {n_ev} · 财经事件 {n_f} · 财报 {n_e} · 公司 {n_c} · 宏观模板 {n_m}"
+          f" · 官方日程 {n_s} · 公布结果 {n_r} · 实际业绩 {n_a} · 行情 {n_q}")
 
 
 if __name__ == "__main__":

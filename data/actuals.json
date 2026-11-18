@@ -1,0 +1,5 @@
+{
+ "note": "财报实际业绩。key 为股票代码；a=实际，e=预期（e 留空则用 data/earnings.json 里的一致预期），u=单位。可在页面内录入、从本地文件导入，或由抓取脚本合并。price 段由 scripts/fetch_quotes.py 写入。",
+ "updated": "",
+ "items": {}
+}

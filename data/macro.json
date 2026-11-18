@@ -1,181 +1,59 @@
 {
- "note": "宏观事件模板库。项目不内置具体发布日期——不猜官方日程。用户添加时填首次日期，系统按频次往后铺开，日期标为「预计」，用户可在日历里拖到官方确认的日期。",
+ "note": "宏观事件模板库。auto=true 的模板有官方日程源（data/schedule.json 由 scripts/fetch_schedule.py 抓取），订阅后日期自动跟随官方公布时间，不用手工填；auto=false 的模板暂无稳定的官方机器可读日程，订阅时用「按频次铺开」并标为预计。",
  "templates": [
-  {
-   "id": "us-cpi",
-   "name": "美国 CPI 同比",
-   "country": "US",
-   "imp": "high",
-   "freq": "month",
-   "note": "BLS 每月中旬公布上月数据，同比与核心同比同时发布"
-  },
-  {
-   "id": "us-core-cpi",
-   "name": "美国核心 CPI",
-   "country": "US",
-   "imp": "high",
-   "freq": "month",
-   "note": "剔除食品与能源，美联储更看重核心口径"
-  },
-  {
-   "id": "us-ppi",
-   "name": "美国 PPI 同比",
-   "country": "US",
-   "imp": "mid",
-   "freq": "month",
-   "note": "BLS 公布，通常晚于 CPI 一天左右"
-  },
-  {
-   "id": "us-pce",
-   "name": "美国核心 PCE",
-   "country": "US",
-   "imp": "high",
-   "freq": "month",
-   "note": "BEA 月底公布，是美联储 2% 目标的官方对标指标"
-  },
-  {
-   "id": "us-nfp",
-   "name": "美国非农就业",
-   "country": "US",
-   "imp": "high",
-   "freq": "month",
-   "note": "BLS 每月第一个周五公布，同时发布失业率与时薪"
-  },
-  {
-   "id": "us-retail",
-   "name": "美国零售销售",
-   "country": "US",
-   "imp": "mid",
-   "freq": "month",
-   "note": "普查局每月中旬公布，看环比与核心对照组"
-  },
-  {
-   "id": "us-fomc",
-   "name": "FOMC 利率决议",
-   "country": "US",
-   "imp": "high",
-   "freq": "quarter",
-   "note": "每年 8 次，看点阵图与发布会措辞"
-  },
-  {
-   "id": "us-jobless",
-   "name": "美国初请失业金",
-   "country": "US",
-   "imp": "low",
-   "freq": "week",
-   "note": "劳工部每周四公布，高频 labour 温度计"
-  },
-  {
-   "id": "us-ism",
-   "name": "美国 ISM 制造业 PMI",
-   "country": "US",
-   "imp": "mid",
-   "freq": "month",
-   "note": "每月首个工作日公布，50 为荣枯线"
-  },
-  {
-   "id": "us-gdp",
-   "name": "美国 GDP 环比折年",
-   "country": "US",
-   "imp": "mid",
-   "freq": "quarter",
-   "note": "BEA 初值 / 修正值 / 终值三次发布"
-  },
-  {
-   "id": "cn-cpi",
-   "name": "中国 CPI / PPI",
-   "country": "CN",
-   "imp": "high",
-   "freq": "month",
-   "note": "统计局每月 9 日前后公布，注意春节错位"
-  },
-  {
-   "id": "cn-tsf",
-   "name": "中国社融 / 新增贷款",
-   "country": "CN",
-   "imp": "high",
-   "freq": "month",
-   "note": "央行每月 10-15 日公布，看社融存量增速与结构"
-  },
-  {
-   "id": "cn-lpr",
-   "name": "中国 LPR 报价",
-   "country": "CN",
-   "imp": "mid",
-   "freq": "month",
-   "note": "每月 20 日公布 1 年期与 5 年期以上报价"
-  },
-  {
-   "id": "cn-pmi",
-   "name": "中国官方制造业 PMI",
-   "country": "CN",
-   "imp": "mid",
-   "freq": "month",
-   "note": "统计局每月最后一天公布"
-  },
-  {
-   "id": "cn-caixin",
-   "name": "中国财新制造业 PMI",
-   "country": "CN",
-   "imp": "mid",
-   "freq": "month",
-   "note": "每月首个工作日公布，样本偏中小与出口企业"
-  },
-  {
-   "id": "cn-trade",
-   "name": "中国进出口",
-   "country": "CN",
-   "imp": "mid",
-   "freq": "month",
-   "note": "海关总署每月 7 日前后公布，看同比与顺差"
-  },
-  {
-   "id": "cn-m2",
-   "name": "中国 M2 / M1",
-   "country": "CN",
-   "imp": "mid",
-   "freq": "month",
-   "note": "与社融同期公布，看 M1-M2 剪刀差"
-  },
-  {
-   "id": "cn-activity",
-   "name": "中国工业增加值 / 社零",
-   "country": "CN",
-   "imp": "high",
-   "freq": "month",
-   "note": "统计局每月 15 日前后公布，与固投同时发布"
-  },
-  {
-   "id": "cn-gdp",
-   "name": "中国 GDP 同比",
-   "country": "CN",
-   "imp": "high",
-   "freq": "quarter",
-   "note": "季度公布，含分产业与支出法结构"
-  },
-  {
-   "id": "ecb",
-   "name": "欧央行利率决议",
-   "country": "EU",
-   "imp": "high",
-   "freq": "quarter",
-   "note": "每 6 周一次，看声明与拉加德发布会"
-  },
-  {
-   "id": "boj",
-   "name": "日本央行利率决议",
-   "country": "JP",
-   "imp": "mid",
-   "freq": "quarter",
-   "note": "关注 YCC 政策与日元汇率反应"
-  },
-  {
-   "id": "eia",
-   "name": "美国 EIA 原油库存",
-   "country": "US",
-   "imp": "low",
-   "freq": "week",
-   "note": "每周三公布，影响油价与能源股"
-  }
+  {"id": "us-cpi", "name": "美国 CPI 同比", "country": "US", "imp": "high", "freq": "month", "auto": true,
+   "note": "劳工统计局 BLS 发布，同比与核心同比同时公布。美东 8:30，北京时间当月 21:30（夏令时 20:30）"},
+  {"id": "us-core-cpi", "name": "美国核心 CPI", "country": "US", "imp": "high", "freq": "month", "auto": false,
+   "note": "与 CPI 同一份报告同时发布，剔除食品与能源，美联储更看重这个口径"},
+  {"id": "us-ppi", "name": "美国 PPI 同比", "country": "US", "imp": "mid", "freq": "month", "auto": true,
+   "note": "BLS 发布，通常晚于 CPI 一到两天"},
+  {"id": "us-pce", "name": "美国核心 PCE", "country": "US", "imp": "high", "freq": "month", "auto": true,
+   "note": "经济分析局 BEA 的 Personal Income and Outlays 里发布，是美联储 2% 目标的官方对标指标"},
+  {"id": "us-nfp", "name": "美国非农就业", "country": "US", "imp": "high", "freq": "month", "auto": true,
+   "note": "BLS 就业形势报告，同时发布失业率与平均时薪。美东 8:30"},
+  {"id": "us-jolts", "name": "美国 JOLTS 职位空缺", "country": "US", "imp": "low", "freq": "month", "auto": true,
+   "note": "BLS 发布，滞后约两个月，看劳动力需求松紧"},
+  {"id": "us-import-price", "name": "美国进出口价格指数", "country": "US", "imp": "low", "freq": "month", "auto": true,
+   "note": "BLS 发布，看输入型通胀与美元传导"},
+  {"id": "us-retail", "name": "美国零售销售", "country": "US", "imp": "mid", "freq": "month", "auto": true,
+   "note": "人口普查局 Advance Retail and Food Services Sales，看环比与核心对照组"},
+  {"id": "us-trade", "name": "美国贸易帐", "country": "US", "imp": "low", "freq": "month", "auto": true,
+   "note": "BEA 与人口普查局联合发布，影响 Q/GDP 净出口分项"},
+  {"id": "us-gdp", "name": "美国 GDP 环比折年", "country": "US", "imp": "mid", "freq": "quarter", "auto": true,
+   "note": "BEA 初值 / 修正值 / 终值分三次发布"},
+  {"id": "us-fomc", "name": "FOMC 利率决议", "country": "US", "imp": "high", "freq": "quarter", "auto": true,
+   "note": "每年 8 次。美东第二天 14:00 公布决议，14:30 发布会，北京时间次日凌晨 03:00（夏令时 02:00）"},
+  {"id": "us-jobless", "name": "美国初请失业金", "country": "US", "imp": "low", "freq": "week", "auto": false,
+   "note": "劳工部每周四发布，最高频的劳动力温度计。无稳定的机器可读日程，按周铺开后手工校准"},
+  {"id": "us-ism", "name": "美国 ISM 制造业 PMI", "country": "US", "imp": "mid", "freq": "month", "auto": false,
+   "note": "每月首个工作日，50 为荣枯线。ISM 官网日程无稳定结构，按频次铺开后手工校准"},
+  {"id": "cn-cpi", "name": "中国 CPI 同比", "country": "CN", "imp": "high", "freq": "month", "auto": true,
+   "note": "国家统计局居民消费价格指数月度报告，通常每月 9 日 9:30"},
+  {"id": "cn-ppi", "name": "中国 PPI 同比", "country": "CN", "imp": "high", "freq": "month", "auto": true,
+   "note": "工业生产者价格指数月度报告，与 CPI 同日 9:30"},
+  {"id": "cn-activity", "name": "中国工业增加值 / 社零 / 固投", "country": "CN", "imp": "high", "freq": "month", "auto": true,
+   "note": "统计局「国民经济运行情况」，每月 15 日前后 10:00，同时发布工业、社零、固投、地产、能源五份月报"},
+  {"id": "cn-pmi", "name": "中国官方制造业 PMI", "country": "CN", "imp": "mid", "freq": "month", "auto": true,
+   "note": "统计局采购经理指数月度报告，月末最后一天 9:30"},
+  {"id": "cn-profit", "name": "中国工业企业利润", "country": "CN", "imp": "mid", "freq": "month", "auto": true,
+   "note": "统计局工业经济效益月度报告，每月 27 日 9:30"},
+  {"id": "cn-tsf", "name": "中国社融 / 新增贷款", "country": "CN", "imp": "high", "freq": "month", "auto": false,
+   "note": "央行每月 10—15 日公布，具体日期由央行另行通知，无固定日程表"},
+  {"id": "cn-lpr", "name": "中国 LPR 报价", "country": "CN", "imp": "mid", "freq": "month", "auto": false,
+   "note": "每月 20 日 9:15 公布 1 年期与 5 年期以上报价"},
+  {"id": "cn-caixin", "name": "中国财新制造业 PMI", "country": "CN", "imp": "mid", "freq": "month", "auto": false,
+   "note": "每月首个工作日 9:45，样本偏中小与出口企业"},
+  {"id": "cn-trade", "name": "中国进出口", "country": "CN", "imp": "mid", "freq": "month", "auto": false,
+   "note": "海关总署每月 7 日前后公布，看同比与顺差"},
+  {"id": "cn-m2", "name": "中国 M2 / M1", "country": "CN", "imp": "mid", "freq": "month", "auto": false,
+   "note": "与社融同期公布，看 M1-M2 剪刀差"},
+  {"id": "cn-gdp", "name": "中国 GDP 同比", "country": "CN", "imp": "high", "freq": "quarter", "auto": false,
+   "note": "季度公布，含分产业与支出法结构，通常在 1/4/7/10 月的国民经济运行情况里"},
+  {"id": "ecb", "name": "欧央行利率决议", "country": "EU", "imp": "high", "freq": "quarter", "auto": false,
+   "note": "每 6 周一次，看声明与拉加德发布会"},
+  {"id": "boj", "name": "日本央行利率决议", "country": "JP", "imp": "mid", "freq": "quarter", "auto": false,
+   "note": "关注 YCC 政策与日元汇率反应"},
+  {"id": "eia", "name": "美国 EIA 原油库存", "country": "US", "imp": "low", "freq": "week", "auto": false,
+   "note": "每周三 22:30（冬令时 23:30）公布，影响油价与能源股"}
  ]
 }
