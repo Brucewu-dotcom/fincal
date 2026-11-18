@@ -356,6 +356,7 @@ button{font-family:inherit}
     <div class="mini-g" id="miniGrid"></div>
     <div class="mini-foot"><button id="btnToday2">今天</button><button id="btnExp">导出</button><button id="btnImp">导入</button><button id="btnRst">重置</button></div>
     <div class="mini-note">改动仅存本机浏览器，互不影响</div>
+    <div class="mini-note" id="buildNote" style="margin-top:2px"></div>
   </div>
 </aside>
 
@@ -2569,6 +2570,15 @@ document.addEventListener("keydown", e=>{
 
 /* ── 启动 ───────────────────────────── */
 loadStore();
+/* 版本标记：页面是「构建于哪天」、日程快照是哪天的，一眼可辨 */
+(function(){
+  const el = document.getElementById("buildNote");
+  if(!el) return;
+  const sd = (SCHED.updated||"").slice(0,10);
+  el.textContent = "构建 " + BUILT_ON + (sd ? " · 日程 " + sd : "");
+  el.title = "页面构建日期 " + BUILT_ON + "；官方日程快照 " + (SCHED.updated||"无")
+           + "；想确认是否最新，对比这两个日期即可";
+})();
 state.view = parseD(TODAY);
 state.sel = TODAY;
 renderSidebar();
