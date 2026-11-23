@@ -69,11 +69,15 @@
 
 下载仓库，双击 `index.html`。不需要服务器、不需要 npm。离线可用，此时刷新按钮只会重绘（拉不到 `data/*.json`）。
 
-**方式二：GitHub Pages（推荐，能自动更新）**
+**方式二：GitHub Pages（推荐）**
 
-Fork → Settings → Pages → Source 选 `Deploy from a branch`，分支 `main`，目录 `/ (root)`。访问 `https://<你的用户名>.github.io/fincal/`。
+Settings → Pages → Source 选 `Deploy from a branch`，分支 `main`，目录 `/ (root)`。访问 `https://<你的用户名>.github.io/fincal/`。
 
-仓库自带 `.github/workflows/update.yml`，每天 07:20（北京时间）抓一次官方日程、公布结果、股价反应，重建 `index.html` 并提交。开着 Pages 就是每天自动更新的日历，不用管。
+本仓库已开启这个方式，线上地址：**https://Brucewu-dotcom.github.io/fincal/**
+
+**想让它每天自动更新数据**：仓库里的 `ci/update.yml` 是现成的 Actions 配置，复制到 `.github/workflows/update.yml` 并提交即可生效。每天 07:20（北京时间）抓一次官方日程、公布结果、股价反应，重建 `index.html` 后自动提交。
+
+> 为什么没放在 `.github/workflows/` 直接生效：用工具（OAuth App）往仓库推 Actions 配置需要 `workflow` 这个额外授权，单独放一份 `ci/` 可以不授权也拿到全部代码。你在网页上新建文件、或在本地 `git push`，都不受这条限制。
 
 **方式三：本地维护**
 
@@ -172,7 +176,7 @@ fincal/
 │   ├── fetch_releases.py   宏观公布值 → data/releases.json
 │   └── fetch_quotes.py     财报次日股价 → data/quotes.json
 ├── data/                   数据源（8 个 json）
-├── .github/workflows/      每日自动更新
+├── ci/update.yml           GitHub Actions 配置（复制到 .github/workflows/ 即生效）
 ├── docs/                   README 用图
 └── .nojekyll               让 GitHub Pages 跳过 Jekyll
 ```

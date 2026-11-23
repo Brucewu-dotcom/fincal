@@ -1,0 +1,46 @@
+name: 更新数据
+
+on:
+  schedule:
+    # 每天北京时间 07:20 跑一次（UTC 23:20）
+    - cron: "20 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 抓官方发布日程
+        continue-on-error: true
+        run: python3 scripts/fetch_schedule.py
+
+      - name: 抓宏观数据公布结果
+        continue-on-error: true
+        run: python3 scripts/fetch_releases.py --pages 4
+
+      - name: 抓财报股价反应
+        continue-on-error: true
+        run: python3 scripts/fetch_quotes.py
+
+      - name: 重新构建单文件页面
+        run: python3 src/build.py
+
+      - name: 提交
+        run: |
+          git config user.name  "fincal-bot"
+          git config user.email "bot@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "没有变化"
+            exit 0
+          fi
+          git add -A
+          git commit -m "数据更新 $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
