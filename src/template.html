@@ -2014,7 +2014,6 @@ function valHTML(raw){
     + '<div class="rleg"><span><i style="background:#1D9E75"></i>买入 '+v.buy+'%</span>'
     +  '<span><i style="background:#c9c9cf"></i>持有 '+v.hold+'%</span>'
     +  '<span><i style="background:#E8927C"></i>卖出 '+v.sell+'%</span></div>';
-  h += '<div class="basis">口径：NeoData 卖方目标价与评级汇总（'+(v.asof||"")+'）</div>';
   return h;
 }
 
@@ -2034,7 +2033,6 @@ function estHTML(raw){
        +   '<span class="en">'+(m.n?m.n+' 家':esc(m.s||""))+'</span></div>';
   });
   h += '</div>';
-  if(e.basis) h += '<div class="basis">口径：'+esc(e.basis)+'</div>';
   return h;
 }
 
@@ -2188,7 +2186,7 @@ function showFinance(e, dayKey){
 
     h += '<div class="fld"><label>公布时间</label><div style="font-size:12.5px;line-height:1.7">'
        + e.d + (it.t ? "　"+it.t+" 北京时间" : "　（官方只给了日期）") + '</div></div>';
-    if(it.note) h += '<div class="fld"><label>官方口径</label><div style="font-size:11.5px;line-height:1.7;color:#6e6e73">'
+    if(it.note) h += '<div class="fld"><label>备注</label><div style="font-size:11.5px;line-height:1.7;color:#6e6e73">'
        + esc(it.note) + '</div></div>';
     if(it.src) h += '<div class="fld"><label>来源</label><div style="font-size:11.5px;line-height:1.7;color:#6e6e73">'
        + esc(srcName(it.src)) + '</div></div>'
@@ -2323,7 +2321,7 @@ function showReadonly(e, dayKey){
      + '<div class="droptip">从文件夹读：支持拖入 json / csv / md / txt，或直接选一个目录。'
      + '从网上获取：填官网 IR 页或财报页链接，抓不到时会让你粘贴原文。写入后随时可改。</div>';
 
-  if(e.n) h += '<div class="fld" style="margin-top:14px"><label>日程口径</label><div style="font-size:11.5px;color:#6e6e73;line-height:1.6">'+esc(e.n)+'</div></div>';
+  if(e.n) h += '<div class="fld" style="margin-top:14px"><label>备注</label><div style="font-size:11.5px;color:#6e6e73;line-height:1.6">'+esc(e.n)+'</div></div>';
   h += '<div class="acts"><button class="ghost" id="roClose">关闭</button><button class="ghost" id="roAdd">在当天加备注</button></div>';
   h += '<div class="acts"><button class="ghost" id="roWatch" style="flex:1;color:#B4690E">管理关注公司</button>'
      + '<button class="ghost" id="roEditCo" style="flex:1">编辑公司资料</button></div>';
