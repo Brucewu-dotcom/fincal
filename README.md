@@ -1,4 +1,4 @@
-# 财报日历 · 财经日历（fincal）
+# 财经日历 · fincal
 
 一个可以完全自己拥有的财经日历。零依赖单文件，双击即开；财经事件跟着官方发布日程走，财报公布后自动比对预期与股价。
 
@@ -8,7 +8,7 @@
 
 不用逐个功能描述。把仓库地址丢给 WorkBuddy（或任何 AI 编程助手），一句话就够：
 
-> 照这个仓库做一个一样的财经日历：`https://github.com/<用户名>/earnings-calendar`
+> 照这个仓库做一个一样的财经日历：`https://github.com/<用户名>/fincal`
 
 `README.md` 是完整规格，`src/template.html` 是全部实现（一个文件，无框架无依赖），`data/*.json` 是数据格式示例。对方照着搭一遍即可，想改哪里改哪里。
 
@@ -71,9 +71,9 @@
 
 **方式二：GitHub Pages（推荐）**
 
-Settings → Pages → Source 选 `Deploy from a branch`，分支 `main`，目录 `/ (root)`。访问 `https://<你的用户名>.github.io/earnings-calendar/`。
+Settings → Pages → Source 选 `Deploy from a branch`，分支 `main`，目录 `/ (root)`。访问 `https://<你的用户名>.github.io/fincal/`。
 
-本仓库已开启这个方式，线上地址：**https://Brucewu-dotcom.github.io/earnings-calendar/**
+本仓库已开启这个方式，线上地址：**https://Brucewu-dotcom.github.io/fincal/**
 
 **想让它每天自动更新数据**：仓库里的 `ci/update.yml` 是现成的 Actions 配置，复制到 `.github/workflows/update.yml` 并提交即可生效。每天 07:20（北京时间）抓一次官方日程、公布结果、股价反应，重建 `index.html` 后自动提交。
 
@@ -82,8 +82,8 @@ Settings → Pages → Source 选 `Deploy from a branch`，分支 `main`，目�
 **方式三：本地维护**
 
 ```bash
-git clone https://github.com/<你>/earnings-calendar.git
-cd earnings-calendar
+git clone https://github.com/<你>/fincal.git
+cd fincal
 python3 scripts/fetch_schedule.py     # 官方发布日程
 python3 scripts/fetch_releases.py     # 宏观数据公布值
 python3 scripts/fetch_quotes.py       # 财报次日股价
@@ -166,7 +166,7 @@ python3 src/build.py                  # 重新生成 index.html
 ## 目录
 
 ```
-earnings-calendar/
+fincal/
 ├── index.html              构建产物，直接打开这个
 ├── src/
 │   ├── template.html       源模板（占位符 __DATA__ / __TODAY__）
